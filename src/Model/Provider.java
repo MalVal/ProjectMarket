@@ -1,3 +1,5 @@
+package Model;
+
 public class Provider implements Cloneable
 {
     public static void main(String[] args)

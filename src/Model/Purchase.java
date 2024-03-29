@@ -1,3 +1,5 @@
+package Model;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -5,13 +7,7 @@ public class Purchase
 {
     public static void main(String[] args)
     {
-        Provider p1 = new Provider();
-        Provider p2 = new Provider("Lidl", "Rue de la cité", "0499/87/75/42");
-        Provider p3 = (Provider) p2.clone();
 
-        System.out.println("p1 = " + p1);
-        System.out.println("p2 = " + p2);
-        System.out.println("p3 = " + p3);
     }
 
     /*----------------------------

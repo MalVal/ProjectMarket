@@ -1,3 +1,5 @@
+package Model;
+
 public class Article implements Cloneable
 {
     public static void main(String[] args)

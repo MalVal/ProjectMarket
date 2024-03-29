@@ -1,3 +1,5 @@
+package Model;
+
 import java.time.LocalDate;
 
 public class Client extends Person implements Cloneable

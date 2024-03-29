@@ -1,4 +1,4 @@
-import java.time.LocalDate;
+package Model;
 
 public class ArticleType implements Cloneable
 {
