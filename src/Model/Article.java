@@ -85,6 +85,27 @@ public class Article implements Cloneable
 
     /*----------------------------
 
+        METHODS
+
+     ----------------------------*/
+
+    public void addQuantity(int quantity)
+    {
+        this.quantity += quantity;
+    }
+
+    public boolean removeQuantity(int quantity)
+    {
+        if(this.quantity - quantity >= 0)
+        {
+            this.quantity -= quantity;
+            return true;
+        }
+        return false;
+    }
+
+    /*----------------------------
+
         OVERRIDE
 
      ----------------------------*/
