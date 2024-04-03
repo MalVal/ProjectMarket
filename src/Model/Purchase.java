@@ -31,10 +31,6 @@ public class Purchase
         this.buyer = buyer;
         this.listArticle = listArticle;
         this.total = 0;
-        for (Article a : listArticle)
-        {
-            this.total += a.getType().getPrice();
-        }
     }
 
     public Purchase()
@@ -82,5 +78,17 @@ public class Purchase
     public void setTotal(double total)
     {
         this.total = total;
+    }
+
+    /*----------------------------
+
+        METHODS
+
+     ----------------------------*/
+
+    public void addArticle(Article a)
+    {
+        this.listArticle.add(a);
+        this.total += a.getType().getPrice();
     }
 }

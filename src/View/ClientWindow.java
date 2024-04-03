@@ -6,26 +6,24 @@ import Controler.GestWindow;
 
 import java.awt.*;
 
-public class EmployeeWindow extends JDialog
+public class ClientWindow extends JDialog
 {
     public static void main(String[] args)
     {
-        EmployeeWindow ew =  new EmployeeWindow();
-        ew.setVisible(true);
+        ClientWindow cw =  new ClientWindow();
+        cw.setVisible(true);
     }
 
-    public EmployeeWindow()
+    public ClientWindow()
     {
         super();
 
         JPanel mainPanel = (JPanel) this.getContentPane();
-        mainPanel.setLayout(new GridLayout(2,2));
+        mainPanel.setLayout(new GridLayout(1,1));
 
-        mainPanel.add(new CreateArticleTypePanel());
-        mainPanel.add(new AddArticlePanel());
-        mainPanel.add(new CreateProviderPanel());
+        mainPanel.add(new BuyArticlePanel());
 
-        this.setTitle("Project Market : Employee");
+        this.setTitle("Project Market : Client");
         this.setSize(250, 250);
 
         // Icon
