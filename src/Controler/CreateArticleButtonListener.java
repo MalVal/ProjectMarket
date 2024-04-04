@@ -5,6 +5,8 @@ import java.awt.event.ActionListener;
 
 import Model.ArticleType;
 import View.CreateArticleTypePanel;
+import View.EmployeeWindow;
+import View.MainWindow;
 
 public class CreateArticleButtonListener implements ActionListener
 {

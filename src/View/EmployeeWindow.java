@@ -13,19 +13,28 @@ public class EmployeeWindow extends JDialog
     {
     }
 
+    public CreateArticleTypePanel articleTypePanel;
+    public AddArticlePanel articlePanel;
+    public CreateProviderPanel providerPanel;
+    public PurchasePanel purchasePanel;
+
     public EmployeeWindow(JFrame parent, boolean modal)
     {
         super(parent, "Project Market : Employee", modal);
 
+        MainWindow main = (MainWindow) this.getParent();
+        this.articleTypePanel = new CreateArticleTypePanel(main.data);
+        this.articlePanel = new AddArticlePanel(main.data);
+        this.providerPanel = new CreateProviderPanel(main.data);
+        this.purchasePanel = new PurchasePanel(main.data);
+
         JPanel mainPanel = (JPanel) this.getContentPane();
         mainPanel.setLayout(new GridLayout(2,2));
 
-        MainWindow main = (MainWindow) this.getParent();
-
-        mainPanel.add(new CreateArticleTypePanel(main.data.getListArticleType()));
-        mainPanel.add(new AddArticlePanel(main.data.getListArticleType(), main.data.getListProvider()));
-        mainPanel.add(new CreateProviderPanel());
-        mainPanel.add(new PurchasePanel(main.data.getListPurchase()));
+        mainPanel.add(articleTypePanel);
+        mainPanel.add(articlePanel);
+        mainPanel.add(providerPanel);
+        mainPanel.add(purchasePanel);
 
         this.setSize(250, 250);
 

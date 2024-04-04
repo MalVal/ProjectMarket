@@ -1,5 +1,6 @@
 package View;
 
+import Model.MainData;
 import Model.ModelColumnTablePurchase;
 import Model.Purchase;
 import Model.ModelTablePurchase;
@@ -10,14 +11,14 @@ import java.util.ArrayList;
 
 public class PurchasePanel extends JPanel
 {
-    private JTable tablePurchase;
+    public JTable tablePurchase;
 
-    public PurchasePanel(ArrayList<Purchase> purchases)
+    public PurchasePanel(MainData data)
     {
         super();
 
         tablePurchase = new JTable();
-        tablePurchase.setModel(new ModelTablePurchase(purchases));
+        tablePurchase.setModel(new ModelTablePurchase(data.getListPurchase()));
         tablePurchase.setColumnModel(new ModelColumnTablePurchase());
 
         this.setLayout(new GridLayout(2,1));

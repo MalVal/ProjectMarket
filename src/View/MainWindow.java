@@ -16,6 +16,7 @@ public class MainWindow extends JFrame
 
     public MainData data;
 
+
     public MainWindow(MainData data)
     {
         super();

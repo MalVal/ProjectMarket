@@ -1,6 +1,7 @@
 package View;
 
 import Model.ArticleType;
+import Model.MainData;
 import Model.Provider;
 import Model.CustomComboBoxModel;
 
@@ -14,13 +15,13 @@ public class AddArticlePanel extends JPanel
     private JComboBox<Provider> listProvider;
     private JTextField textFieldQuantity;
 
-    public AddArticlePanel(ArrayList<ArticleType> articleTypeData, ArrayList<Provider> providerData)
+    public AddArticlePanel(MainData data)
     {
         super();
 
-        CustomComboBoxModel<ArticleType> articleTypeComboBoxModel = new CustomComboBoxModel<>(articleTypeData);
+        CustomComboBoxModel<ArticleType> articleTypeComboBoxModel = new CustomComboBoxModel<>(data.getListArticleType());
         listArticle = new JComboBox<ArticleType>(articleTypeComboBoxModel);
-        CustomComboBoxModel<Provider> providerComboBoxModel = new CustomComboBoxModel<>(providerData);
+        CustomComboBoxModel<Provider> providerComboBoxModel = new CustomComboBoxModel<>(data.getListProvider());
         listProvider = new JComboBox<Provider>(providerComboBoxModel);
         textFieldQuantity = new JTextField();
 

@@ -1,5 +1,7 @@
 package View;
 
+import Model.MainData;
+
 import javax.swing.*;
 import java.awt.*;
 public class CreateProviderPanel extends JPanel
@@ -8,7 +10,7 @@ public class CreateProviderPanel extends JPanel
     private  JTextField textFieldAddress;
     private JTextField textFieldPhoneNumber;
 
-    public CreateProviderPanel()
+    public CreateProviderPanel(MainData data)
     {
         super();
 

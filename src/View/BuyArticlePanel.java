@@ -3,6 +3,7 @@ package View;
 import Model.Article;
 import Model.ArticleType;
 import Model.CustomComboBoxModel;
+import Model.MainData;
 
 import javax.swing.*;
 import java.awt.*;
@@ -13,11 +14,11 @@ public class BuyArticlePanel extends JPanel
     private JComboBox<Article> listArticle;
     private JTextField textFieldQuantity;
 
-    public BuyArticlePanel(ArrayList<Article> articleData)
+    public BuyArticlePanel(MainData data)
     {
         super();
 
-        CustomComboBoxModel<Article> articleComboBoxModel = new CustomComboBoxModel<>(articleData);
+        CustomComboBoxModel<Article> articleComboBoxModel = new CustomComboBoxModel<>(data.getListArticle());
         listArticle = new JComboBox<Article>(articleComboBoxModel);
         textFieldQuantity = new JTextField();
 
