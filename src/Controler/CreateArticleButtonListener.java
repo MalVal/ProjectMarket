@@ -40,7 +40,7 @@ public class CreateArticleButtonListener implements ActionListener
                 }
             }
             ArticleType newArticleType = new ArticleType(name, category, price);
-            ui.articleTypeList.add(newArticleType);
+            ui.articleTypeList.add(newArticleType); // A modifier car il faut prevenir le combobox qu'il y en a un en plus
             ui.labelError.setText("Type created !");
         }
         catch (NumberFormatException exception)
