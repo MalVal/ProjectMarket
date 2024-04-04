@@ -22,7 +22,7 @@ public class EmployeeWindow extends JDialog
 
         MainWindow main = (MainWindow) this.getParent();
 
-        mainPanel.add(new CreateArticleTypePanel());
+        mainPanel.add(new CreateArticleTypePanel(main.data.getListArticleType()));
         mainPanel.add(new AddArticlePanel(main.data.getListArticleType(), main.data.getListProvider()));
         mainPanel.add(new CreateProviderPanel());
         mainPanel.add(new PurchasePanel(main.data.getListPurchase()));

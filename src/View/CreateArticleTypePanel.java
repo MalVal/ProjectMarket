@@ -1,22 +1,34 @@
 package View;
 
+import Controler.CreateArticleButtonListener;
+import Model.ArticleType;
+
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
+
 public class CreateArticleTypePanel extends JPanel
 {
-    private JTextField textFieldName;
-    private JTextField textFieldCategory;
-    private JTextField textFieldPrice;
+    public JTextField textFieldName;
+    public JTextField textFieldCategory;
+    public JTextField textFieldPrice;
+    public JLabel labelError;
+    private JButton btnCreate;
+    public ArrayList<ArticleType> articleTypeList;
 
-    public CreateArticleTypePanel()
+    public CreateArticleTypePanel(ArrayList<ArticleType> articleTypeData)
     {
         super();
+
+        this.articleTypeList = articleTypeData;
 
         textFieldName = new JTextField();
         textFieldCategory = new JTextField();
         textFieldPrice = new JTextField();
+        labelError = new JLabel();
+        btnCreate = new JButton("Create");
 
-        this.setLayout(new GridLayout(3,1));
+        this.setLayout(new GridLayout(4,1));
 
         JPanel subPanel = new JPanel(new GridLayout(3, 2));
         subPanel.add(new JLabel("Name :"));
@@ -28,6 +40,8 @@ public class CreateArticleTypePanel extends JPanel
 
         this.add(new JLabel("Create a new article type :"));
         this.add(subPanel);
-        this.add(new JButton("Create"));
+        this.add(labelError);
+        this.add(btnCreate);
+        btnCreate.addActionListener(new CreateArticleButtonListener(this));
     }
 }
