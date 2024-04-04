@@ -42,6 +42,16 @@ public class MainData
 
     /*----------------------------
 
+        GETTERS
+
+    ----------------------------*/
+    public ArrayList<Purchase> getListPurchase()
+    {
+        return listPurchase;
+    }
+
+    /*----------------------------
+
         METHODS
 
      ----------------------------*/

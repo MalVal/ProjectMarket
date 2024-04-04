@@ -3,6 +3,7 @@ package View;
 import javax.swing.*;
 
 import Controler.GestWindow;
+import Model.MainData;
 
 import java.awt.*;
 
@@ -10,30 +11,27 @@ public class EmployeeWindow extends JDialog
 {
     public static void main(String[] args)
     {
-        EmployeeWindow ew =  new EmployeeWindow();
-        ew.setVisible(true);
     }
 
-    public EmployeeWindow()
+    public EmployeeWindow(JFrame parent, boolean modal)
     {
-        super();
+        super(parent, "Project Market : Employee", modal);
 
         JPanel mainPanel = (JPanel) this.getContentPane();
         mainPanel.setLayout(new GridLayout(2,2));
 
+        MainWindow main = (MainWindow) this.getParent();
+
         mainPanel.add(new CreateArticleTypePanel());
         mainPanel.add(new AddArticlePanel());
         mainPanel.add(new CreateProviderPanel());
+        mainPanel.add(new PurchasePanel(main.data.getListPurchase()));
 
-        this.setTitle("Project Market : Employee");
         this.setSize(250, 250);
 
         // Icon
         ImageIcon icon = new ImageIcon("src/View/img/caddieIcon.png");
         this.setIconImage(icon.getImage());
-
-        // Events
-        this.addWindowListener(new GestWindow());
 
         pack(); // Resize the elements properly
     }

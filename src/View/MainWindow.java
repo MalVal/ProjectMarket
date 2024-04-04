@@ -2,24 +2,31 @@ package View;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionListener;
 
+import Controler.ClientButtonListener;
+import Controler.EmployeeButtonListener;
 import Controler.GestWindow;
+import Model.MainData;
 
 public class MainWindow extends JFrame
 {
     public static void main(String[] args)
     {
-        MainWindow mw =  new MainWindow();
-        mw.setVisible(true);
     }
 
-    public MainWindow()
+    public MainData data;
+
+    public MainWindow(MainData data)
     {
         super();
 
+        this.data = data;
+
         JButton btnClient = new JButton("Client");
+        btnClient.addActionListener(new ClientButtonListener(this));
+
         JButton btnEmployee = new JButton("Employee");
+        btnEmployee.addActionListener(new EmployeeButtonListener(this));
 
         JPanel mainPanel = (JPanel) this.getContentPane();
         mainPanel.setLayout(new GridLayout(1,2));

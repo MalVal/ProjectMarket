@@ -6,17 +6,23 @@ import javax.swing.*;
 import java.awt.*;
 public class BuyArticlePanel extends JPanel
 {
+    private JList<Article> listArticle;
+    private JTextField textFieldQuantity;
+
     public BuyArticlePanel()
     {
         super();
+
+        listArticle = new JList<Article>();
+        textFieldQuantity = new JTextField();
 
         this.setLayout(new GridLayout(3,1));
 
         JPanel subPanel = new JPanel(new GridLayout(2, 2));
         subPanel.add(new JLabel("Article :"));
-        subPanel.add(new JList<Article>());
+        subPanel.add(listArticle);
         subPanel.add(new JLabel("Quantity :"));
-        subPanel.add(new JTextField());
+        subPanel.add(textFieldQuantity);
 
         this.add(new JLabel("Buy an article :"));
         this.add(subPanel);
