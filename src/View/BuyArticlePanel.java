@@ -8,15 +8,14 @@ import java.util.ArrayList;
 
 public class BuyArticlePanel extends JPanel
 {
-    private JList<Article> listArticle;
+    private JComboBox<Article> listArticle;
     private JTextField textFieldQuantity;
 
     public BuyArticlePanel(ArrayList<Article> articleData)
     {
         super();
 
-        listArticle = new JList<Article>();
-        listArticle.setListData(articleData.toArray(new Article[0]));
+        listArticle = new JComboBox<Article>(articleData.toArray(new Article[0]));
         textFieldQuantity = new JTextField();
 
         this.setLayout(new GridLayout(3,1));

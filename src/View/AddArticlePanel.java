@@ -9,18 +9,16 @@ import java.util.ArrayList;
 
 public class AddArticlePanel extends JPanel
 {
-    private JList<ArticleType> listArticle;
-    private JList<Provider> listProvider;
+    private JComboBox<ArticleType> listArticle;
+    private JComboBox<Provider> listProvider;
     private JTextField textFieldQuantity;
 
     public AddArticlePanel(ArrayList<ArticleType> articleTypeData, ArrayList<Provider> providerData)
     {
         super();
 
-        listArticle = new JList<ArticleType>();
-        listArticle.setListData(articleTypeData.toArray(new ArticleType[0]));
-        listProvider = new JList<Provider>();
-        listProvider.setListData(providerData.toArray(new Provider[0]));
+        listArticle = new JComboBox<ArticleType>(articleTypeData.toArray(new ArticleType[0]));
+        listProvider = new JComboBox<Provider>(providerData.toArray(new Provider[0]));
         textFieldQuantity = new JTextField();
 
         this.setLayout(new GridLayout(3,1));
