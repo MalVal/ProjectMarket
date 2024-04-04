@@ -1,5 +1,6 @@
 package View;
 
+import Model.ModelColumnTablePurchase;
 import Model.Purchase;
 import Model.ModelTablePurchase;
 
@@ -17,6 +18,7 @@ public class PurchasePanel extends JPanel
 
         tablePurchase = new JTable();
         tablePurchase.setModel(new ModelTablePurchase(purchases));
+        tablePurchase.setColumnModel(new ModelColumnTablePurchase());
 
         this.setLayout(new GridLayout(2,1));
 

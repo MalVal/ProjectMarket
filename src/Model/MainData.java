@@ -1,5 +1,6 @@
 package Model;
 
+import java.nio.channels.Pipe;
 import java.util.ArrayList;
 
 public class MainData
@@ -48,6 +49,21 @@ public class MainData
     public ArrayList<Purchase> getListPurchase()
     {
         return listPurchase;
+    }
+
+    public ArrayList<ArticleType> getListArticleType()
+    {
+        return listArticleType;
+    }
+
+    public ArrayList<Article> getListArticle()
+    {
+        return listArticle;
+    }
+
+    public ArrayList<Provider> getListProvider()
+    {
+        return listProvider;
     }
 
     /*----------------------------

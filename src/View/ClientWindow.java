@@ -19,7 +19,9 @@ public class ClientWindow extends JDialog
         JPanel mainPanel = (JPanel) this.getContentPane();
         mainPanel.setLayout(new GridLayout(1,1));
 
-        mainPanel.add(new BuyArticlePanel());
+        MainWindow main = (MainWindow) this.getParent();
+
+        mainPanel.add(new BuyArticlePanel(main.data.getListArticle()));
 
         this.setSize(250, 250);
 
