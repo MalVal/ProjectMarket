@@ -2,6 +2,7 @@ package View;
 
 import Model.ArticleType;
 import Model.Provider;
+import Model.CustomComboBoxModel;
 
 import javax.swing.*;
 import java.awt.*;
@@ -17,8 +18,10 @@ public class AddArticlePanel extends JPanel
     {
         super();
 
-        listArticle = new JComboBox<ArticleType>(articleTypeData.toArray(new ArticleType[0]));
-        listProvider = new JComboBox<Provider>(providerData.toArray(new Provider[0]));
+        CustomComboBoxModel<ArticleType> articleTypeComboBoxModel = new CustomComboBoxModel<>(articleTypeData);
+        listArticle = new JComboBox<ArticleType>(articleTypeComboBoxModel);
+        CustomComboBoxModel<Provider> providerComboBoxModel = new CustomComboBoxModel<>(providerData);
+        listProvider = new JComboBox<Provider>(providerComboBoxModel);
         textFieldQuantity = new JTextField();
 
         this.setLayout(new GridLayout(3,1));

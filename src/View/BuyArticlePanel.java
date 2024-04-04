@@ -1,6 +1,8 @@
 package View;
 
 import Model.Article;
+import Model.ArticleType;
+import Model.CustomComboBoxModel;
 
 import javax.swing.*;
 import java.awt.*;
@@ -15,7 +17,8 @@ public class BuyArticlePanel extends JPanel
     {
         super();
 
-        listArticle = new JComboBox<Article>(articleData.toArray(new Article[0]));
+        CustomComboBoxModel<Article> articleComboBoxModel = new CustomComboBoxModel<>(articleData);
+        listArticle = new JComboBox<Article>(articleComboBoxModel);
         textFieldQuantity = new JTextField();
 
         this.setLayout(new GridLayout(3,1));
