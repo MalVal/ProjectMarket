@@ -16,11 +16,13 @@ public class CreateArticleTypePanel extends JPanel
     public JLabel labelError;
     private JButton btnCreate;
     public ArrayList<ArticleType> articleTypeList;
+    public EmployeeWindow parent;
 
-    public CreateArticleTypePanel(MainData data)
+    public CreateArticleTypePanel(EmployeeWindow parent, MainData data)
     {
         super();
 
+        this.parent = parent;
         this.articleTypeList = data.getListArticleType();
 
         textFieldName = new JTextField();

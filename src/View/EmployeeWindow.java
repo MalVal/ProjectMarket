@@ -23,7 +23,7 @@ public class EmployeeWindow extends JDialog
         super(parent, "Project Market : Employee", modal);
 
         MainWindow main = (MainWindow) this.getParent();
-        this.articleTypePanel = new CreateArticleTypePanel(main.data);
+        this.articleTypePanel = new CreateArticleTypePanel(this, main.data);
         this.articlePanel = new AddArticlePanel(main.data);
         this.providerPanel = new CreateProviderPanel(main.data);
         this.purchasePanel = new PurchasePanel(main.data);
