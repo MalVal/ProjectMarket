@@ -4,15 +4,14 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import Model.ArticleType;
+import Model.ModelTableArticleType;
 import View.CreateArticleTypePanel;
-import View.EmployeeWindow;
-import View.MainWindow;
 
-public class CreateArticleButtonListener implements ActionListener
+public class CreateArticleTypeButtonListener implements ActionListener
 {
     private CreateArticleTypePanel ui;
 
-    public CreateArticleButtonListener(CreateArticleTypePanel ui)
+    public CreateArticleTypeButtonListener(CreateArticleTypePanel ui)
     {
         this.ui = ui;
     }
@@ -42,8 +41,12 @@ public class CreateArticleButtonListener implements ActionListener
                 }
             }
             ArticleType newArticleType = new ArticleType(name, category, price);
-            ui.articleTypeList.add(newArticleType);
-            ui.parent.articlePanel.articleTypeComboBoxModel.addElementAndUpdate(newArticleType);
+            ui.articleTypeList.add(newArticleType); // Add the new type to the list
+            ui.parent.employeeArticlePanel.addArticlePanel.articleTypeComboBoxModel.addElementAndUpdate(newArticleType); // Prevent the combo box
+            // Prevent the Jtable
+            ModelTableArticleType tm = (ModelTableArticleType) ui.parent.employeeArticleTypePanel.viewArticleTypePanel.tableArticleType.getModel();
+            tm.fireTableDataChanged();
+
             ui.labelError.setText("Type created !");
         }
         catch (NumberFormatException exception)

@@ -1,24 +1,23 @@
 package View;
 
-import Model.MainData;
 import Model.ModelColumnTablePurchase;
-import Model.Purchase;
 import Model.ModelTablePurchase;
+import Model.Purchase;
 
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 
-public class PurchasePanel extends JPanel
+public class ViewPurchasePanel extends JPanel
 {
     public JTable tablePurchase;
 
-    public PurchasePanel(MainData data)
+    public ViewPurchasePanel(ArrayList<Purchase> listPurchase)
     {
         super();
 
         tablePurchase = new JTable();
-        tablePurchase.setModel(new ModelTablePurchase(data.getListPurchase()));
+        tablePurchase.setModel(new ModelTablePurchase(listPurchase));
         tablePurchase.setColumnModel(new ModelColumnTablePurchase());
 
         this.setLayout(new GridLayout(2,1));

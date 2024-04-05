@@ -1,0 +1,25 @@
+package View;
+
+import javax.swing.*;
+import java.awt.*;
+
+public class EmployeeProviderPanel extends JPanel
+{
+    public EmployeeWindow parent;
+    public ViewProviderPanel viewProviderPanel;
+    public CreateProviderPanel createProviderPanel;
+
+    public EmployeeProviderPanel(EmployeeWindow parent)
+    {
+        super();
+
+        this.parent = parent;
+        this.viewProviderPanel = new ViewProviderPanel(this.parent.main.data.getListProvider());
+        this.createProviderPanel = new CreateProviderPanel(this.parent);
+
+        this.setLayout(new GridLayout(2,1));
+
+        this.add(viewProviderPanel);
+        this.add(createProviderPanel);
+    }
+}

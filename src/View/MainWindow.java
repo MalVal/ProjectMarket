@@ -10,12 +10,7 @@ import Model.MainData;
 
 public class MainWindow extends JFrame
 {
-    public static void main(String[] args)
-    {
-    }
-
     public MainData data;
-
 
     public MainWindow(MainData data)
     {

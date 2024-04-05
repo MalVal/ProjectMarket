@@ -2,39 +2,34 @@ package View;
 
 import javax.swing.*;
 
-import Controler.GestWindow;
-import Model.MainData;
-
-import java.awt.*;
-
 public class EmployeeWindow extends JDialog
 {
-    public static void main(String[] args)
-    {
-    }
-
-    public CreateArticleTypePanel articleTypePanel;
-    public AddArticlePanel articlePanel;
-    public CreateProviderPanel providerPanel;
-    public PurchasePanel purchasePanel;
+    public EmployeeArticleTypePanel employeeArticleTypePanel;
+    public EmployeeArticlePanel employeeArticlePanel;
+    public EmployeeProviderPanel employeeProviderPanel;
+    public ViewPurchasePanel viewPurchasePanel;
+    public MainWindow main;
 
     public EmployeeWindow(JFrame parent, boolean modal)
     {
         super(parent, "Project Market : Employee", modal);
 
-        MainWindow main = (MainWindow) this.getParent();
-        this.articleTypePanel = new CreateArticleTypePanel(this, main.data);
-        this.articlePanel = new AddArticlePanel(main.data);
-        this.providerPanel = new CreateProviderPanel(main.data);
-        this.purchasePanel = new PurchasePanel(main.data);
+        this.main = (MainWindow) this.getParent();
+
+        this.employeeArticleTypePanel = new EmployeeArticleTypePanel(this);
+        this.employeeArticlePanel = new EmployeeArticlePanel(this);
+        this.employeeProviderPanel = new EmployeeProviderPanel(this);
+        this.viewPurchasePanel = new ViewPurchasePanel(this.main.data.getListPurchase());
+
+        JTabbedPane tabbedPane = new JTabbedPane();
+        tabbedPane.addTab("Article type", employeeArticleTypePanel);
+        tabbedPane.addTab("Article", employeeArticlePanel);
+        tabbedPane.addTab("Provider", employeeProviderPanel);
+        tabbedPane.addTab("Purchase", viewPurchasePanel);
 
         JPanel mainPanel = (JPanel) this.getContentPane();
-        mainPanel.setLayout(new GridLayout(2,2));
 
-        mainPanel.add(articleTypePanel);
-        mainPanel.add(articlePanel);
-        mainPanel.add(providerPanel);
-        mainPanel.add(purchasePanel);
+        mainPanel.add(tabbedPane);
 
         this.setSize(250, 250);
 

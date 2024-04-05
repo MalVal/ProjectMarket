@@ -1,13 +1,11 @@
 package View;
 
 import Model.Article;
-import Model.ArticleType;
 import Model.CustomComboBoxModel;
 import Model.MainData;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.ArrayList;
 
 public class BuyArticlePanel extends JPanel
 {

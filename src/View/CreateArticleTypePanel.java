@@ -1,8 +1,7 @@
 package View;
 
-import Controler.CreateArticleButtonListener;
+import Controler.CreateArticleTypeButtonListener;
 import Model.ArticleType;
-import Model.MainData;
 
 import javax.swing.*;
 import java.awt.*;
@@ -18,12 +17,12 @@ public class CreateArticleTypePanel extends JPanel
     public ArrayList<ArticleType> articleTypeList;
     public EmployeeWindow parent;
 
-    public CreateArticleTypePanel(EmployeeWindow parent, MainData data)
+    public CreateArticleTypePanel(EmployeeWindow parent)
     {
         super();
 
         this.parent = parent;
-        this.articleTypeList = data.getListArticleType();
+        this.articleTypeList = parent.main.data.getListArticleType();
 
         textFieldName = new JTextField();
         textFieldCategory = new JTextField();
@@ -45,6 +44,6 @@ public class CreateArticleTypePanel extends JPanel
         this.add(subPanel);
         this.add(labelError);
         this.add(btnCreate);
-        btnCreate.addActionListener(new CreateArticleButtonListener(this));
+        btnCreate.addActionListener(new CreateArticleTypeButtonListener(this));
     }
 }

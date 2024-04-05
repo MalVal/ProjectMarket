@@ -1,18 +1,20 @@
 package View;
 
-import Model.MainData;
-
 import javax.swing.*;
 import java.awt.*;
+
 public class CreateProviderPanel extends JPanel
 {
     private JTextField textFieldName;
     private  JTextField textFieldAddress;
     private JTextField textFieldPhoneNumber;
+    public EmployeeWindow parent;
 
-    public CreateProviderPanel(MainData data)
+    public CreateProviderPanel(EmployeeWindow parent)
     {
         super();
+
+        this.parent = parent;
 
         textFieldName = new JTextField();
         textFieldAddress = new JTextField();

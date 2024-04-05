@@ -1,13 +1,11 @@
 package View;
 
 import Model.ArticleType;
-import Model.MainData;
 import Model.Provider;
 import Model.CustomComboBoxModel;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.ArrayList;
 
 public class AddArticlePanel extends JPanel
 {
@@ -15,14 +13,17 @@ public class AddArticlePanel extends JPanel
     private JComboBox<Provider> listProvider;
     private JTextField textFieldQuantity;
     public CustomComboBoxModel<ArticleType> articleTypeComboBoxModel;
+    public EmployeeWindow parent;
 
-    public AddArticlePanel(MainData data)
+    public AddArticlePanel(EmployeeWindow parent)
     {
         super();
 
-        articleTypeComboBoxModel = new CustomComboBoxModel<>(data.getListArticleType());
+        this.parent = parent;
+
+        articleTypeComboBoxModel = new CustomComboBoxModel<>(parent.main.data.getListArticleType());
         listArticle = new JComboBox<ArticleType>(articleTypeComboBoxModel);
-        CustomComboBoxModel<Provider> providerComboBoxModel = new CustomComboBoxModel<>(data.getListProvider());
+        CustomComboBoxModel<Provider> providerComboBoxModel = new CustomComboBoxModel<>(parent.main.data.getListProvider());
         listProvider = new JComboBox<Provider>(providerComboBoxModel);
         textFieldQuantity = new JTextField();
 

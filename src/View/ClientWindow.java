@@ -1,17 +1,10 @@
 package View;
 
 import javax.swing.*;
-
-import Controler.GestWindow;
-
 import java.awt.*;
 
 public class ClientWindow extends JDialog
 {
-    public static void main(String[] args)
-    {
-    }
-
     public ClientWindow(JFrame parent, boolean modal)
     {
         super(parent,"Project Market : Client", modal);
