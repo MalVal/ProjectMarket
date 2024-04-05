@@ -18,9 +18,12 @@ public class ViewArticleTypePanel extends JPanel
         tableArticleType.setModel(new ModelTableArticleType(listArticleType));
         tableArticleType.setColumnModel(new ModelColumnTableArticleType());
 
+        JScrollPane jScrollPane = new JScrollPane();
+        jScrollPane.setViewportView(tableArticleType);
+
         this.setLayout(new GridLayout(2,1));
 
         this.add(new JLabel("Article type :"));
-        this.add(tableArticleType);
+        this.add(jScrollPane);
     }
 }

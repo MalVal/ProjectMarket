@@ -18,9 +18,12 @@ public class ViewArticlePanel extends JPanel
         tableArticle.setModel(new ModelTableArticle(listArticle));
         tableArticle.setColumnModel(new ModelColumnTableArticle());
 
+        JScrollPane jScrollPane = new JScrollPane();
+        jScrollPane.setViewportView(tableArticle);
+
         this.setLayout(new GridLayout(2,1));
 
         this.add(new JLabel("Article :"));
-        this.add(tableArticle);
+        this.add(jScrollPane);
     }
 }

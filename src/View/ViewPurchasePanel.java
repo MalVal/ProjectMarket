@@ -20,9 +20,12 @@ public class ViewPurchasePanel extends JPanel
         tablePurchase.setModel(new ModelTablePurchase(listPurchase));
         tablePurchase.setColumnModel(new ModelColumnTablePurchase());
 
+        JScrollPane jScrollPane = new JScrollPane();
+        jScrollPane.setViewportView(tablePurchase);
+
         this.setLayout(new GridLayout(2,1));
 
         this.add(new JLabel("Purchase :"));
-        this.add(tablePurchase);
+        this.add(jScrollPane);
     }
 }
