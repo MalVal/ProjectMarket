@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 
 import Model.ArticleType;
 import Model.ModelTableArticleType;
+import Model.ModelTableProvider;
 import Model.Provider;
 import View.CreateArticleTypePanel;
 import View.CreateProviderPanel;
@@ -42,7 +43,7 @@ public class CreateProviderButtonListener implements ActionListener
             ui.providerList.add(newprovider); // Add the new provider to the list
             ui.parent.employeeArticlePanel.addArticlePanel.providerComboBoxModel.addElementAndUpdate(newprovider); // Prevent the combo box
             // Prevent the Jtable
-            ModelTableArticleType tm = (ModelTableArticleType) ui.parent.employeeProviderPanel.viewProviderPanel.tableProvider.getModel();
+            ModelTableProvider tm = (ModelTableProvider) ui.parent.employeeProviderPanel.viewProviderPanel.tableProvider.getModel();
             tm.fireTableDataChanged();
 
             ui.labelError.setText("Type created !");
