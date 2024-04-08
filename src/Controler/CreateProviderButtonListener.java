@@ -44,7 +44,7 @@ public class CreateProviderButtonListener implements ActionListener
             ui.parent.employeeArticlePanel.addArticlePanel.providerComboBoxModel.addElementAndUpdate(newprovider); // Prevent the combo box
             // Prevent the Jtable
             ModelTableProvider tm = (ModelTableProvider) ui.parent.employeeProviderPanel.viewProviderPanel.tableProvider.getModel();
-            tm.fireTableDataChanged();
+            tm.fireTableDataChanged(); // Prevent
 
             ui.labelError.setText("Type created !");
         }
