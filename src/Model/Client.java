@@ -7,7 +7,7 @@ public class Client extends Person implements Cloneable
     public static void main(String[] args)
     {
         Client c1 = new Client();
-        Client c2 = new Client("Malchair", "Valentin", LocalDate.parse("2004-09-11"), 8.9);
+        Client c2 = new Client("Malchair", "Valentin", LocalDate.parse("2004-09-11"), "1545320", 8.9);
         Client c3 = (Client) c2.clone();
 
         System.out.println("c1 = " + c1);
@@ -29,15 +29,15 @@ public class Client extends Person implements Cloneable
 
      ----------------------------*/
 
-    public Client(String name, String firstname, LocalDate birthdate, double discount)
+    public Client(String name, String firstname, LocalDate birthdate, String password, double discount)
     {
-        super(name, firstname, birthdate);
+        super(name, firstname, birthdate, password);
         this.discount = discount;
     }
 
     public Client()
     {
-        this("Unknown", "Unknown", LocalDate.parse("2000-01-01"), 0);
+        this("Unknown", "Unknown", LocalDate.parse("2000-01-01"), "default", 0);
     }
 
     /*----------------------------
@@ -87,7 +87,7 @@ public class Client extends Person implements Cloneable
     @Override
     public Object clone()
     {
-        return new Client(this.getName(), this.getFirstname(), this.getBirthdate(), this.discount);
+        return new Client(this.getName(), this.getFirstname(), this.getBirthdate(), this.getPassword(), this.discount);
     }
 
 }

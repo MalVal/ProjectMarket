@@ -18,6 +18,7 @@ public abstract class Person
     private String name;
     private String firstname;
     private LocalDate birthdate;
+    private String password;
 
     /*----------------------------
 
@@ -25,16 +26,17 @@ public abstract class Person
 
      ----------------------------*/
 
-    public Person(String name, String firstname, LocalDate birthdate)
+    public Person(String name, String firstname, LocalDate birthdate, String password)
     {
         this.name = name;
         this.firstname = firstname;
         this.birthdate = birthdate;
+        this.password = password;
     }
 
     public Person()
     {
-        this("Unknown", "Unknown", LocalDate.parse("2000-01-01"));
+        this("Unknown", "Unknown", LocalDate.parse("2000-01-01"), "default");
     }
 
     /*----------------------------
@@ -57,6 +59,10 @@ public abstract class Person
         return this.birthdate;
     }
 
+    public String getPassword() {
+        return this.password;
+    }
+
     /*----------------------------
 
         SETTERS
@@ -76,6 +82,10 @@ public abstract class Person
     public void setBirthdate(LocalDate birthdate)
     {
         this.birthdate = birthdate;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     /*----------------------------

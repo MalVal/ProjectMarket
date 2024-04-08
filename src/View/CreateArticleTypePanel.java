@@ -14,8 +14,9 @@ public class CreateArticleTypePanel extends JPanel
     public JTextField textFieldPrice;
     public JLabel labelError;
     private JButton btnCreate;
-    public ArrayList<ArticleType> articleTypeList;
+
     public EmployeeWindow parent;
+    public ArrayList<ArticleType> articleTypeList;
 
     public CreateArticleTypePanel(EmployeeWindow parent)
     {

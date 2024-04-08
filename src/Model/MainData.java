@@ -21,6 +21,7 @@ public class MainData
     private ArrayList<Article> listArticle;
     private ArrayList<Provider> listProvider;
     private ArrayList<Purchase> listPurchase;
+    private ArrayList<Client> listClient;
 
     /*----------------------------
 
@@ -28,17 +29,18 @@ public class MainData
 
      ----------------------------*/
 
-    public MainData(ArrayList<ArticleType> listArticleType, ArrayList<Article> listArticle, ArrayList<Provider> listProvider, ArrayList<Purchase> listPurchase)
+    public MainData(ArrayList<ArticleType> listArticleType, ArrayList<Article> listArticle, ArrayList<Provider> listProvider, ArrayList<Purchase> listPurchase, ArrayList<Client> listClient)
     {
         this.listArticleType = listArticleType;
         this.listArticle = listArticle;
         this.listProvider = listProvider;
         this.listPurchase = listPurchase;
+        this.listClient = listClient;
     }
 
     public MainData()
     {
-        this(new ArrayList<ArticleType>(), new ArrayList<Article>(), new ArrayList<Provider>(), new ArrayList<Purchase>());
+        this(new ArrayList<ArticleType>(), new ArrayList<Article>(), new ArrayList<Provider>(), new ArrayList<Purchase>(), new ArrayList<Client>());
     }
 
     /*----------------------------
@@ -64,6 +66,11 @@ public class MainData
     public ArrayList<Provider> getListProvider()
     {
         return listProvider;
+    }
+
+    public ArrayList<Client> getListClient()
+    {
+        return listClient;
     }
 
     /*----------------------------

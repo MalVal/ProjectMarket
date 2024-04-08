@@ -13,6 +13,7 @@ public class AddArticlePanel extends JPanel
     private JComboBox<Provider> listProvider;
     private JTextField textFieldQuantity;
     public CustomComboBoxModel<ArticleType> articleTypeComboBoxModel;
+    public CustomComboBoxModel<Provider> providerComboBoxModel;
     public EmployeeWindow parent;
 
     public AddArticlePanel(EmployeeWindow parent)
@@ -23,7 +24,7 @@ public class AddArticlePanel extends JPanel
 
         articleTypeComboBoxModel = new CustomComboBoxModel<>(parent.main.data.getListArticleType());
         listArticle = new JComboBox<ArticleType>(articleTypeComboBoxModel);
-        CustomComboBoxModel<Provider> providerComboBoxModel = new CustomComboBoxModel<>(parent.main.data.getListProvider());
+        providerComboBoxModel = new CustomComboBoxModel<>(parent.main.data.getListProvider());
         listProvider = new JComboBox<Provider>(providerComboBoxModel);
         textFieldQuantity = new JTextField();
 

@@ -8,11 +8,14 @@ public class EmployeeWindow extends JDialog
     public EmployeeArticlePanel employeeArticlePanel;
     public EmployeeProviderPanel employeeProviderPanel;
     public ViewPurchasePanel viewPurchasePanel;
+    public EmployeeClientPanel employeeClientPanel;
+
     public MainWindow main;
 
     public EmployeeWindow(JFrame parent, boolean modal)
     {
         super(parent, "Project Market : Employee", modal);
+        this.setSize(600, 600);
 
         this.main = (MainWindow) this.getParent();
 
@@ -20,23 +23,21 @@ public class EmployeeWindow extends JDialog
         this.employeeArticlePanel = new EmployeeArticlePanel(this);
         this.employeeProviderPanel = new EmployeeProviderPanel(this);
         this.viewPurchasePanel = new ViewPurchasePanel(this.main.data.getListPurchase());
+        this.employeeClientPanel = new EmployeeClientPanel(this);
 
         JTabbedPane tabbedPane = new JTabbedPane();
         tabbedPane.addTab("Article type", employeeArticleTypePanel);
         tabbedPane.addTab("Article", employeeArticlePanel);
         tabbedPane.addTab("Provider", employeeProviderPanel);
         tabbedPane.addTab("Purchase", viewPurchasePanel);
+        tabbedPane.addTab("Client", employeeClientPanel);
 
         JPanel mainPanel = (JPanel) this.getContentPane();
 
         mainPanel.add(tabbedPane);
 
-        this.setSize(250, 250);
-
         // Icon
         ImageIcon icon = new ImageIcon("src/View/img/caddieIcon.png");
         this.setIconImage(icon.getImage());
-
-        pack(); // Resize the elements properly
     }
 }
