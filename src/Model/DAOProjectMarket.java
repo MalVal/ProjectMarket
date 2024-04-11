@@ -26,6 +26,16 @@ public class DAOProjectMarket implements DataAccessLayer
     @Override
     public boolean addArticle(Article article) {
         if(article == null) return false;
+
+        for(Article a : listArticle)
+        {
+            if(a.equals(article))
+            {
+                a.setQuantity(a.getQuantity() + article.getQuantity());
+                return true;
+            }
+        }
+
         listArticle.add(article);
         return true;
     }
@@ -33,6 +43,15 @@ public class DAOProjectMarket implements DataAccessLayer
     @Override
     public boolean addArticleType(ArticleType articleType) {
         if(articleType == null) return false;
+
+        for(ArticleType at : listArticleType)
+        {
+            if(at.equals(articleType))
+            {
+                return false;
+            }
+        }
+
         listArticleType.add(articleType);
         return true;
     }
@@ -40,6 +59,15 @@ public class DAOProjectMarket implements DataAccessLayer
     @Override
     public boolean addClient(Client client) {
         if(client == null) return false;
+
+        for(Client c : listClient)
+        {
+            if(c.equals(client))
+            {
+                return false;
+            }
+        }
+
         listClient.add(client);
         return true;
     }
