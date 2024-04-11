@@ -14,7 +14,7 @@ public class EmployeeProviderPanel extends JPanel
         super();
 
         this.parent = parent;
-        this.viewProviderPanel = new ViewProviderPanel(this.parent.main.data.getListProvider());
+        this.viewProviderPanel = new ViewProviderPanel();
         this.createProviderPanel = new CreateProviderPanel(this.parent);
 
         this.setLayout(new GridLayout(2,1));

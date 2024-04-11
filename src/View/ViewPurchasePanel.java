@@ -12,12 +12,12 @@ public class ViewPurchasePanel extends JPanel
 {
     public JTable tablePurchase;
 
-    public ViewPurchasePanel(ArrayList<Purchase> listPurchase)
+    public ViewPurchasePanel()
     {
         super();
 
         tablePurchase = new JTable();
-        tablePurchase.setModel(new ModelTablePurchase(listPurchase));
+        tablePurchase.setModel(new ModelTablePurchase(new ArrayList<>()));
         tablePurchase.setColumnModel(new ModelColumnTablePurchase());
 
         JScrollPane jScrollPane = new JScrollPane();

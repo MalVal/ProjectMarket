@@ -6,17 +6,18 @@ import Model.MainData;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
 
 public class BuyArticlePanel extends JPanel
 {
     private JComboBox<Article> listArticle;
     private JTextField textFieldQuantity;
 
-    public BuyArticlePanel(MainData data)
+    public BuyArticlePanel()
     {
         super();
 
-        CustomComboBoxModel<Article> articleComboBoxModel = new CustomComboBoxModel<>(data.getListArticle());
+        CustomComboBoxModel<Article> articleComboBoxModel = new CustomComboBoxModel<>(new ArrayList<>());
         listArticle = new JComboBox<Article>(articleComboBoxModel);
         textFieldQuantity = new JTextField();
 

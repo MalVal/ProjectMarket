@@ -1,11 +1,12 @@
 package View;
 
-import Controler.CreateArticleTypeButtonListener;
+import Controller.ControllerActions;
 import Model.Entity.ArticleType;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.ArrayList;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class CreateArticleTypePanel extends JPanel
 {
@@ -16,14 +17,15 @@ public class CreateArticleTypePanel extends JPanel
     private JButton btnCreate;
 
     public EmployeeWindow parent;
-    public ArrayList<ArticleType> articleTypeList;
+    public ArticleType articleType;
 
     public CreateArticleTypePanel(EmployeeWindow parent)
     {
         super();
 
+        articleType = new ArticleType();
+
         this.parent = parent;
-        this.articleTypeList = parent.main.data.getListArticleType();
 
         textFieldName = new JTextField();
         textFieldCategory = new JTextField();
@@ -45,6 +47,24 @@ public class CreateArticleTypePanel extends JPanel
         this.add(subPanel);
         this.add(labelError);
         this.add(btnCreate);
-        btnCreate.addActionListener(new CreateArticleTypeButtonListener(this));
+
+        btnCreate.addActionListener(new ActionListener()
+        {
+            @Override
+            public void actionPerformed(ActionEvent e)
+            {
+                try
+                {
+                    articleType.setName(textFieldName.getText());
+                    articleType.setCategory(textFieldCategory.getText());
+                    articleType.setPrice(Double.parseDouble(textFieldPrice.getText()));
+                    parent.main.getController().actionPerformed(new ActionEvent(this, 0, ControllerActions.ADD_ARTICLE_TYPE));
+                }
+                catch (NumberFormatException ex)
+                {
+                    JOptionPane.showMessageDialog(getParent(), "Mauvais format de prix !", "Erreur !", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        });
     }
 }

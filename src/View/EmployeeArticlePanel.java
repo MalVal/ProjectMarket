@@ -14,7 +14,7 @@ public class EmployeeArticlePanel extends JPanel
         super();
 
         this.parent = parent;
-        this.viewArticlePanel = new ViewArticlePanel(this.parent.main.data.getListArticle());
+        this.viewArticlePanel = new ViewArticlePanel();
         this.addArticlePanel = new AddArticlePanel(this.parent);
 
         this.setLayout(new GridLayout(2,1));

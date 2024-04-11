@@ -2,6 +2,8 @@ package Model;
 
 import Model.Entity.*;
 
+import java.util.ArrayList;
+
 public interface DataAccessLayer
 {
     boolean addArticle(Article article);
@@ -10,4 +12,11 @@ public interface DataAccessLayer
     boolean addEmployee(Employee employee);
     boolean addProvider(Provider provider);
     boolean addPurchase(Purchase purchase);
+
+    public ArrayList<Article> getListArticle();
+    public ArrayList<ArticleType> getListArticleType();
+    public ArrayList<Client> getListClient();
+    public ArrayList<Employee> getListEmployee();
+    public ArrayList<Provider> getListProvider();
+    public ArrayList<Purchase> getListPurchase();
 }

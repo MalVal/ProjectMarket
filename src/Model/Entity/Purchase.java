@@ -3,7 +3,7 @@ package Model.Entity;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Purchase
+public class Purchase implements Cloneable
 {
     public static void main(String[] args)
     {
@@ -91,4 +91,17 @@ public class Purchase
         this.listArticle.add(a);
         this.total += a.getType().getPrice();
     }
+
+    /*----------------------------
+
+        OVERRIDE
+
+     ----------------------------*/
+
+    @Override
+    public Object clone()
+    {
+        return new Purchase(this.buyer, this.listArticle);
+    }
+
 }

@@ -11,12 +11,12 @@ public class ViewProviderPanel extends JPanel
 {
     public JTable tableProvider;
 
-    public ViewProviderPanel(ArrayList<Provider> listProvider)
+    public ViewProviderPanel()
     {
         super();
 
         tableProvider = new JTable();
-        tableProvider.setModel(new ModelTableProvider(listProvider));
+        tableProvider.setModel(new ModelTableProvider(new ArrayList<>()));
         tableProvider.setColumnModel(new ModelColumnTableProvider());
 
         JScrollPane jScrollPane = new JScrollPane();

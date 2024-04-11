@@ -11,12 +11,12 @@ public class ViewArticleTypePanel extends JPanel
 {
     public JTable tableArticleType;
 
-    public ViewArticleTypePanel(ArrayList<ArticleType> listArticleType)
+    public ViewArticleTypePanel()
     {
         super();
 
         tableArticleType = new JTable();
-        tableArticleType.setModel(new ModelTableArticleType(listArticleType));
+        tableArticleType.setModel(new ModelTableArticleType(new ArrayList<>()));
         tableArticleType.setColumnModel(new ModelColumnTableArticleType());
 
         JScrollPane jScrollPane = new JScrollPane();

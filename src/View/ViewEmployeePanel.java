@@ -12,12 +12,12 @@ public class ViewEmployeePanel extends JPanel
 {
     public JTable tableEmployee;
 
-    public ViewEmployeePanel(ArrayList<Employee> listEmployee)
+    public ViewEmployeePanel()
     {
         super();
 
         tableEmployee = new JTable();
-        tableEmployee.setModel(new ModelTableEmployee(listEmployee));
+        tableEmployee.setModel(new ModelTableEmployee(new ArrayList<>()));
         tableEmployee.setColumnModel(new ModelColumnTableEmployee());
 
         JScrollPane jScrollPane = new JScrollPane();

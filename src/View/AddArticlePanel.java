@@ -6,6 +6,7 @@ import Model.CustomComboBoxModel;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
 
 public class AddArticlePanel extends JPanel
 {
@@ -22,9 +23,9 @@ public class AddArticlePanel extends JPanel
 
         this.parent = parent;
 
-        articleTypeComboBoxModel = new CustomComboBoxModel<>(parent.main.data.getListArticleType());
+        articleTypeComboBoxModel = new CustomComboBoxModel<>(new ArrayList<>());
         listArticle = new JComboBox<ArticleType>(articleTypeComboBoxModel);
-        providerComboBoxModel = new CustomComboBoxModel<>(parent.main.data.getListProvider());
+        providerComboBoxModel = new CustomComboBoxModel<>(new ArrayList<>());
         listProvider = new JComboBox<Provider>(providerComboBoxModel);
         textFieldQuantity = new JTextField();
 

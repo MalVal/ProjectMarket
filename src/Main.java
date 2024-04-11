@@ -1,11 +1,12 @@
-import Model.MainData;
-import View.MainWindow;
+import Controller.Controller;
+import Model.DAOProjectMarket;
+import View.ViewProjectMarketSwing;
 
 public class Main
 {
     public static void main(String[] args)
     {
-        MainWindow mw =  new MainWindow(new MainData());
-        mw.setVisible(true);
+        Controller controller = new Controller(new DAOProjectMarket(), new ViewProjectMarketSwing());
+        controller.run();
     }
 }

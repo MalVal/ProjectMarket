@@ -11,19 +11,19 @@ public class EmployeeWindow extends JDialog
     public EmployeeClientPanel employeeClientPanel;
     public EmployeeEmployeePanel employeeEmployeePanel;
 
-    public MainWindow main;
+    public ViewProjectMarket main;
 
     public EmployeeWindow(JFrame parent, boolean modal)
     {
         super(parent, "Project Market : Employee", modal);
         this.setSize(600, 600);
 
-        this.main = (MainWindow) this.getParent();
+        this.main = (ViewProjectMarket) this.getParent();
 
         this.employeeArticleTypePanel = new EmployeeArticleTypePanel(this);
         this.employeeArticlePanel = new EmployeeArticlePanel(this);
         this.employeeProviderPanel = new EmployeeProviderPanel(this);
-        this.viewPurchasePanel = new ViewPurchasePanel(this.main.data.getListPurchase());
+        this.viewPurchasePanel = new ViewPurchasePanel();
         this.employeeClientPanel = new EmployeeClientPanel(this);
         this.employeeEmployeePanel = new EmployeeEmployeePanel(this);
 

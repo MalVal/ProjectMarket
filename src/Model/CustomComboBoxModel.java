@@ -14,9 +14,13 @@ public class CustomComboBoxModel<E> extends DefaultComboBoxModel<E> {
         }
     }
 
-    public void addElementAndUpdate(E item)
+    public void update(ArrayList<E> items)
     {
-        addElement(item);
+        removeAllElements();
+        for (E item : items)
+        {
+            addElement(item);
+        }
         fireContentsChanged(this, 0, getSize() - 1);
     }
 

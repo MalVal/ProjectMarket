@@ -11,12 +11,12 @@ public class ViewClientPanel extends JPanel
 {
     public JTable tableClient;
 
-    public ViewClientPanel(ArrayList<Client> listClient)
+    public ViewClientPanel()
     {
         super();
 
         tableClient = new JTable();
-        tableClient.setModel(new ModelTableClient(listClient));
+        tableClient.setModel(new ModelTableClient(new ArrayList<>()));
         tableClient.setColumnModel(new ModelColumnTableClient());
 
         JScrollPane jScrollPane = new JScrollPane();
