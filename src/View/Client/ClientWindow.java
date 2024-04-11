@@ -1,0 +1,30 @@
+package View.Client;
+
+import View.Panel.BuyArticlePanel;
+import View.ViewProjectMarketSwing;
+import View.ViewPanel.ViewPurchasePanel;
+
+import javax.swing.*;
+import java.awt.*;
+
+public class ClientWindow extends JDialog
+{
+    public ClientWindow(JFrame parent, boolean modal)
+    {
+        super(parent,"Project Market : Client", modal);
+
+        JPanel mainPanel = (JPanel) this.getContentPane();
+        mainPanel.setLayout(new GridLayout(2,1));
+
+        ViewProjectMarketSwing main = (ViewProjectMarketSwing) this.getParent();
+
+        mainPanel.add(new BuyArticlePanel());
+        mainPanel.add(new ViewPurchasePanel());
+
+        this.setSize(600, 600);
+
+        // Icon
+        ImageIcon icon = new ImageIcon("src/View/img/caddieIcon.png");
+        this.setIconImage(icon.getImage());
+    }
+}

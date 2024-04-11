@@ -2,8 +2,11 @@ package View;
 
 import Controller.Controller;
 import Controller.ControllerActions;
-import Model.*;
 import Model.Entity.*;
+import Model.ModelColumnTable.*;
+import Model.ModelTable.*;
+import View.Client.ClientWindow;
+import View.Employee.EmployeeWindow;
 
 import javax.swing.*;
 import java.awt.*;
