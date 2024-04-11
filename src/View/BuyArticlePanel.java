@@ -1,6 +1,6 @@
 package View;
 
-import Model.Article;
+import Model.Entity.Article;
 import Model.CustomComboBoxModel;
 import Model.MainData;
 

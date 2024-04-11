@@ -1,0 +1,25 @@
+package View;
+
+import javax.swing.*;
+import java.awt.*;
+
+public class EmployeeEmployeePanel extends JPanel
+{
+    public EmployeeWindow parent;
+    public ViewEmployeePanel viewEmployeePanel;
+    public CreateEmployeePanel createEmployeePanel;
+
+    public EmployeeEmployeePanel(EmployeeWindow parent)
+    {
+        super();
+
+        this.parent = parent;
+        this.viewEmployeePanel = new ViewEmployeePanel(this.parent.main.data.getListEmployee());
+        this.createEmployeePanel = new CreateEmployeePanel(this.parent);
+
+        this.setLayout(new GridLayout(2,1));
+
+        this.add(viewEmployeePanel);
+        this.add(createEmployeePanel);
+    }
+}

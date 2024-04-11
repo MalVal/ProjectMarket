@@ -2,7 +2,7 @@ package View;
 
 import Model.ModelColumnTablePurchase;
 import Model.ModelTablePurchase;
-import Model.Purchase;
+import Model.Entity.Purchase;
 
 import javax.swing.*;
 import java.awt.*;

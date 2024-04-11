@@ -1,7 +1,7 @@
 package View;
 
-import Model.ArticleType;
-import Model.Provider;
+import Model.Entity.ArticleType;
+import Model.Entity.Provider;
 import Model.CustomComboBoxModel;
 
 import javax.swing.*;

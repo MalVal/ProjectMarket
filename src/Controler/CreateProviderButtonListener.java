@@ -3,11 +3,8 @@ package Controler;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import Model.ArticleType;
-import Model.ModelTableArticleType;
 import Model.ModelTableProvider;
-import Model.Provider;
-import View.CreateArticleTypePanel;
+import Model.Entity.Provider;
 import View.CreateProviderPanel;
 
 public class CreateProviderButtonListener implements ActionListener

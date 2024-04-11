@@ -1,6 +1,7 @@
 package Model;
 
-import java.nio.channels.Pipe;
+import Model.Entity.*;
+
 import java.util.ArrayList;
 
 public class MainData
@@ -22,6 +23,7 @@ public class MainData
     private ArrayList<Provider> listProvider;
     private ArrayList<Purchase> listPurchase;
     private ArrayList<Client> listClient;
+    private ArrayList<Employee> listEmployee;
 
     /*----------------------------
 
@@ -29,18 +31,19 @@ public class MainData
 
      ----------------------------*/
 
-    public MainData(ArrayList<ArticleType> listArticleType, ArrayList<Article> listArticle, ArrayList<Provider> listProvider, ArrayList<Purchase> listPurchase, ArrayList<Client> listClient)
+    public MainData(ArrayList<ArticleType> listArticleType, ArrayList<Article> listArticle, ArrayList<Provider> listProvider, ArrayList<Purchase> listPurchase, ArrayList<Client> listClient, ArrayList<Employee> listEmployee)
     {
         this.listArticleType = listArticleType;
         this.listArticle = listArticle;
         this.listProvider = listProvider;
         this.listPurchase = listPurchase;
         this.listClient = listClient;
+        this.listEmployee = listEmployee;
     }
 
     public MainData()
     {
-        this(new ArrayList<ArticleType>(), new ArrayList<Article>(), new ArrayList<Provider>(), new ArrayList<Purchase>(), new ArrayList<Client>());
+        this(new ArrayList<ArticleType>(), new ArrayList<Article>(), new ArrayList<Provider>(), new ArrayList<Purchase>(), new ArrayList<Client>(), new ArrayList<Employee>());
     }
 
     /*----------------------------
@@ -71,6 +74,10 @@ public class MainData
     public ArrayList<Client> getListClient()
     {
         return listClient;
+    }
+
+    public ArrayList<Employee> getListEmployee() {
+        return listEmployee;
     }
 
     /*----------------------------

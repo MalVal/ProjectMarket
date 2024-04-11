@@ -10,18 +10,17 @@ public class ClientWindow extends JDialog
         super(parent,"Project Market : Client", modal);
 
         JPanel mainPanel = (JPanel) this.getContentPane();
-        mainPanel.setLayout(new GridLayout(1,1));
+        mainPanel.setLayout(new GridLayout(2,1));
 
         MainWindow main = (MainWindow) this.getParent();
 
         mainPanel.add(new BuyArticlePanel(main.data));
+        mainPanel.add(new ViewPurchasePanel(main.data.getListPurchase()));
 
-        this.setSize(250, 250);
+        this.setSize(600, 600);
 
         // Icon
         ImageIcon icon = new ImageIcon("src/View/img/caddieIcon.png");
         this.setIconImage(icon.getImage());
-
-        pack(); // Resize the elements properly
     }
 }

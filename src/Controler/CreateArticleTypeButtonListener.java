@@ -3,7 +3,7 @@ package Controler;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import Model.ArticleType;
+import Model.Entity.ArticleType;
 import Model.ModelTableArticleType;
 import View.CreateArticleTypePanel;
 

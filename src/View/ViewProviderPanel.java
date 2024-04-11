@@ -1,6 +1,7 @@
 package View;
 
 import Model.*;
+import Model.Entity.Provider;
 
 import javax.swing.*;
 import java.awt.*;

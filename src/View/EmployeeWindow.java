@@ -9,6 +9,7 @@ public class EmployeeWindow extends JDialog
     public EmployeeProviderPanel employeeProviderPanel;
     public ViewPurchasePanel viewPurchasePanel;
     public EmployeeClientPanel employeeClientPanel;
+    public EmployeeEmployeePanel employeeEmployeePanel;
 
     public MainWindow main;
 
@@ -24,6 +25,7 @@ public class EmployeeWindow extends JDialog
         this.employeeProviderPanel = new EmployeeProviderPanel(this);
         this.viewPurchasePanel = new ViewPurchasePanel(this.main.data.getListPurchase());
         this.employeeClientPanel = new EmployeeClientPanel(this);
+        this.employeeEmployeePanel = new EmployeeEmployeePanel(this);
 
         JTabbedPane tabbedPane = new JTabbedPane();
         tabbedPane.addTab("Article type", employeeArticleTypePanel);
@@ -31,6 +33,7 @@ public class EmployeeWindow extends JDialog
         tabbedPane.addTab("Provider", employeeProviderPanel);
         tabbedPane.addTab("Purchase", viewPurchasePanel);
         tabbedPane.addTab("Client", employeeClientPanel);
+        tabbedPane.addTab("Employee", employeeEmployeePanel);
 
         JPanel mainPanel = (JPanel) this.getContentPane();
 

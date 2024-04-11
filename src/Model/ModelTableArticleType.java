@@ -1,5 +1,7 @@
 package Model;
 
+import Model.Entity.ArticleType;
+
 import javax.swing.table.AbstractTableModel;
 import java.util.ArrayList;
 

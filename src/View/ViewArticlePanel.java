@@ -1,5 +1,6 @@
 package View;
 
+import Model.Entity.Article;
 import Model.*;
 
 import javax.swing.*;

@@ -1,5 +1,7 @@
 package Model;
 
+import Model.Entity.Client;
+
 import javax.swing.table.AbstractTableModel;
 import java.time.LocalDate;
 import java.util.ArrayList;

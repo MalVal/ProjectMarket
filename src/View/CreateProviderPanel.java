@@ -1,9 +1,7 @@
 package View;
 
-import Controler.CreateArticleTypeButtonListener;
 import Controler.CreateProviderButtonListener;
-import Model.ArticleType;
-import Model.Provider;
+import Model.Entity.Provider;
 
 import javax.swing.*;
 import java.awt.*;

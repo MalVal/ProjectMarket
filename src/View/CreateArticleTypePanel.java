@@ -1,7 +1,7 @@
 package View;
 
 import Controler.CreateArticleTypeButtonListener;
-import Model.ArticleType;
+import Model.Entity.ArticleType;
 
 import javax.swing.*;
 import java.awt.*;
