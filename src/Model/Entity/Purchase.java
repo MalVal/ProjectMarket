@@ -46,7 +46,7 @@ public class Purchase implements Cloneable
 
     public Client getBuyer()
     {
-        return buyer;
+        return buyer.clone();
     }
 
     public List<Article> getListArticle()
@@ -82,24 +82,18 @@ public class Purchase implements Cloneable
 
     /*----------------------------
 
-        METHODS
-
-     ----------------------------*/
-
-    public void addArticle(Article a)
-    {
-        this.listArticle.add(a);
-        this.total += a.getType().getPrice();
-    }
-
-    /*----------------------------
-
         OVERRIDE
 
      ----------------------------*/
 
     @Override
-    public Object clone()
+    public String toString()
+    {
+        return "Buyer : " + this.getBuyer() + " List article(s) : " + this.listArticle.toString() + " Total : " + this.total;
+    }
+
+    @Override
+    public Purchase clone()
     {
         return new Purchase(this.buyer, this.listArticle);
     }

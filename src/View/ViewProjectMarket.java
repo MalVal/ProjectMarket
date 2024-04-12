@@ -7,8 +7,6 @@ import java.util.ArrayList;
 
 public interface ViewProjectMarket
 {
-    Controller controller = null;
-
     void displayError(String error);
     void displayEmployeeWindow();
     void displayClientWindow();
@@ -20,6 +18,7 @@ public interface ViewProjectMarket
     void displayEmployeeEmployee(ArrayList<Employee> employees);
     void displayEmployeeComboBoxArticleType(ArrayList<ArticleType> articleTypes);
     void displayEmployeeComboBoxProvider(ArrayList<Provider> providers);
+    void displayClientComboBoxArticle(ArrayList<Article> articles);
 
     String getFirstname();
     String getSurname();
@@ -27,6 +26,7 @@ public interface ViewProjectMarket
     String getMode();
     ArticleType getArticleType();
     Provider getProvider();
+    Article getArticle();
 
     void setController(Controller c);
     Controller getController();

@@ -2,6 +2,7 @@ package Model;
 
 import Model.Entity.*;
 
+import java.io.Console;
 import java.util.ArrayList;
 
 public class DAOProjectMarket implements DataAccessLayer
@@ -31,7 +32,10 @@ public class DAOProjectMarket implements DataAccessLayer
         {
             if(a.equals(article))
             {
-                a.setQuantity(a.getQuantity() + article.getQuantity());
+                int quantity1 = a.getQuantity();
+                int quantity2 = article.getQuantity();
+                int newQuantity = quantity1 + quantity2;
+                a.setQuantity(newQuantity);
                 return true;
             }
         }
@@ -75,6 +79,15 @@ public class DAOProjectMarket implements DataAccessLayer
     @Override
     public boolean addEmployee(Employee employee) {
         if(employee == null) return false;
+
+        for(Employee e : listEmployee)
+        {
+            if(e.equals(employee))
+            {
+                return false;
+            }
+        }
+
         listEmployee.add(employee);
         return true;
     }
@@ -82,6 +95,15 @@ public class DAOProjectMarket implements DataAccessLayer
     @Override
     public boolean addProvider(Provider provider) {
         if(provider == null) return false;
+
+        for(Provider p : listProvider)
+        {
+            if(p.equals(provider))
+            {
+                return false;
+            }
+        }
+
         listProvider.add(provider);
         return true;
     }

@@ -38,6 +38,7 @@ public final class Controller implements ActionListener
             {
                 if(view.getMode().equals("Client"))
                 {
+                    view.displayClientComboBoxArticle(model.getListArticle());
                     view.displayClientWindow();
                     return;
                 }
@@ -64,17 +65,37 @@ public final class Controller implements ActionListener
 
         if (e.getActionCommand().equals(ControllerActions.ADD_ARTICLE_TYPE))
         {
-            model.addArticleType(view.getArticleType());
-            view.displayEmployeeArticleType(model.getListArticleType());
-            view.displayEmployeeComboBoxArticleType(model.getListArticleType());
+            if(model.addArticleType(view.getArticleType()))
+            {
+                view.displayEmployeeArticleType(model.getListArticleType());
+                view.displayEmployeeComboBoxArticleType(model.getListArticleType());
+            }
+            else
+            {
+                view.displayError("Article type already exists !");
+            }
             return;
         }
 
         if (e.getActionCommand().equals(ControllerActions.ADD_PROVIDER))
         {
-            model.addProvider(view.getProvider());
-            view.displayEmployeeProvider(model.getListProvider());
-            view.displayEmployeeComboBoxProvider(model.getListProvider());
+            if(model.addProvider(view.getProvider()))
+            {
+                view.displayEmployeeProvider(model.getListProvider());
+                view.displayEmployeeComboBoxProvider(model.getListProvider());
+            }
+            else
+            {
+                view.displayError("Provider already exists !");
+            }
+            return;
+        }
+
+        if (e.getActionCommand().equals(ControllerActions.ADD_ARTICLE))
+        {
+            model.addArticle(view.getArticle());
+            view.displayClientComboBoxArticle(model.getListArticle());
+            view.displayEmployeeArticle(model.getListArticle());
             return;
         }
     }

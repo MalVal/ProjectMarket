@@ -57,6 +57,10 @@ public class CreateProviderPanel extends JPanel
                 provider.setAddress(textFieldAddress.getText());
                 provider.setPhoneNumber(textFieldPhoneNumber.getText());
                 parent.main.getController().actionPerformed(new ActionEvent(this, 0, ControllerActions.ADD_PROVIDER));
+                provider = new Provider();
+                textFieldName.setText("");
+                textFieldAddress.setText("");
+                textFieldPhoneNumber.setText("");
             }
         });
     }

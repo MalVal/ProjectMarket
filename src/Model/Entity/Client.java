@@ -7,7 +7,7 @@ public class Client extends Person implements Cloneable
     public static void main(String[] args)
     {
         Client c1 = new Client();
-        Client c2 = new Client("Malchair", "Valentin", LocalDate.parse("2004-09-11"), "1545320", 8.9);
+        Client c2 = new Client("saqsqsd", "Malchair", "Valentin", LocalDate.parse("2004-09-11"), "1545320", 8.9);
         Client c3 = (Client) c2.clone();
 
         System.out.println("c1 = " + c1);
@@ -29,15 +29,15 @@ public class Client extends Person implements Cloneable
 
      ----------------------------*/
 
-    public Client(String name, String firstname, LocalDate birthdate, String password, double discount)
+    public Client(String registrationNumber, String name, String firstname, LocalDate birthdate, String password, double discount)
     {
-        super(name, firstname, birthdate, password);
+        super(registrationNumber, name, firstname, birthdate, password);
         this.discount = discount;
     }
 
     public Client()
     {
-        this("Unknown", "Unknown", LocalDate.parse("2000-01-01"), "default", 0);
+        this(null, "Unknown", "Unknown", LocalDate.parse("2000-01-01"), "default", 0);
     }
 
     /*----------------------------
@@ -57,7 +57,7 @@ public class Client extends Person implements Cloneable
 
      ----------------------------*/
 
-    public void setRegistrationNumber(double discount)
+    public void setDiscount(double discount)
     {
         this.discount = discount;
     }
@@ -71,23 +71,13 @@ public class Client extends Person implements Cloneable
     @Override
     public String toString()
     {
-        return "Name : " + this.getName() + " Firstname : " + this.getFirstname() + " Birthdate : " + this.getBirthdate().toString() + " Discount : " + this.discount;
+        return "Registration number : " + this.getRegistrationNumber() + "Name : " + this.getName() + " Firstname : " + this.getFirstname() + " Birthdate : " + this.getBirthdate().toString() + " Discount : " + this.discount;
     }
 
     @Override
-    public boolean equals(Object obj)
+    public Client clone()
     {
-        if (this == obj) return true;
-        if (obj == null || getClass() != obj.getClass()) return false;
-        if (!super.equals(obj)) return false;
-        Client c = (Client) obj;
-        return Double.compare(this.discount, c.discount) == 0;
-    }
-
-    @Override
-    public Object clone()
-    {
-        return new Client(this.getName(), this.getFirstname(), this.getBirthdate(), this.getPassword(), this.discount);
+        return new Client(this.getRegistrationNumber(), this.getName(), this.getFirstname(), this.getBirthdate(), this.getPassword(), this.discount);
     }
 
 }

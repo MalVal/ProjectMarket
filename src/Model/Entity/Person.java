@@ -15,6 +15,7 @@ public abstract class Person
 
      ----------------------------*/
 
+    private String registrationNumber;
     private String name;
     private String firstname;
     private LocalDate birthdate;
@@ -26,8 +27,9 @@ public abstract class Person
 
      ----------------------------*/
 
-    public Person(String name, String firstname, LocalDate birthdate, String password)
+    public Person(String registrationNumber, String name, String firstname, LocalDate birthdate, String password)
     {
+        this.registrationNumber = registrationNumber;
         this.name = name;
         this.firstname = firstname;
         this.birthdate = birthdate;
@@ -36,7 +38,7 @@ public abstract class Person
 
     public Person()
     {
-        this("Unknown", "Unknown", LocalDate.parse("2000-01-01"), "default");
+        this(null, "Unknown", "Unknown", LocalDate.parse("2000-01-01"), "default");
     }
 
     /*----------------------------
@@ -44,6 +46,11 @@ public abstract class Person
         GETTERS
 
      ----------------------------*/
+    public String getRegistrationNumber()
+    {
+        return this.registrationNumber;
+    }
+
     public String getName()
     {
         return this.name;
@@ -68,6 +75,11 @@ public abstract class Person
         SETTERS
 
      ----------------------------*/
+
+    public void setRegistrationNumber(String registrationNumber)
+    {
+        this.registrationNumber = registrationNumber;
+    }
 
     public void setName(String name)
     {
@@ -97,7 +109,7 @@ public abstract class Person
     @Override
     public String toString()
     {
-        return "Name : " + this.name + " Firstname : " + this.firstname + " Birthdate : " + this.birthdate.toString();
+        return "Registration number : " + this.registrationNumber + " Name :" + this.name + " Firstname : " + this.firstname + " Birthdate : " + this.birthdate.toString();
     }
 
     @Override
@@ -106,7 +118,7 @@ public abstract class Person
         if(this == obj) return true;
         if (obj == null || this.getClass() != obj.getClass()) return false;
         Person p = (Person)obj;
-        return this.name.equals(p.name) && this.firstname.equals(p.firstname) && this.birthdate.equals(p.birthdate);
+        return this.registrationNumber.equals(p.registrationNumber);
     }
 
 }

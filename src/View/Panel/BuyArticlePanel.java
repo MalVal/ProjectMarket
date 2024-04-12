@@ -9,6 +9,7 @@ import java.util.ArrayList;
 
 public class BuyArticlePanel extends JPanel
 {
+    public CustomComboBoxModel<Article> articleComboBoxModel;
     private JComboBox<Article> listArticle;
     private JTextField textFieldQuantity;
 
@@ -16,7 +17,7 @@ public class BuyArticlePanel extends JPanel
     {
         super();
 
-        CustomComboBoxModel<Article> articleComboBoxModel = new CustomComboBoxModel<>(new ArrayList<>());
+        this.articleComboBoxModel = new CustomComboBoxModel<>(new ArrayList<>());
         listArticle = new JComboBox<Article>(articleComboBoxModel);
         textFieldQuantity = new JTextField();
 

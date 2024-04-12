@@ -60,10 +60,14 @@ public class CreateArticleTypePanel extends JPanel
                     articleType.setCategory(textFieldCategory.getText());
                     articleType.setPrice(Double.parseDouble(textFieldPrice.getText()));
                     parent.main.getController().actionPerformed(new ActionEvent(this, 0, ControllerActions.ADD_ARTICLE_TYPE));
+                    articleType = new ArticleType();
+                    textFieldName.setText("");
+                    textFieldCategory.setText("");
+                    textFieldPrice.setText("");
                 }
                 catch (NumberFormatException ex)
                 {
-                    JOptionPane.showMessageDialog(getParent(), "Mauvais format de prix !", "Erreur !", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(getParent(), "Invalid price !", "Error !", JOptionPane.ERROR_MESSAGE);
                 }
             }
         });

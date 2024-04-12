@@ -85,27 +85,6 @@ public class Article implements Cloneable
 
     /*----------------------------
 
-        METHODS
-
-     ----------------------------*/
-
-    public void addQuantity(int quantity)
-    {
-        this.quantity += quantity;
-    }
-
-    public boolean removeQuantity(int quantity)
-    {
-        if(this.quantity - quantity >= 0)
-        {
-            this.quantity -= quantity;
-            return true;
-        }
-        return false;
-    }
-
-    /*----------------------------
-
         OVERRIDE
 
      ----------------------------*/
@@ -122,13 +101,13 @@ public class Article implements Cloneable
         if(this == obj) return true;
         if (obj == null || this.getClass() != obj.getClass()) return false;
         Article a = (Article) obj;
-        return this.type.equals(a.type) && this.provider.equals(a.provider) && this.quantity == a.quantity;
+        return this.type.equals(a.type) && this.provider.equals(a.provider);
     }
 
     @Override
-    public Object clone()
+    public Article clone()
     {
-        return new Article(this.type, this.provider, this.quantity);
+        return new Article(this.type.clone(), this.provider.clone(), this.quantity);
     }
 
 }

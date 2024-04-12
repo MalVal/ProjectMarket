@@ -101,11 +101,11 @@ public class ArticleType implements Cloneable
         if(this == obj) return true;
         if (obj == null || this.getClass() != obj.getClass()) return false;
         ArticleType at = (ArticleType) obj;
-        return this.name.equals(at.name) && this.category.equals(at.category) && Double.compare(this.price, at.price) == 0;
+        return this.name.equals(at.name) && this.category.equals(at.category);
     }
 
     @Override
-    public Object clone()
+    public ArticleType clone()
     {
         return new ArticleType(this.name, this.category, this.price);
     }

@@ -1,5 +1,7 @@
 package View.Panel;
 
+import Controller.ControllerActions;
+import Model.Entity.Article;
 import Model.Entity.ArticleType;
 import Model.Entity.Provider;
 import Model.ModelComboBox.CustomComboBoxModel;
@@ -7,6 +9,8 @@ import View.Employee.EmployeeWindow;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 public class AddArticlePanel extends JPanel
@@ -18,9 +22,13 @@ public class AddArticlePanel extends JPanel
     public CustomComboBoxModel<Provider> providerComboBoxModel;
     public EmployeeWindow parent;
 
+    public Article article;
+
     public AddArticlePanel(EmployeeWindow parent)
     {
         super();
+
+        this.article = new Article();
 
         this.parent = parent;
 
@@ -42,6 +50,43 @@ public class AddArticlePanel extends JPanel
 
         this.add(new JLabel("Add a new article :"));
         this.add(subPanel);
-        this.add(new JButton("Add"));
+        JButton btnAdd = new JButton("Add");
+        this.add(btnAdd);
+
+        btnAdd.addActionListener(new ActionListener()
+        {
+            @Override
+            public void actionPerformed(ActionEvent e)
+            {
+                try
+                {
+                    if(listArticle.getSelectedItem() == null)
+                    {
+                        JOptionPane.showMessageDialog(getParent(), "You have to select a type !", "Error !", JOptionPane.ERROR_MESSAGE);
+                        return;
+                    }
+                    article.setType((ArticleType)listArticle.getSelectedItem());
+
+                    if(listProvider.getSelectedItem() == null)
+                    {
+                        JOptionPane.showMessageDialog(getParent(), "You have to select a provider !", "Error !", JOptionPane.ERROR_MESSAGE);
+                        return;
+                    }
+                    article.setProvider((Provider)listProvider.getSelectedItem());
+
+                    article.setQuantity(Integer.parseInt(textFieldQuantity.getText()));
+
+                    parent.main.getController().actionPerformed(new ActionEvent(this, 0, ControllerActions.ADD_ARTICLE));
+                    article = new Article();
+                    textFieldQuantity.setText("");
+                    listProvider.setSelectedItem(null);
+                    listArticle.setSelectedItem(null);
+                }
+                catch (NumberFormatException ex)
+                {
+                    JOptionPane.showMessageDialog(getParent(), "Invalid quantity !", "Error !", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        });
     }
 }

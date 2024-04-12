@@ -101,11 +101,11 @@ public class Provider implements Cloneable
         if(this == obj) return true;
         if (obj == null || this.getClass() != obj.getClass()) return false;
         Provider p = (Provider) obj;
-        return this.name.equals(p.name) && this.address.equals(p.address) && this.phoneNumber.equals(p.phoneNumber);
+        return this.name.equals(p.name) && this.address.equals(p.address);
     }
 
     @Override
-    public Object clone()
+    public Provider clone()
     {
         return new Provider(this.name, this.address, this.phoneNumber);
     }
