@@ -7,8 +7,8 @@ public class ModelColumnTableEmployee extends DefaultTableColumnModel
     public ModelColumnTableEmployee()
     {
         super();
-        int[] columnSize = {25, 25, 25, 25, 25};
-        String[] columnNames = {"Name", "Firstname", "Birthdate", "Salary", "Registration number"};
+        int[] columnSize = {20, 20, 20, 20, 20};
+        String[] columnNames = {"Registration number", "Name", "Firstname", "Birthdate", "Salary"};
         for (int i=0; i<columnSize.length; i++)
         {
             TableColumn c = new TableColumn(i, columnSize[i]);

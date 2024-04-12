@@ -11,6 +11,7 @@ import java.util.Properties;
 
 public class CreateClientPanel extends JPanel
 {
+    public JTextField textFieldRegistrationNumber;
     public JTextField textFieldSurName;
     public JTextField textFieldFirstname;
     public JDatePickerImpl datePickerBirthdate;
@@ -26,6 +27,7 @@ public class CreateClientPanel extends JPanel
 
         this.parent = parent;
 
+        textFieldRegistrationNumber = new JTextField();
         textFieldSurName = new JTextField();
         textFieldFirstname = new JTextField();
         UtilDateModel model = new UtilDateModel();
@@ -38,7 +40,9 @@ public class CreateClientPanel extends JPanel
 
         this.setLayout(new GridLayout(4,1));
 
-        JPanel subPanel = new JPanel(new GridLayout(4, 2));
+        JPanel subPanel = new JPanel(new GridLayout(5, 2));
+        subPanel.add(new JLabel("Registration number : "));
+        subPanel.add(textFieldRegistrationNumber);
         subPanel.add(new JLabel("Surname :"));
         subPanel.add(textFieldSurName);
         subPanel.add(new JLabel("Firstname :"));

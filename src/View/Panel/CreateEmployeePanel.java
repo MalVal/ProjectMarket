@@ -11,11 +11,11 @@ import java.util.Properties;
 
 public class CreateEmployeePanel extends JPanel
 {
+    public JTextField textFieldRegistrationNumber;
     public JTextField textFieldSurName;
     public JTextField textFieldFirstname;
     public JDatePickerImpl datePickerBirthdate;
     public JTextField textFieldSalary;
-    public JTextField textFieldRegistrationNumber;
     public JLabel labelError;
     private JButton btnCreate;
 
@@ -41,6 +41,8 @@ public class CreateEmployeePanel extends JPanel
         this.setLayout(new GridLayout(4,1));
 
         JPanel subPanel = new JPanel(new GridLayout(5, 2));
+        subPanel.add(new JLabel("Registration number :"));
+        subPanel.add(textFieldRegistrationNumber);
         subPanel.add(new JLabel("Surname :"));
         subPanel.add(textFieldSurName);
         subPanel.add(new JLabel("Firstname :"));
@@ -49,8 +51,6 @@ public class CreateEmployeePanel extends JPanel
         subPanel.add(datePickerBirthdate);
         subPanel.add(new JLabel("Salary :"));
         subPanel.add(textFieldSalary);
-        subPanel.add(new JLabel("Registration number :"));
-        subPanel.add(textFieldRegistrationNumber);
 
         this.add(new JLabel("Create a new employee :"));
         this.add(subPanel);

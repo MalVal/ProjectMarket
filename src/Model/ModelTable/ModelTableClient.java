@@ -19,8 +19,9 @@ public class ModelTableClient extends AbstractTableModel
     {
         if (c == 0) return String.class;
         if (c == 1) return String.class;
-        if (c == 2) return LocalDate.class;
-        if (c == 3) return Double.class;
+        if (c == 2) return String.class;
+        if (c == 3) return LocalDate.class;
+        if (c == 4) return Double.class;
         return null;
     }
 
@@ -33,17 +34,18 @@ public class ModelTableClient extends AbstractTableModel
     @Override
     public int getColumnCount()
     {
-        return 4;
+        return 5;
     }
 
     @Override
     public Object getValueAt(int l,int c)
     {
         Client client = clients.get(l);
-        if (c == 0) return client.getName();
-        if (c == 1) return client.getFirstname();
-        if (c == 2) return client.getBirthdate();
-        if (c == 3) return client.getDiscount();
+        if (c == 0) return client.getRegistrationNumber();
+        if (c == 1) return client.getName();
+        if (c == 2) return client.getFirstname();
+        if (c == 3) return client.getBirthdate();
+        if (c == 4) return client.getDiscount();
         return null;
     }
 }
