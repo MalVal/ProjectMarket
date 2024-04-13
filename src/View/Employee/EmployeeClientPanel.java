@@ -20,9 +20,11 @@ public class EmployeeClientPanel extends JPanel
         this.viewClientPanel = new ViewClientPanel();
         this.createClientPanel = new CreateClientPanel(this.parent);
 
-        this.setLayout(new GridLayout(2,1));
+        this.setLayout(new GridLayout(3,1));
 
         this.add(viewClientPanel);
+        JButton btnDelete = new JButton("Delete selected client");
+        this.add(btnDelete);
         this.add(createClientPanel);
     }
 }

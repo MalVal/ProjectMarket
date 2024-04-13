@@ -170,7 +170,7 @@ public class ViewProjectMarketSwing extends JFrame implements ViewProjectMarket
     @Override
     public void displayClientComboBoxArticle(ArrayList<Article> articles)
     {
-        cw.buyArticlePanel.articleComboBoxModel.update(articles);
+        cw.addArticleBasketPanel.articleComboBoxModel.update(articles);
     }
 
     @Override

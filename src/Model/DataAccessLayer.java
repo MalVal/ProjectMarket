@@ -13,6 +13,12 @@ public interface DataAccessLayer
     boolean addProvider(Provider provider);
     boolean addPurchase(Purchase purchase);
 
+    boolean deleteArticle(Article article);
+    boolean deleteArticleType(ArticleType articleType);
+    boolean deleteClient(Client client);
+    boolean deleteEmployee(Employee employee);
+    boolean deleteProvider(Provider provider);
+
     public ArrayList<Article> getListArticle();
     public ArrayList<ArticleType> getListArticleType();
     public ArrayList<Client> getListClient();

@@ -20,9 +20,11 @@ public class EmployeeProviderPanel extends JPanel
         this.viewProviderPanel = new ViewProviderPanel();
         this.createProviderPanel = new CreateProviderPanel(this.parent);
 
-        this.setLayout(new GridLayout(2,1));
+        this.setLayout(new GridLayout(3,1));
 
         this.add(viewProviderPanel);
+        JButton btnDelete = new JButton("Delete selected provider");
+        this.add(btnDelete);
         this.add(createProviderPanel);
     }
 }

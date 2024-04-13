@@ -7,13 +7,13 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 
-public class BuyArticlePanel extends JPanel
+public class AddArticleBasketPanel extends JPanel
 {
     public CustomComboBoxModel<Article> articleComboBoxModel;
     private JComboBox<Article> listArticle;
     private JTextField textFieldQuantity;
 
-    public BuyArticlePanel()
+    public AddArticleBasketPanel()
     {
         super();
 
@@ -29,8 +29,8 @@ public class BuyArticlePanel extends JPanel
         subPanel.add(new JLabel("Quantity :"));
         subPanel.add(textFieldQuantity);
 
-        this.add(new JLabel("Buy an article :"));
+        this.add(new JLabel("Add an article :"));
         this.add(subPanel);
-        this.add(new JButton("Buy"));
+        this.add(new JButton("Add to basket"));
     }
 }

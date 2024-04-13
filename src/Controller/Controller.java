@@ -98,5 +98,21 @@ public final class Controller implements ActionListener
             view.displayEmployeeArticle(model.getListArticle());
             return;
         }
+
+        if (e.getActionCommand().equals(ControllerActions.ADD_PURCHASE))
+        {
+            return;
+        }
+
+        if (e.getActionCommand().equals(ControllerActions.ADD_CLIENT))
+        {
+            return;
+        }
+
+        if (e.getActionCommand().equals(ControllerActions.ADD_EMPLOYEE))
+        {
+            return;
+        }
+
     }
 }

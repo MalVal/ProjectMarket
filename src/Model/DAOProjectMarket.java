@@ -116,6 +116,31 @@ public class DAOProjectMarket implements DataAccessLayer
     }
 
     @Override
+    public boolean deleteArticle(Article article) {
+        return listArticle.remove(article);
+    }
+
+    @Override
+    public boolean deleteArticleType(ArticleType articleType) {
+        return listArticleType.remove(articleType);
+    }
+
+    @Override
+    public boolean deleteClient(Client client) {
+        return listClient.remove(client);
+    }
+
+    @Override
+    public boolean deleteEmployee(Employee employee) {
+        return listEmployee.remove(employee);
+    }
+
+    @Override
+    public boolean deleteProvider(Provider provider) {
+        return listProvider.remove(provider);
+    }
+
+    @Override
     public ArrayList<Article> getListArticle() {
         ArrayList<Article> copy = new ArrayList<>();
         for (Article a:listArticle) {

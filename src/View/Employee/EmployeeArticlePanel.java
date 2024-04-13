@@ -20,9 +20,11 @@ public class EmployeeArticlePanel extends JPanel
         this.viewArticlePanel = new ViewArticlePanel();
         this.addArticlePanel = new AddArticlePanel(this.parent);
 
-        this.setLayout(new GridLayout(2,1));
+        this.setLayout(new GridLayout(3,1));
 
         this.add(viewArticlePanel);
+        JButton btnDelete = new JButton("Delete selected article");
+        this.add(btnDelete);
         this.add(addArticlePanel);
     }
 }

@@ -19,7 +19,7 @@ public class EmployeeWindow extends JDialog
     public EmployeeWindow(JFrame parent, boolean modal)
     {
         super(parent, "Project Market : Employee", modal);
-        this.setSize(600, 600);
+        this.setSize(800, 800);
 
         this.main = (ViewProjectMarket) this.getParent();
 
