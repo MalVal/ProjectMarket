@@ -20,6 +20,7 @@ public interface ViewProjectMarket
     void displayEmployeeComboBoxProvider(ArrayList<Provider> providers);
     void displayClientComboBoxArticle(ArrayList<Article> articles);
     void displayClientBasket(ArrayList<Article> articles);
+    void displayClientPurchase(ArrayList<Purchase> purchases);
 
     String getRegistrationNumber();
     char[] getPassword();

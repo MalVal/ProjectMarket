@@ -232,7 +232,19 @@ public class DAOProjectMarket implements DataAccessLayer
 
     @Override
     public void setCurrentClient(Client client) {
+
+        ArrayList<Purchase> purchases = new ArrayList<>();
+
+        for(Purchase p : listPurchase)
+        {
+            if(p.getBuyer().equals(client))
+            {
+                purchases.add(p);
+            }
+        }
+
         this.currentClient.setClient(client);
+        this.currentClient.setPurchases(purchases);
     }
 
     @Override

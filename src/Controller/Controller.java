@@ -53,6 +53,7 @@ public final class Controller implements ActionListener
 
                             view.displayClientComboBoxArticle(model.getListArticle());
                             view.displayClientBasket(model.getCurrentClient().getBasket().getList());
+                            view.displayClientPurchase(model.getCurrentClient().getPurchases());
                             view.displayClientWindow();
                         }
                         else
@@ -186,10 +187,13 @@ public final class Controller implements ActionListener
                 {
                     for(Article articleStock : model.getListArticle())
                     {
-                        if(articleStock.getQuantity() - articleBasket.getQuantity() < 0)
+                        if(articleStock.equals(articleBasket))
                         {
-                            error = true;
-                            break;
+                            if(articleStock.getQuantity() - articleBasket.getQuantity() < 0)
+                            {
+                                error = true;
+                                break;
+                            }
                         }
                     }
                     if(error)
@@ -212,6 +216,18 @@ public final class Controller implements ActionListener
 
                     model.addPurchase(purchase);
 
+                    ArrayList<Purchase> purchases = new ArrayList<>();
+
+                    for(Purchase p : model.getListPurchase())
+                    {
+                        if(p.getBuyer().equals(model.getCurrentClient().getClient()))
+                        {
+                            purchases.add(p);
+                        }
+                    }
+                    model.getCurrentClient().setPurchases(purchases);
+
+                    view.displayClientPurchase(model.getCurrentClient().getPurchases());
                     view.displayEmployeePurchase(model.getListPurchase());
                     view.displayClientBasket(model.getCurrentClient().getBasket().getList());
                     view.displayClientComboBoxArticle(model.getListArticle());

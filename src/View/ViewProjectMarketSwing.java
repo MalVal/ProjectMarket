@@ -169,6 +169,12 @@ public class ViewProjectMarketSwing extends JFrame implements ViewProjectMarket
     }
 
     @Override
+    public void displayClientPurchase(ArrayList<Purchase> purchases) {
+        cw.viewPurchasePanel.tablePurchase.setModel(new ModelTablePurchase(purchases));
+        cw.viewPurchasePanel.tablePurchase.setColumnModel(new ModelColumnTablePurchase());
+    }
+
+    @Override
     public String getRegistrationNumber() {
         return textRegistrationNumberConnexion.getText();
     }
