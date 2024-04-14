@@ -145,6 +145,26 @@ public class DAOProjectMarket implements DataAccessLayer
     }
 
     @Override
+    public boolean decreaseQuantity(Article article) {
+        for(Article a : listArticle)
+        {
+            if(a.equals(article))
+            {
+                if(a.getQuantity() - article.getQuantity() < 0)
+                {
+                    return false;
+                }
+                else
+                {
+                    a.setQuantity(a.getQuantity() - article.getQuantity());
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    @Override
     public Client searchClient(String registrationNumber) {
 
         for(Client c : listClient)

@@ -1,5 +1,9 @@
 package View.Client;
 
+import Controller.ControllerActions;
+import Model.Entity.Article;
+import Model.Entity.ArticleType;
+import Model.Entity.Provider;
 import View.Panel.AddArticleBasketPanel;
 import View.ViewPanel.ViewArticlePanel;
 import View.ViewProjectMarket;
@@ -8,6 +12,8 @@ import View.ViewPanel.ViewPurchasePanel;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class ClientWindow extends JDialog
 {
@@ -41,5 +47,14 @@ public class ClientWindow extends JDialog
         // Icon
         ImageIcon icon = new ImageIcon("src/View/img/caddieIcon.png");
         this.setIconImage(icon.getImage());
+
+        btnBuy.addActionListener(new ActionListener()
+        {
+            @Override
+            public void actionPerformed(ActionEvent e)
+            {
+                main.getController().actionPerformed(new ActionEvent(this, 0, ControllerActions.BUY_BASKET));
+            }
+        });
     }
 }

@@ -1,12 +1,14 @@
 package Controller;
 
 import Model.DataAccessLayer;
+import Model.Entity.Article;
 import Model.Entity.Client;
 import Model.Entity.Employee;
 import View.ViewProjectMarket;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 public final class Controller implements ActionListener
 {
@@ -67,7 +69,6 @@ public final class Controller implements ActionListener
 
                     if(employee != null)
                     {
-                        System.out.println(strPassword);
                         if(model.checkEmployeePassword(view.getRegistrationNumber(), strPassword))
                         {
                             view.displayEmployeeArticleType(model.getListArticleType());
@@ -171,6 +172,31 @@ public final class Controller implements ActionListener
         {
             model.addToBasket(view.getClientArticle());
             view.displayClientBasket(model.getCurrentClient().getBasket().getList());
+        }
+
+        if (e.getActionCommand().equals(ControllerActions.BUY_BASKET))
+        {
+            ArrayList<Article> articleToDelete = new ArrayList<>();
+
+            if(model.getCurrentClient().getBasket().getList().isEmpty())
+            {
+                view.displayError("The basket is empty !");
+            }
+            else
+            {
+                for(Article articleBasket : model.getCurrentClient().getBasket().getList())
+                {
+                    if(model.decreaseQuantity(articleBasket))
+                    {
+                        articleToDelete.add(articleBasket);
+                    }
+                }
+
+                for(Article a : articleToDelete)
+                {
+                    model.getCurrentClient().getBasket().removeArticle(a);
+                }
+            }
         }
 
     }

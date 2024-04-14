@@ -19,6 +19,8 @@ public interface DataAccessLayer
     boolean deleteEmployee(Employee employee);
     boolean deleteProvider(Provider provider);
 
+    boolean decreaseQuantity(Article article);
+
     Client searchClient(String registrationNumber);
     Employee searchEmployee(String registrationNumber);
     boolean checkClientPassword(String registrationNumber, String password);

@@ -11,6 +11,8 @@ public abstract class ControllerActions
     public static final String ADD_PURCHASE = "Add purchase";
     public static final String ADD_TO_BASKET = "Add to basket";
 
+    public static final String BUY_BASKET = "Buy basket";
+
     public static final String DELETE_ARTICLE = "Delete article";
     public static final String DELETE_ARTICLE_TYPE = "Delete article type";
     public static final String DELETE_CLIENT = "Delete client";
