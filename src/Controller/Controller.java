@@ -152,5 +152,11 @@ public final class Controller implements ActionListener
             return;
         }
 
+        if (e.getActionCommand().equals(ControllerActions.ADD_TO_BASKET))
+        {
+            model.addToBasket(view.getClientArticle());
+            view.displayClientBasket(model.getCurrentClient().getBasket().getList());
+        }
+
     }
 }

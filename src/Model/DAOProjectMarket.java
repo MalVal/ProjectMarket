@@ -178,8 +178,8 @@ public class DAOProjectMarket implements DataAccessLayer
     }
 
     @Override
-    public Client getCurrentClient() {
-        return this.currentClient.getClient();
+    public CurrentClient getCurrentClient() {
+        return this.currentClient;
     }
 
     @Override
@@ -196,7 +196,7 @@ public class DAOProjectMarket implements DataAccessLayer
     public ArrayList<Article> getListArticle() {
         ArrayList<Article> copy = new ArrayList<>();
         for (Article a:listArticle) {
-            copy.add((Article) a.clone());
+            copy.add(a.clone());
         }
         return copy;
     }

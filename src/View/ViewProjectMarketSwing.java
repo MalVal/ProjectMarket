@@ -163,6 +163,12 @@ public class ViewProjectMarketSwing extends JFrame implements ViewProjectMarket
     }
 
     @Override
+    public void displayClientBasket(ArrayList<Article> articles) {
+        cw.viewArticlePanel.tableArticle.setModel(new ModelTableArticle(articles));
+        cw.viewArticlePanel.tableArticle.setColumnModel(new ModelColumnTableArticle());
+    }
+
+    @Override
     public String getRegistrationNumber() {
         return textRegistrationNumberConnexion.getText();
     }
@@ -208,6 +214,11 @@ public class ViewProjectMarketSwing extends JFrame implements ViewProjectMarket
     @Override
     public Employee getEmployee() {
         return this.ew.employeeEmployeePanel.createEmployeePanel.employee;
+    }
+
+    @Override
+    public Article getClientArticle() {
+        return this.cw.addArticleBasketPanel.article;
     }
 
     @Override

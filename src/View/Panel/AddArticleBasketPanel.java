@@ -1,10 +1,17 @@
 package View.Panel;
 
+import Controller.ControllerActions;
 import Model.Entity.Article;
+import Model.Entity.ArticleType;
+import Model.Entity.Provider;
 import Model.ModelComboBox.CustomComboBoxModel;
+import View.Client.ClientWindow;
+import View.Employee.EmployeeWindow;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 public class AddArticleBasketPanel extends JPanel
@@ -13,9 +20,17 @@ public class AddArticleBasketPanel extends JPanel
     private JComboBox<Article> listArticle;
     private JTextField textFieldQuantity;
 
-    public AddArticleBasketPanel()
+    public Article article;
+
+    public ClientWindow parent;
+
+    public AddArticleBasketPanel(ClientWindow parent)
     {
         super();
+
+        this.parent = parent;
+
+        this.article = new Article();
 
         this.articleComboBoxModel = new CustomComboBoxModel<>(new ArrayList<>());
         listArticle = new JComboBox<Article>(articleComboBoxModel);
@@ -31,6 +46,35 @@ public class AddArticleBasketPanel extends JPanel
 
         this.add(new JLabel("Add an article :"));
         this.add(subPanel);
-        this.add(new JButton("Add to basket"));
+        JButton btnAdd = new JButton("Add to basket");
+        this.add(btnAdd);
+
+        btnAdd.addActionListener(new ActionListener()
+        {
+            @Override
+            public void actionPerformed(ActionEvent e)
+            {
+                try
+                {
+                    if(listArticle.getSelectedItem() == null)
+                    {
+                        JOptionPane.showMessageDialog(getParent(), "You have to select an article !", "Error !", JOptionPane.ERROR_MESSAGE);
+                        return;
+                    }
+                    article = ((Article)listArticle.getSelectedItem()).clone();
+
+                    article.setQuantity(Integer.parseInt(textFieldQuantity.getText()));
+
+                    parent.main.getController().actionPerformed(new ActionEvent(this, 0, ControllerActions.ADD_TO_BASKET));
+                    article = new Article();
+                    textFieldQuantity.setText("");
+                    listArticle.setSelectedItem(null);
+                }
+                catch (NumberFormatException ex)
+                {
+                    JOptionPane.showMessageDialog(getParent(), "Invalid quantity !", "Error !", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        });
     }
 }

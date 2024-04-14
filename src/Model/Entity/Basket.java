@@ -20,7 +20,7 @@ public class Basket
                 int quantity1 = a.getQuantity();
                 int quantity2 = article.getQuantity();
                 int newQuantity = quantity1 + quantity2;
-                a.setQuantity(newQuantity);
+                article.setQuantity(newQuantity);
                 return;
             }
         }
@@ -39,5 +39,10 @@ public class Basket
             copy.add(a.clone());
         }
         return copy;
+    }
+
+    public void clear()
+    {
+        this.basket.clear();
     }
 }

@@ -19,6 +19,7 @@ public interface ViewProjectMarket
     void displayEmployeeComboBoxArticleType(ArrayList<ArticleType> articleTypes);
     void displayEmployeeComboBoxProvider(ArrayList<Provider> providers);
     void displayClientComboBoxArticle(ArrayList<Article> articles);
+    void displayClientBasket(ArrayList<Article> articles);
 
     String getRegistrationNumber();
     char[] getPassword();
@@ -28,6 +29,7 @@ public interface ViewProjectMarket
     Article getArticle();
     Client getClient();
     Employee getEmployee();
+    Article getClientArticle();
 
     void setController(Controller c);
     Controller getController();

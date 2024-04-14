@@ -22,7 +22,7 @@ public interface DataAccessLayer
     Client searchClient(String registrationNumber);
     Employee searchEmployee(String registrationNumber);
     void setCurrentClient(Client client);
-    Client getCurrentClient();
+    CurrentClient getCurrentClient();
     void addToBasket(Article article);
     boolean removeToBasket(Article article);
 

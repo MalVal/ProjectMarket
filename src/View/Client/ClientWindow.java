@@ -2,6 +2,7 @@ package View.Client;
 
 import View.Panel.AddArticleBasketPanel;
 import View.ViewPanel.ViewArticlePanel;
+import View.ViewProjectMarket;
 import View.ViewProjectMarketSwing;
 import View.ViewPanel.ViewPurchasePanel;
 
@@ -14,11 +15,15 @@ public class ClientWindow extends JDialog
     public ViewPurchasePanel viewPurchasePanel;
     public ViewArticlePanel viewArticlePanel;
 
+    public ViewProjectMarket main;
+
     public ClientWindow(JFrame parent, boolean modal)
     {
         super(parent,"Project Market : Client", modal);
 
-        this.addArticleBasketPanel = new AddArticleBasketPanel();
+        this.main = (ViewProjectMarket) this.getParent();
+
+        this.addArticleBasketPanel = new AddArticleBasketPanel(this);
         this.viewPurchasePanel = new ViewPurchasePanel();
         this.viewArticlePanel = new ViewArticlePanel();
 
