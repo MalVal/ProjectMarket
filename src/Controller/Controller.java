@@ -50,6 +50,7 @@ public final class Controller implements ActionListener
                         if(model.checkClientPassword(view.getRegistrationNumber(), strPassword))
                         {
                             this.model.setCurrentClient(currentClient);
+                            this.model.getCurrentClient().getBasket().clear();
 
                             view.displayClientComboBoxArticle(model.getListArticle());
                             view.displayClientBasket(model.getCurrentClient().getBasket().getList());
