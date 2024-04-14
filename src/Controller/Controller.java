@@ -106,11 +106,27 @@ public final class Controller implements ActionListener
 
         if (e.getActionCommand().equals(ControllerActions.ADD_CLIENT))
         {
+            if(model.addClient(view.getClient()))
+            {
+                view.displayEmployeeClient(model.getListClient());
+            }
+            else
+            {
+                view.displayError("Client already exists !");
+            }
             return;
         }
 
         if (e.getActionCommand().equals(ControllerActions.ADD_EMPLOYEE))
         {
+            if(model.addEmployee(view.getEmployee()))
+            {
+                view.displayEmployeeEmployee(model.getListEmployee());
+            }
+            else
+            {
+                view.displayError("Employee already exists !");
+            }
             return;
         }
 

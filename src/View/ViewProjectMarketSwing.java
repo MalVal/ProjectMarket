@@ -217,6 +217,16 @@ public class ViewProjectMarketSwing extends JFrame implements ViewProjectMarket
     }
 
     @Override
+    public Client getClient() {
+        return this.ew.employeeClientPanel.createClientPanel.client;
+    }
+
+    @Override
+    public Employee getEmployee() {
+        return this.ew.employeeEmployeePanel.createEmployeePanel.employee;
+    }
+
+    @Override
     public void setController(Controller c) {
         this.controller = c;
     }

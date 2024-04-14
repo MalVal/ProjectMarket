@@ -27,6 +27,8 @@ public interface ViewProjectMarket
     ArticleType getArticleType();
     Provider getProvider();
     Article getArticle();
+    Client getClient();
+    Employee getEmployee();
 
     void setController(Controller c);
     Controller getController();
