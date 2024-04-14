@@ -173,6 +173,44 @@ public class DAOProjectMarket implements DataAccessLayer
     }
 
     @Override
+    public boolean checkClientPassword(String registrationNumber, String password) {
+        for(Client c : listClient)
+        {
+            if(c.getRegistrationNumber().equals(registrationNumber))
+            {
+                if(c.getPassword().equals(password))
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        }
+        return false;
+    }
+
+    @Override
+    public boolean checkEmployeePassword(String registrationNumber, String password) {
+        for(Employee e : listEmployee)
+        {
+            if(e.getRegistrationNumber().equals(registrationNumber))
+            {
+                if(e.getPassword().equals(password))
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        }
+        return false;
+    }
+
+    @Override
     public void setCurrentClient(Client client) {
         this.currentClient.setClient(client);
     }

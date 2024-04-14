@@ -44,10 +44,17 @@ public final class Controller implements ActionListener
 
                     if(currentClient != null)
                     {
-                        this.model.setCurrentClient(currentClient);
+                        if(model.checkClientPassword(view.getRegistrationNumber(), strPassword))
+                        {
+                            this.model.setCurrentClient(currentClient);
 
-                        view.displayClientComboBoxArticle(model.getListArticle());
-                        view.displayClientWindow();
+                            view.displayClientComboBoxArticle(model.getListArticle());
+                            view.displayClientWindow();
+                        }
+                        else
+                        {
+                            view.displayError("Wrong password !");
+                        }
                     }
                     else
                     {
@@ -60,16 +67,24 @@ public final class Controller implements ActionListener
 
                     if(employee != null)
                     {
-                        view.displayEmployeeArticleType(model.getListArticleType());
-                        view.displayEmployeeProvider(model.getListProvider());
-                        view.displayEmployeeArticle(model.getListArticle());
-                        view.displayEmployeePurchase(model.getListPurchase());
-                        view.displayEmployeeClient(model.getListClient());
-                        view.displayEmployeeEmployee(model.getListEmployee());
-                        view.displayEmployeeComboBoxArticleType(model.getListArticleType());
-                        view.displayEmployeeComboBoxProvider(model.getListProvider());
+                        System.out.println(strPassword);
+                        if(model.checkEmployeePassword(view.getRegistrationNumber(), strPassword))
+                        {
+                            view.displayEmployeeArticleType(model.getListArticleType());
+                            view.displayEmployeeProvider(model.getListProvider());
+                            view.displayEmployeeArticle(model.getListArticle());
+                            view.displayEmployeePurchase(model.getListPurchase());
+                            view.displayEmployeeClient(model.getListClient());
+                            view.displayEmployeeEmployee(model.getListEmployee());
+                            view.displayEmployeeComboBoxArticleType(model.getListArticleType());
+                            view.displayEmployeeComboBoxProvider(model.getListProvider());
 
-                        view.displayEmployeeWindow();
+                            view.displayEmployeeWindow();
+                        }
+                        else
+                        {
+                            view.displayError("Wrong password !");
+                        }
                     }
                     else
                     {

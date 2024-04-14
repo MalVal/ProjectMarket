@@ -21,6 +21,9 @@ public interface DataAccessLayer
 
     Client searchClient(String registrationNumber);
     Employee searchEmployee(String registrationNumber);
+    boolean checkClientPassword(String registrationNumber, String password);
+    boolean checkEmployeePassword(String registrationNumber, String password);
+
     void setCurrentClient(Client client);
     CurrentClient getCurrentClient();
     void addToBasket(Article article);
