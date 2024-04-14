@@ -1,6 +1,8 @@
 package Controller;
 
 import Model.DataAccessLayer;
+import Model.Entity.Client;
+import Model.Entity.Employee;
 import View.ViewProjectMarket;
 
 import java.awt.event.ActionEvent;
@@ -30,7 +32,7 @@ public final class Controller implements ActionListener
         {
             char[] password = view.getPassword();
             String strPassword = new String(password);
-            if(view.getFirstname().isEmpty() || view.getSurname().isEmpty() || strPassword.isEmpty())
+            if(view.getRegistrationNumber().isEmpty() || strPassword.isEmpty())
             {
                 view.displayError("You have to fill all the properties !");
             }
@@ -38,22 +40,42 @@ public final class Controller implements ActionListener
             {
                 if(view.getMode().equals("Client"))
                 {
-                    view.displayClientComboBoxArticle(model.getListArticle());
-                    view.displayClientWindow();
-                    return;
+                    Client currentClient = model.searchClient(view.getRegistrationNumber());
+
+                    if(currentClient != null)
+                    {
+                        this.model.setCurrentClient(currentClient);
+
+                        view.displayClientComboBoxArticle(model.getListArticle());
+                        view.displayClientWindow();
+                    }
+                    else
+                    {
+                        view.displayError("Client doesn't exists !");
+                    }
                 }
                 else if(view.getMode().equals("Employee"))
                 {
-                    view.displayEmployeeArticleType(model.getListArticleType());
-                    view.displayEmployeeProvider(model.getListProvider());
-                    view.displayEmployeeArticle(model.getListArticle());
-                    view.displayEmployeePurchase(model.getListPurchase());
-                    view.displayEmployeeClient(model.getListClient());
-                    view.displayEmployeeEmployee(model.getListEmployee());
-                    view.displayEmployeeComboBoxArticleType(model.getListArticleType());
-                    view.displayEmployeeComboBoxProvider(model.getListProvider());
-                    view.displayEmployeeWindow();
-                    return;
+                    Employee employee = model.searchEmployee(view.getRegistrationNumber());
+
+                    if(employee != null)
+                    {
+                        view.displayEmployeeArticleType(model.getListArticleType());
+                        view.displayEmployeeProvider(model.getListProvider());
+                        view.displayEmployeeArticle(model.getListArticle());
+                        view.displayEmployeePurchase(model.getListPurchase());
+                        view.displayEmployeeClient(model.getListClient());
+                        view.displayEmployeeEmployee(model.getListEmployee());
+                        view.displayEmployeeComboBoxArticleType(model.getListArticleType());
+                        view.displayEmployeeComboBoxProvider(model.getListProvider());
+
+                        view.displayEmployeeWindow();
+                    }
+                    else
+                    {
+                        view.displayError("Employee doesn't exists !");
+                    }
+
                 }
                 else
                 {

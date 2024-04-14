@@ -3,10 +3,12 @@ package Model;
 import Model.Entity.*;
 
 import java.io.Console;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class DAOProjectMarket implements DataAccessLayer
 {
+    private CurrentClient currentClient;
     private ArrayList<ArticleType> listArticleType;
     private ArrayList<Article> listArticle;
     private ArrayList<Provider> listProvider;
@@ -16,12 +18,14 @@ public class DAOProjectMarket implements DataAccessLayer
 
     public DAOProjectMarket()
     {
+        currentClient = new CurrentClient();
         listArticleType = new ArrayList<>();
         listArticle = new ArrayList<>();
         listProvider = new ArrayList<>();
         listPurchase = new ArrayList<>();
         listClient = new ArrayList<>();
         listEmployee = new ArrayList<>();
+        this.addEmployee(new Employee("admin", "---", "---", LocalDate.parse("2004-09-11"), "admin", 0));
     }
 
     @Override
@@ -138,6 +142,54 @@ public class DAOProjectMarket implements DataAccessLayer
     @Override
     public boolean deleteProvider(Provider provider) {
         return listProvider.remove(provider);
+    }
+
+    @Override
+    public Client searchClient(String registrationNumber) {
+
+        for(Client c : listClient)
+        {
+            if(c.getRegistrationNumber().equals(registrationNumber))
+            {
+                return c.clone();
+            }
+        }
+
+        return null;
+    }
+
+    @Override
+    public Employee searchEmployee(String registrationNumber) {
+
+        for(Employee e : listEmployee)
+        {
+            if(e.getRegistrationNumber().equals(registrationNumber))
+            {
+                return e.clone();
+            }
+        }
+
+        return null;
+    }
+
+    @Override
+    public void setCurrentClient(Client client) {
+        this.currentClient.setClient(client);
+    }
+
+    @Override
+    public Client getCurrentClient() {
+        return this.currentClient.getClient();
+    }
+
+    @Override
+    public void addToBasket(Article article) {
+        this.currentClient.getBasket().addArticle(article);
+    }
+
+    @Override
+    public boolean removeToBasket(Article article) {
+        return this.currentClient.getBasket().removeArticle(article);
     }
 
     @Override

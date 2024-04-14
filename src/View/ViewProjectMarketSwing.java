@@ -23,12 +23,10 @@ public class ViewProjectMarketSwing extends JFrame implements ViewProjectMarket
     private ClientWindow cw;
     private EmployeeWindow ew;
 
-    public JTextField textNameConnexion;
-    public JTextField textFirstnameConnexion;
+    public JTextField textRegistrationNumberConnexion;
     public JPasswordField textPasswordConnexion;
-    public JRadioButton radioClientConnexion;
-    public JRadioButton radioEmploysConnexion;
-    public JLabel labelError;
+    public JRadioButton radioClientConnection;
+    public JRadioButton radioEmploysConnection;
 
     public ViewProjectMarketSwing()
     {
@@ -39,45 +37,36 @@ public class ViewProjectMarketSwing extends JFrame implements ViewProjectMarket
 
         ButtonGroup buttonGroup = new ButtonGroup();
 
-        JLabel labelNameConnexion = new JLabel("Name:");
-        this.textNameConnexion = new JTextField();
-        JPanel panelNameco =new JPanel(new GridLayout(1,2));
-        panelNameco.add(labelNameConnexion);
-        panelNameco.add(textNameConnexion);
-
-        JLabel labelFirstnameConnexion = new JLabel("Firstname:");
-        this.textFirstnameConnexion = new JTextField();
-        JPanel panelFirstnameco =new JPanel(new GridLayout(1,2));
-        panelFirstnameco.add(labelFirstnameConnexion);
-        panelFirstnameco.add(textFirstnameConnexion);
+        JLabel labelRegistrationNumberConnexion = new JLabel("Registration number :");
+        this.textRegistrationNumberConnexion = new JTextField();
+        JPanel panelRegistrationNumberCo =new JPanel(new GridLayout(1,2));
+        panelRegistrationNumberCo.add(labelRegistrationNumberConnexion);
+        panelRegistrationNumberCo.add(textRegistrationNumberConnexion);
 
         JLabel labelPasswordConnexion = new JLabel("Password:");
         this.textPasswordConnexion = new JPasswordField();
-        JPanel panelPasswordco =new JPanel(new GridLayout(1,2));
-        panelPasswordco.add(labelPasswordConnexion);
-        panelPasswordco.add(textPasswordConnexion);
+        JPanel panelPasswordCo =new JPanel(new GridLayout(1,2));
+        panelPasswordCo.add(labelPasswordConnexion);
+        panelPasswordCo.add(textPasswordConnexion);
 
-        this.radioClientConnexion = new JRadioButton("Client:");
-        this.radioEmploysConnexion = new JRadioButton("Employee:");
+        this.radioClientConnection = new JRadioButton("Client:");
+        this.radioEmploysConnection = new JRadioButton("Employee:");
         JPanel radioPanel = new JPanel(new GridLayout( 1, 2 ));
 
-        radioPanel.add(radioEmploysConnexion);
-        buttonGroup.add(radioEmploysConnexion);
-        radioPanel.add(radioClientConnexion);
-        buttonGroup.add(radioClientConnexion);
+        radioPanel.add(radioEmploysConnection);
+        buttonGroup.add(radioEmploysConnection);
+        radioPanel.add(radioClientConnection);
+        buttonGroup.add(radioClientConnection);
 
-        this.labelError = new JLabel();
 
-        JButton btnConnexion = new JButton("connexion");
+        JButton btnConnection = new JButton("Connection");
 
         JPanel mainPanel = (JPanel) this.getContentPane();
-        mainPanel.setLayout(new GridLayout(6,1));
-        mainPanel.add(panelNameco);
-        mainPanel.add(panelFirstnameco);
-        mainPanel.add(panelPasswordco);
+        mainPanel.setLayout(new GridLayout(4,1));
+        mainPanel.add(panelRegistrationNumberCo);
+        mainPanel.add(panelPasswordCo);
         mainPanel.add(radioPanel);
-        mainPanel.add(labelError);
-        mainPanel.add(btnConnexion);
+        mainPanel.add(btnConnection);
 
         this.setTitle("Project Market");
         this.setSize(600, 400);
@@ -87,7 +76,7 @@ public class ViewProjectMarketSwing extends JFrame implements ViewProjectMarket
         this.setIconImage(icon.getImage());
 
         // Events
-        btnConnexion.addActionListener(new ActionListener()
+        btnConnection.addActionListener(new ActionListener()
         {
             @Override
             public void actionPerformed(ActionEvent e)
@@ -174,13 +163,8 @@ public class ViewProjectMarketSwing extends JFrame implements ViewProjectMarket
     }
 
     @Override
-    public String getFirstname() {
-        return textFirstnameConnexion.getText();
-    }
-
-    @Override
-    public String getSurname() {
-        return textNameConnexion.getText();
+    public String getRegistrationNumber() {
+        return textRegistrationNumberConnexion.getText();
     }
 
     @Override
@@ -190,11 +174,11 @@ public class ViewProjectMarketSwing extends JFrame implements ViewProjectMarket
 
     @Override
     public String getMode() {
-        if(radioClientConnexion.isSelected())
+        if(radioClientConnection.isSelected())
         {
             return "Client";
         }
-        else if(radioEmploysConnexion.isSelected())
+        else if(radioEmploysConnection.isSelected())
         {
             return "Employee";
         }

@@ -19,6 +19,13 @@ public interface DataAccessLayer
     boolean deleteEmployee(Employee employee);
     boolean deleteProvider(Provider provider);
 
+    Client searchClient(String registrationNumber);
+    Employee searchEmployee(String registrationNumber);
+    void setCurrentClient(Client client);
+    Client getCurrentClient();
+    void addToBasket(Article article);
+    boolean removeToBasket(Article article);
+
     public ArrayList<Article> getListArticle();
     public ArrayList<ArticleType> getListArticleType();
     public ArrayList<Client> getListClient();

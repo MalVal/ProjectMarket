@@ -6,25 +6,25 @@ public class CurrentClient
 {
     private Client client;
     private Basket basket;
-    private ArrayList<Purchase> listPurchases;
 
-    public CurrentClient(Client client, ArrayList<Purchase> listPurchases)
+    public CurrentClient()
+    {
+        this.client = new Client();
+        this.basket = new Basket();
+    }
+
+    public void setClient(Client client)
     {
         this.client = client;
-        this.basket = new Basket();
-        this.listPurchases = listPurchases;
+    }
+
+    public Client getClient()
+    {
+        return this.client.clone();
     }
 
     public Basket getBasket()
     {
         return this.basket;
-    }
-
-    public ArrayList<Purchase> getListPurchases() {
-        ArrayList<Purchase> copy = new ArrayList<>();
-        for (Purchase p:listPurchases) {
-            copy.add(p.clone());
-        }
-        return copy;
     }
 }
