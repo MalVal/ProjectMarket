@@ -69,12 +69,6 @@ public class Client extends Person implements Cloneable
      ----------------------------*/
 
     @Override
-    public String toString()
-    {
-        return "Registration number : " + this.getRegistrationNumber() + "Name : " + this.getName() + " Firstname : " + this.getFirstname() + " Birthdate : " + this.getBirthdate().toString() + " Discount : " + this.discount;
-    }
-
-    @Override
     public Client clone()
     {
         return new Client(this.getRegistrationNumber(), this.getName(), this.getFirstname(), this.getBirthdate(), this.getPassword(), this.discount);

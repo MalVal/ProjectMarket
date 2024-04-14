@@ -34,10 +34,12 @@ public class ClientWindow extends JDialog
         this.viewArticlePanel = new ViewArticlePanel();
 
         JPanel mainPanel = (JPanel) this.getContentPane();
-        mainPanel.setLayout(new GridLayout(4,1));
+        mainPanel.setLayout(new GridLayout(5,1));
 
         mainPanel.add(addArticleBasketPanel);
         mainPanel.add(viewArticlePanel);
+        JButton btnDelete = new JButton("Delete selected article");
+        mainPanel.add(btnDelete);
         JButton btnBuy = new JButton("Buy");
         mainPanel.add(btnBuy);
         mainPanel.add(viewPurchasePanel);

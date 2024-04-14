@@ -4,6 +4,7 @@ import Model.DataAccessLayer;
 import Model.Entity.Article;
 import Model.Entity.Client;
 import Model.Entity.Employee;
+import Model.Entity.Purchase;
 import View.ViewProjectMarket;
 
 import java.awt.event.ActionEvent;
@@ -51,6 +52,7 @@ public final class Controller implements ActionListener
                             this.model.setCurrentClient(currentClient);
 
                             view.displayClientComboBoxArticle(model.getListArticle());
+                            view.displayClientBasket(model.getCurrentClient().getBasket().getList());
                             view.displayClientWindow();
                         }
                         else
@@ -137,11 +139,6 @@ public final class Controller implements ActionListener
             return;
         }
 
-        if (e.getActionCommand().equals(ControllerActions.ADD_PURCHASE))
-        {
-            return;
-        }
-
         if (e.getActionCommand().equals(ControllerActions.ADD_CLIENT))
         {
             if(model.addClient(view.getClient()))
@@ -176,6 +173,7 @@ public final class Controller implements ActionListener
 
         if (e.getActionCommand().equals(ControllerActions.BUY_BASKET))
         {
+            boolean error = false;
             ArrayList<Article> articleToDelete = new ArrayList<>();
 
             if(model.getCurrentClient().getBasket().getList().isEmpty())
@@ -186,18 +184,39 @@ public final class Controller implements ActionListener
             {
                 for(Article articleBasket : model.getCurrentClient().getBasket().getList())
                 {
-                    if(model.decreaseQuantity(articleBasket))
+                    for(Article articleStock : model.getListArticle())
                     {
-                        articleToDelete.add(articleBasket);
+                        if(articleStock.getQuantity() - articleBasket.getQuantity() < 0)
+                        {
+                            error = true;
+                            break;
+                        }
                     }
+                    if(error)
+                        break;
                 }
 
-                for(Article a : articleToDelete)
+                if(error)
                 {
-                    model.getCurrentClient().getBasket().removeArticle(a);
+                    view.displayError("The quantity of one of the items exceeds the available quantity");
+                }
+                else
+                {
+                    Purchase purchase = new Purchase(model.getCurrentClient().getClient(), model.getCurrentClient().getBasket().getList());
+
+                    for(Article articleBasket : model.getCurrentClient().getBasket().getList())
+                    {
+                        model.decreaseQuantity(articleBasket);
+                        model.getCurrentClient().getBasket().removeArticle(articleBasket);
+                    }
+
+                    model.addPurchase(purchase);
+
+                    view.displayEmployeePurchase(model.getListPurchase());
+                    view.displayClientBasket(model.getCurrentClient().getBasket().getList());
+                    view.displayClientComboBoxArticle(model.getListArticle());
                 }
             }
         }
-
     }
 }

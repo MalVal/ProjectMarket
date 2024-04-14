@@ -92,7 +92,7 @@ public class Provider implements Cloneable
     @Override
     public String toString()
     {
-        return "Name : " + this.name + " Address : " + this.address + " Phone number : " + this.phoneNumber;
+        return this.name + " " + this.address;
     }
 
     @Override

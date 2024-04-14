@@ -92,7 +92,7 @@ public class Article implements Cloneable
     @Override
     public String toString()
     {
-        return this.type.toString() + " " + this.provider.toString() + " Quantity : " + this.quantity;
+        return this.type.toString() + " " + this.provider.toString() + " " + this.quantity + " pcs";
     }
 
     @Override

@@ -92,7 +92,7 @@ public class ArticleType implements Cloneable
     @Override
     public String toString()
     {
-        return "Name : " + this.getName() + " Category : " + this.category + " Price : " + this.price;
+        return this.getName() + " " + this.price + "€ ";
     }
 
     @Override

@@ -69,12 +69,6 @@ public class Employee extends Person implements Cloneable
      ----------------------------*/
 
     @Override
-    public String toString()
-    {
-        return "Registration number : " + this.getRegistrationNumber() + "Name : " + this.getName() + " Firstname : " + this.getFirstname() + " Birthdate : " + this.getBirthdate().toString() + " Salary : " + this.salary;
-    }
-
-    @Override
     public Employee clone()
     {
         return new Employee(this.getRegistrationNumber(), this.getName(), this.getFirstname(), this.getBirthdate(), this.getPassword(), this.salary);

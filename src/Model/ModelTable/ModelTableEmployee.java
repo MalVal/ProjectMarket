@@ -20,9 +20,9 @@ public class ModelTableEmployee extends AbstractTableModel
     {
         if (c == 0) return String.class;
         if (c == 1) return String.class;
-        if (c == 2) return LocalDate.class;
-        if (c == 3) return Double.class;
-        if (c == 4) return Integer.class;
+        if (c == 2) return String.class;
+        if (c == 3) return LocalDate.class;
+        if (c == 4) return Double.class;
         return null;
     }
 
@@ -42,11 +42,11 @@ public class ModelTableEmployee extends AbstractTableModel
     public Object getValueAt(int l,int c)
     {
         Employee employee = employees.get(l);
-        if (c == 0) return employee.getName();
-        if (c == 1) return employee.getFirstname();
-        if (c == 2) return employee.getBirthdate();
-        if (c == 3) return employee.getSalary();
-        if (c == 4) return employee.getRegistrationNumber();
+        if (c == 0) return employee.getRegistrationNumber();
+        if (c == 1) return employee.getName();
+        if (c == 2) return employee.getFirstname();
+        if (c == 3) return employee.getBirthdate();
+        if (c == 4) return employee.getSalary();
         return null;
     }
 }

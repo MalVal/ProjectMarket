@@ -8,7 +8,6 @@ public abstract class ControllerActions
     public static final String ADD_CLIENT = "Add client";
     public static final String ADD_EMPLOYEE = "Add employee";
     public static final String ADD_PROVIDER = "Add provider";
-    public static final String ADD_PURCHASE = "Add purchase";
     public static final String ADD_TO_BASKET = "Add to basket";
 
     public static final String BUY_BASKET = "Buy basket";

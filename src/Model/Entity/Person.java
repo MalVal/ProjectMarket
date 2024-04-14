@@ -109,7 +109,7 @@ public abstract class Person
     @Override
     public String toString()
     {
-        return "Registration number : " + this.registrationNumber + " Name :" + this.name + " Firstname : " + this.firstname + " Birthdate : " + this.birthdate.toString();
+        return this.getRegistrationNumber() + " " + this.getName() + " " + this.getFirstname();
     }
 
     @Override

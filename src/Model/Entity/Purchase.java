@@ -31,11 +31,10 @@ public class Purchase implements Cloneable
         this.buyer = buyer;
         this.listArticle = listArticle;
         this.total = 0;
-    }
-
-    public Purchase()
-    {
-        this(new Client(), new ArrayList<Article>());
+        for(Article a : listArticle)
+        {
+            this.total += a.getQuantity();
+        }
     }
 
     /*----------------------------
@@ -57,27 +56,6 @@ public class Purchase implements Cloneable
     public double getTotal()
     {
         return total;
-    }
-
-    /*----------------------------
-
-        SETTERS
-
-     ----------------------------*/
-
-    public void setBuyer(Client buyer)
-    {
-        this.buyer = buyer;
-    }
-
-    public void setListArticle(ArrayList<Article> listArticle)
-    {
-        this.listArticle = listArticle;
-    }
-
-    public void setTotal(double total)
-    {
-        this.total = total;
     }
 
     /*----------------------------
