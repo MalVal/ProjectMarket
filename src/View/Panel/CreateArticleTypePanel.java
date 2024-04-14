@@ -14,7 +14,6 @@ public class CreateArticleTypePanel extends JPanel
     public JTextField textFieldName;
     public JTextField textFieldCategory;
     public JTextField textFieldPrice;
-    public JLabel labelError;
     private JButton btnCreate;
 
     public EmployeeWindow parent;
@@ -31,10 +30,9 @@ public class CreateArticleTypePanel extends JPanel
         textFieldName = new JTextField();
         textFieldCategory = new JTextField();
         textFieldPrice = new JTextField();
-        labelError = new JLabel();
         btnCreate = new JButton("Create");
 
-        this.setLayout(new GridLayout(4,1));
+        this.setLayout(new GridLayout(3,1));
 
         JPanel subPanel = new JPanel(new GridLayout(3, 2));
         subPanel.add(new JLabel("Name :"));
@@ -46,7 +44,6 @@ public class CreateArticleTypePanel extends JPanel
 
         this.add(new JLabel("Create a new article type :"));
         this.add(subPanel);
-        this.add(labelError);
         this.add(btnCreate);
 
         btnCreate.addActionListener(new ActionListener()

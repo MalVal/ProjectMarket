@@ -26,7 +26,6 @@ public class CreateEmployeePanel extends JPanel
     public JDatePickerImpl datePickerBirthdate;
     public JTextField textFieldSalary;
     public JTextField textFieldPassword;
-    public JLabel labelError;
     private JButton btnCreate;
 
     public EmployeeWindow parent;
@@ -50,10 +49,9 @@ public class CreateEmployeePanel extends JPanel
         textFieldSalary = new JTextField();
         textFieldRegistrationNumber = new JTextField();
         textFieldPassword = new JTextField();
-        labelError = new JLabel();
         btnCreate = new JButton("Create");
 
-        this.setLayout(new GridLayout(4,1));
+        this.setLayout(new GridLayout(3,1));
 
         JPanel subPanel = new JPanel(new GridLayout(6, 2));
         subPanel.add(new JLabel("Registration number :"));
@@ -71,7 +69,6 @@ public class CreateEmployeePanel extends JPanel
 
         this.add(new JLabel("Create a new employee :"));
         this.add(subPanel);
-        this.add(labelError);
         this.add(btnCreate);
 
         btnCreate.addActionListener(new ActionListener()

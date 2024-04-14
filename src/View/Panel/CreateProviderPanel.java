@@ -14,7 +14,7 @@ public class CreateProviderPanel extends JPanel
     public JTextField textFieldName;
     public JTextField textFieldAddress;
     public JTextField textFieldPhoneNumber;
-    public JLabel labelError;
+
     public EmployeeWindow parent;
 
     public Provider provider;
@@ -30,19 +30,17 @@ public class CreateProviderPanel extends JPanel
         textFieldName = new JTextField();
         textFieldAddress = new JTextField();
         textFieldPhoneNumber = new JTextField();
-        labelError = new JLabel();
         JButton btnCreate = new JButton("Create");
 
         this.setLayout(new GridLayout(3,1));
 
-        JPanel subPanel = new JPanel(new GridLayout(4, 2));
+        JPanel subPanel = new JPanel(new GridLayout(3, 2));
         subPanel.add(new JLabel("Name :"));
         subPanel.add(textFieldName);
         subPanel.add(new JLabel("Address :"));
         subPanel.add(textFieldAddress);
         subPanel.add(new JLabel("Phone number :"));
         subPanel.add(textFieldPhoneNumber);
-        subPanel.add(labelError);
 
         this.add(new JLabel("Create a new provider :"));
         this.add(subPanel);
