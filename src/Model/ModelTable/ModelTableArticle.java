@@ -43,9 +43,4 @@ public class ModelTableArticle extends AbstractTableModel
         if (c == 2) return article.getQuantity();
         return null;
     }
-
-    @Override
-    public boolean isCellEditable(int row, int column) {
-        return column == 2;
-    }
 }
