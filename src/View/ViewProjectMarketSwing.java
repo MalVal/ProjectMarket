@@ -16,6 +16,11 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 
+import com.formdev.flatlaf.FlatDarculaLaf;
+import com.formdev.flatlaf.FlatDarkLaf;
+import com.formdev.flatlaf.FlatIntelliJLaf;
+import com.formdev.flatlaf.FlatLightLaf;
+
 public class ViewProjectMarketSwing extends JFrame implements ViewProjectMarket
 {
     public Controller controller;
@@ -31,6 +36,12 @@ public class ViewProjectMarketSwing extends JFrame implements ViewProjectMarket
     public ViewProjectMarketSwing()
     {
         super();
+
+        try {
+            UIManager.setLookAndFeel(new FlatDarkLaf());
+        } catch (UnsupportedLookAndFeelException e) {
+            e.printStackTrace();
+        }
 
         cw = new ClientWindow(this, true);
         ew = new EmployeeWindow(this, true);
