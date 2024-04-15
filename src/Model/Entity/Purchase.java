@@ -33,7 +33,7 @@ public class Purchase implements Cloneable
         this.total = 0;
         for(Article a : listArticle)
         {
-            this.total += a.getQuantity();
+            this.total += a.getQuantity() * a.getType().getPrice();
         }
     }
 

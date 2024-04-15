@@ -176,7 +176,6 @@ public final class Controller implements ActionListener
         if (e.getActionCommand().equals(ControllerActions.BUY_BASKET))
         {
             boolean error = false;
-            ArrayList<Article> articleToDelete = new ArrayList<>();
 
             if(model.getCurrentClient().getBasket().getList().isEmpty())
             {
