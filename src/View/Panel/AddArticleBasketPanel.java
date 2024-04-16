@@ -33,7 +33,7 @@ public class AddArticleBasketPanel extends JPanel
         this.article = new Article();
 
         this.articleComboBoxModel = new CustomComboBoxModel<>(new ArrayList<>());
-        listArticle = new JComboBox<Article>(articleComboBoxModel);
+        listArticle = new JComboBox<>(articleComboBoxModel);
         textFieldQuantity = new JTextField();
 
         this.setLayout(new GridLayout(3,1));

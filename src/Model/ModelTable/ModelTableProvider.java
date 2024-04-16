@@ -38,6 +38,7 @@ public class ModelTableProvider extends AbstractTableModel
     public Object getValueAt(int l,int c)
     {
         Provider provider = providers.get(l);
+        if (c == -1) return provider;
         if (c == 0) return provider.getName();
         if (c == 1) return provider.getAddress();
         if (c == 2) return provider.getPhoneNumber();

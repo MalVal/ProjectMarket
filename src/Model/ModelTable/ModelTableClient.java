@@ -41,6 +41,7 @@ public class ModelTableClient extends AbstractTableModel
     public Object getValueAt(int l,int c)
     {
         Client client = clients.get(l);
+        if(c == -1) return client;
         if (c == 0) return client.getRegistrationNumber();
         if (c == 1) return client.getName();
         if (c == 2) return client.getFirstname();

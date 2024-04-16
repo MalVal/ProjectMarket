@@ -135,7 +135,7 @@ public final class Controller implements ActionListener
 
         if (e.getActionCommand().equals(ControllerActions.ADD_ARTICLE))
         {
-            model.addArticle(view.getArticle());
+            model.addArticle(view.getEmployeeArticle());
             view.displayClientComboBoxArticle(model.getListArticle());
             view.displayEmployeeArticle(model.getListArticle());
             return;
@@ -232,6 +232,22 @@ public final class Controller implements ActionListener
                     view.displayClientBasket(model.getCurrentClient().getBasket().getList());
                     view.displayClientComboBoxArticle(model.getListArticle());
                 }
+            }
+        }
+
+        if (e.getActionCommand().equals(ControllerActions.DELETE_ARTICLE))
+        {
+            Article articleToDelete = view.getSelectedEmployeeArticle();
+
+            if(articleToDelete == null)
+            {
+                view.displayError("You have to select an article !");
+            }
+            else
+            {
+                model.deleteArticle(articleToDelete);
+                view.displayClientComboBoxArticle(model.getListArticle());
+                view.displayEmployeeArticle(model.getListArticle());
             }
         }
     }

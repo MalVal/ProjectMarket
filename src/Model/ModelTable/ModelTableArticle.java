@@ -38,6 +38,7 @@ public class ModelTableArticle extends AbstractTableModel
     public Object getValueAt(int l,int c)
     {
         Article article = articles.get(l);
+        if (c == -1) return article;
         if (c == 0) return article.getType().toString();
         if (c == 1) return article.getProvider().toString();
         if (c == 2) return article.getQuantity();

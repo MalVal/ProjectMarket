@@ -38,6 +38,7 @@ public class ModelTableArticleType extends AbstractTableModel
     public Object getValueAt(int l,int c)
     {
         ArticleType articleType = articleTypes.get(l);
+        if (c == -1) return articleType;
         if (c == 0) return articleType.getName();
         if (c == 1) return articleType.getCategory();
         if (c == 2) return articleType.getPrice();

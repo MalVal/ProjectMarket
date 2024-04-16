@@ -275,7 +275,7 @@ public class DAOProjectMarket implements DataAccessLayer
     public ArrayList<ArticleType> getListArticleType() {
         ArrayList<ArticleType> copy = new ArrayList<>();
         for (ArticleType a:listArticleType) {
-            copy.add((ArticleType) a.clone());
+            copy.add(a.clone());
         }
         return copy;
     }
@@ -284,7 +284,7 @@ public class DAOProjectMarket implements DataAccessLayer
     public ArrayList<Client> getListClient() {
         ArrayList<Client> copy = new ArrayList<>();
         for (Client a:listClient) {
-            copy.add((Client) a.clone());
+            copy.add(a.clone());
         }
         return copy;
     }
@@ -293,7 +293,7 @@ public class DAOProjectMarket implements DataAccessLayer
     public ArrayList<Employee> getListEmployee() {
         ArrayList<Employee> copy = new ArrayList<>();
         for (Employee a:listEmployee) {
-            copy.add((Employee) a.clone());
+            copy.add(a.clone());
         }
         return copy;
     }
@@ -302,7 +302,7 @@ public class DAOProjectMarket implements DataAccessLayer
     public ArrayList<Provider> getListProvider() {
         ArrayList<Provider> copy = new ArrayList<>();
         for (Provider a:listProvider) {
-            copy.add((Provider) a.clone());
+            copy.add(a.clone());
         }
         return copy;
     }
@@ -311,7 +311,7 @@ public class DAOProjectMarket implements DataAccessLayer
     public ArrayList<Purchase> getListPurchase() {
         ArrayList<Purchase> copy = new ArrayList<>();
         for (Purchase a:listPurchase) {
-            copy.add((Purchase) a.clone());
+            copy.add(a.clone());
         }
         return copy;
     }

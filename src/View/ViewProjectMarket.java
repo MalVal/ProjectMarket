@@ -27,10 +27,17 @@ public interface ViewProjectMarket
     String getMode();
     ArticleType getArticleType();
     Provider getProvider();
-    Article getArticle();
+    Article getEmployeeArticle();
     Client getClient();
     Employee getEmployee();
     Article getClientArticle();
+
+    Article getSelectedEmployeeArticle();
+    Article getSelectedClientArticle();
+    ArticleType getSelectedArticleType();
+    Provider getSelectedProvider();
+    Client getSelectedClient();
+    Employee getSelectedEmployee();
 
     void setController(Controller c);
     Controller getController();

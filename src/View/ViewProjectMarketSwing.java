@@ -219,7 +219,7 @@ public class ViewProjectMarketSwing extends JFrame implements ViewProjectMarket
     }
 
     @Override
-    public Article getArticle() {
+    public Article getEmployeeArticle() {
         return this.ew.employeeArticlePanel.addArticlePanel.article;
     }
 
@@ -236,6 +236,60 @@ public class ViewProjectMarketSwing extends JFrame implements ViewProjectMarket
     @Override
     public Article getClientArticle() {
         return this.cw.addArticleBasketPanel.article;
+    }
+
+    @Override
+    public Article getSelectedEmployeeArticle() {
+        JTable table = ew.employeeArticlePanel.viewArticlePanel.tableArticle;
+        int index = table.getSelectedRow();
+        if (index == -1) return null;
+
+        return (Article)(table.getModel().getValueAt(index, -1));
+    }
+
+    @Override
+    public Article getSelectedClientArticle() {
+        JTable table = cw.viewArticlePanel.tableArticle;
+        int index = table.getSelectedRow();
+        if (index == -1) return null;
+
+        return (Article)(table.getModel().getValueAt(index, -1));
+    }
+
+    @Override
+    public ArticleType getSelectedArticleType() {
+        JTable table = ew.employeeArticleTypePanel.viewArticleTypePanel.tableArticleType;
+        int index = table.getSelectedRow();
+        if (index == -1) return null;
+
+        return (ArticleType) (table.getModel().getValueAt(index, -1));
+    }
+
+    @Override
+    public Provider getSelectedProvider() {
+        JTable table = ew.employeeProviderPanel.viewProviderPanel.tableProvider;
+        int index = table.getSelectedRow();
+        if (index == -1) return null;
+
+        return (Provider) (table.getModel().getValueAt(index, -1));
+    }
+
+    @Override
+    public Client getSelectedClient() {
+        JTable table = ew.employeeClientPanel.viewClientPanel.tableClient;
+        int index = table.getSelectedRow();
+        if (index == -1) return null;
+
+        return (Client) (table.getModel().getValueAt(index, -1));
+    }
+
+    @Override
+    public Employee getSelectedEmployee() {
+        JTable table = ew.employeeEmployeePanel.viewEmployeePanel.tableEmployee;
+        int index = table.getSelectedRow();
+        if (index == -1) return null;
+
+        return (Employee)(table.getModel().getValueAt(index, -1));
     }
 
     @Override

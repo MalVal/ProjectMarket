@@ -42,6 +42,7 @@ public class ModelTableEmployee extends AbstractTableModel
     public Object getValueAt(int l,int c)
     {
         Employee employee = employees.get(l);
+        if (c == -1) return employee;
         if (c == 0) return employee.getRegistrationNumber();
         if (c == 1) return employee.getName();
         if (c == 2) return employee.getFirstname();
