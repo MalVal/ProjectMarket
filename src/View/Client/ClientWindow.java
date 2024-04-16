@@ -58,5 +58,14 @@ public class ClientWindow extends JDialog
                 main.getController().actionPerformed(new ActionEvent(this, 0, ControllerActions.BUY_BASKET));
             }
         });
+
+        btnDelete.addActionListener(new ActionListener()
+        {
+            @Override
+            public void actionPerformed(ActionEvent e)
+            {
+                main.getController().actionPerformed(new ActionEvent(this, 0, ControllerActions.REMOVE_TO_BASKET));
+            }
+        });
     }
 }

@@ -1,10 +1,7 @@
 package Controller;
 
 import Model.DataAccessLayer;
-import Model.Entity.Article;
-import Model.Entity.Client;
-import Model.Entity.Employee;
-import Model.Entity.Purchase;
+import Model.Entity.*;
 import View.ViewProjectMarket;
 
 import java.awt.event.ActionEvent;
@@ -248,6 +245,83 @@ public final class Controller implements ActionListener
                 model.deleteArticle(articleToDelete);
                 view.displayClientComboBoxArticle(model.getListArticle());
                 view.displayEmployeeArticle(model.getListArticle());
+            }
+        }
+
+        if (e.getActionCommand().equals(ControllerActions.DELETE_ARTICLE_TYPE))
+        {
+            ArticleType articleTypeToDelete = view.getSelectedArticleType();
+
+            if(articleTypeToDelete == null)
+            {
+                view.displayError("You have to select an article type !");
+            }
+            else
+            {
+                model.deleteArticleType(articleTypeToDelete);
+                view.displayEmployeeArticleType(model.getListArticleType());
+                view.displayEmployeeComboBoxArticleType(model.getListArticleType());
+            }
+        }
+
+        if (e.getActionCommand().equals(ControllerActions.DELETE_PROVIDER))
+        {
+            Provider providerToDelete = view.getSelectedProvider();
+
+            if(providerToDelete == null)
+            {
+                view.displayError("You have to select a provider !");
+            }
+            else
+            {
+                model.deleteProvider(providerToDelete);
+                view.displayEmployeeProvider(model.getListProvider());
+                view.displayEmployeeComboBoxProvider(model.getListProvider());
+            }
+        }
+
+        if (e.getActionCommand().equals(ControllerActions.DELETE_CLIENT))
+        {
+            Client clientToDelete = view.getSelectedClient();
+
+            if(clientToDelete == null)
+            {
+                view.displayError("You have to select a client !");
+            }
+            else
+            {
+                model.deleteClient(clientToDelete);
+                view.displayEmployeeClient(model.getListClient());
+            }
+        }
+
+        if (e.getActionCommand().equals(ControllerActions.DELETE_EMPLOYEE))
+        {
+            Employee employeeToDelete = view.getSelectedEmployee();
+
+            if(employeeToDelete == null)
+            {
+                view.displayError("You have to select an employee !");
+            }
+            else
+            {
+                model.deleteEmployee(employeeToDelete);
+                view.displayEmployeeEmployee(model.getListEmployee());
+            }
+        }
+
+        if (e.getActionCommand().equals(ControllerActions.REMOVE_TO_BASKET))
+        {
+            Article articleToDelete = view.getSelectedClientArticle();
+
+            if(articleToDelete == null)
+            {
+                view.displayError("You have to select an article !");
+            }
+            else
+            {
+                model.removeToBasket(articleToDelete);
+                view.displayClientBasket(model.getCurrentClient().getBasket().getList());
             }
         }
     }

@@ -1,10 +1,13 @@
 package View.Employee;
 
+import Controller.ControllerActions;
 import View.Panel.CreateClientPanel;
 import View.ViewPanel.ViewClientPanel;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class EmployeeClientPanel extends JPanel
 {
@@ -48,5 +51,14 @@ public class EmployeeClientPanel extends JPanel
         constraints.weightx = 1.0; // Utilise tout l'espace disponible en largeur
         constraints.weighty = 0.4; // 40% de l'espace vertical
         this.add(createClientPanel, constraints);
+
+        btnDelete.addActionListener(new ActionListener()
+        {
+            @Override
+            public void actionPerformed(ActionEvent e)
+            {
+                parent.main.getController().actionPerformed(new ActionEvent(this, 0, ControllerActions.DELETE_CLIENT));
+            }
+        });
     }
 }
