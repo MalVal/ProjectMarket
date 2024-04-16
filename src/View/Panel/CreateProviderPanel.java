@@ -51,9 +51,27 @@ public class CreateProviderPanel extends JPanel
             @Override
             public void actionPerformed(ActionEvent e)
             {
+                if(textFieldName.getText().isEmpty())
+                {
+                    JOptionPane.showMessageDialog(getParent(), "Invalid name !", "Error !", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
                 provider.setName(textFieldName.getText());
+
+                if(textFieldAddress.getText().isEmpty())
+                {
+                    JOptionPane.showMessageDialog(getParent(), "Invalid address !", "Error !", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
                 provider.setAddress(textFieldAddress.getText());
+
+                if(textFieldPhoneNumber.getText().isEmpty())
+                {
+                    JOptionPane.showMessageDialog(getParent(), "Invalid phone number !", "Error !", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
                 provider.setPhoneNumber(textFieldPhoneNumber.getText());
+
                 parent.main.getController().actionPerformed(new ActionEvent(this, 0, ControllerActions.ADD_PROVIDER));
                 provider = new Provider();
                 textFieldName.setText("");

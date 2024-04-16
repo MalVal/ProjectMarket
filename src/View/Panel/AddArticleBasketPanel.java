@@ -63,7 +63,13 @@ public class AddArticleBasketPanel extends JPanel
                     }
                     article = ((Article)listArticle.getSelectedItem()).clone();
 
-                    article.setQuantity(Integer.parseInt(textFieldQuantity.getText()));
+                    int quantity = Integer.parseInt(textFieldQuantity.getText());
+                    if(quantity <= 0)
+                    {
+                        JOptionPane.showMessageDialog(getParent(), "Invalid quantity (can't be negative or null) !", "Error !", JOptionPane.ERROR_MESSAGE);
+                        return;
+                    }
+                    article.setQuantity(quantity);
 
                     parent.main.getController().actionPerformed(new ActionEvent(this, 0, ControllerActions.ADD_TO_BASKET));
                     article = new Article();

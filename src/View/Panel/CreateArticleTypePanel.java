@@ -53,9 +53,28 @@ public class CreateArticleTypePanel extends JPanel
             {
                 try
                 {
+                    if(textFieldName.getText().isEmpty())
+                    {
+                        JOptionPane.showMessageDialog(getParent(), "Invalid name !", "Error !", JOptionPane.ERROR_MESSAGE);
+                        return;
+                    }
                     articleType.setName(textFieldName.getText());
+
+                    if(textFieldCategory.getText().isEmpty())
+                    {
+                        JOptionPane.showMessageDialog(getParent(), "Invalid category !", "Error !", JOptionPane.ERROR_MESSAGE);
+                        return;
+                    }
                     articleType.setCategory(textFieldCategory.getText());
-                    articleType.setPrice(Double.parseDouble(textFieldPrice.getText()));
+
+                    double price = Double.parseDouble(textFieldPrice.getText());
+                    if(price <= 0)
+                    {
+                        JOptionPane.showMessageDialog(getParent(), "Invalid price (can't be negative or null) !", "Error !", JOptionPane.ERROR_MESSAGE);
+                        return;
+                    }
+                    articleType.setPrice(price);
+
                     parent.main.getController().actionPerformed(new ActionEvent(this, 0, ControllerActions.ADD_ARTICLE_TYPE));
                     articleType = new ArticleType();
                     textFieldName.setText("");

@@ -80,19 +80,50 @@ public class CreateClientPanel extends JPanel
             {
                 try
                 {
+                    if(textFieldRegistrationNumber.getText().isEmpty())
+                    {
+                        JOptionPane.showMessageDialog(getParent(), "Invalid registration number !", "Error !", JOptionPane.ERROR_MESSAGE);
+                        return;
+                    }
                     client.setRegistrationNumber(textFieldRegistrationNumber.getText());
+
+                    if(textFieldSurName.getText().isEmpty())
+                    {
+                        JOptionPane.showMessageDialog(getParent(), "Invalid name !", "Error !", JOptionPane.ERROR_MESSAGE);
+                        return;
+                    }
                     client.setName(textFieldSurName.getText());
+
+                    if(textFieldFirstname.getText().isEmpty())
+                    {
+                        JOptionPane.showMessageDialog(getParent(), "Invalid firstname !", "Error !", JOptionPane.ERROR_MESSAGE);
+                        return;
+                    }
                     client.setFirstname(textFieldFirstname.getText());
 
-                    if(model.getValue() != null)
+                    if(model.getValue() == null)
                     {
-                        Instant instant = model.getValue().toInstant();
-                        LocalDateTime localDateTime = LocalDateTime.ofInstant(instant, ZoneId.systemDefault());
-                        LocalDate localDate = localDateTime.toLocalDate();
-                        client.setBirthdate(localDate);
+                        JOptionPane.showMessageDialog(getParent(), "Invalid birthdate !", "Error !", JOptionPane.ERROR_MESSAGE);
+                        return;
                     }
+                    Instant instant = model.getValue().toInstant();
+                    LocalDateTime localDateTime = LocalDateTime.ofInstant(instant, ZoneId.systemDefault());
+                    LocalDate localDate = localDateTime.toLocalDate();
+                    client.setBirthdate(localDate);
 
-                    client.setDiscount(Double.parseDouble(textFieldDiscount.getText()));
+                    double discount = Double.parseDouble(textFieldDiscount.getText());
+                    if(discount < 0)
+                    {
+                        JOptionPane.showMessageDialog(getParent(), "Invalid discount (can't be negative) !", "Error !", JOptionPane.ERROR_MESSAGE);
+                        return;
+                    }
+                    client.setDiscount(discount);
+
+                    if(textFieldPassword.getText().isEmpty())
+                    {
+                        JOptionPane.showMessageDialog(getParent(), "Invalid password !", "Error !", JOptionPane.ERROR_MESSAGE);
+                        return;
+                    }
                     client.setPassword(textFieldPassword.getText());
 
                     parent.main.getController().actionPerformed(new ActionEvent(this, 0, ControllerActions.ADD_CLIENT));

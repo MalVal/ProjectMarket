@@ -74,7 +74,13 @@ public class AddArticlePanel extends JPanel
                     }
                     article.setProvider((Provider)listProvider.getSelectedItem());
 
-                    article.setQuantity(Integer.parseInt(textFieldQuantity.getText()));
+                    int quantity = Integer.parseInt(textFieldQuantity.getText());
+                    if(quantity <= 0)
+                    {
+                        JOptionPane.showMessageDialog(getParent(), "Invalid quantity (can't be negative or null) !", "Error !", JOptionPane.ERROR_MESSAGE);
+                        return;
+                    }
+                    article.setQuantity(quantity);
 
                     parent.main.getController().actionPerformed(new ActionEvent(this, 0, ControllerActions.ADD_ARTICLE));
                     article = new Article();

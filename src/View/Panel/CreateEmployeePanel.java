@@ -78,19 +78,50 @@ public class CreateEmployeePanel extends JPanel
             {
                 try
                 {
+                    if(textFieldRegistrationNumber.getText().isEmpty())
+                    {
+                        JOptionPane.showMessageDialog(getParent(), "Invalid registration number !", "Error !", JOptionPane.ERROR_MESSAGE);
+                        return;
+                    }
                     employee.setRegistrationNumber(textFieldRegistrationNumber.getText());
+
+                    if(textFieldSurName.getText().isEmpty())
+                    {
+                        JOptionPane.showMessageDialog(getParent(), "Invalid name !", "Error !", JOptionPane.ERROR_MESSAGE);
+                        return;
+                    }
                     employee.setName(textFieldSurName.getText());
+
+                    if(textFieldFirstname.getText().isEmpty())
+                    {
+                        JOptionPane.showMessageDialog(getParent(), "Invalid firstname !", "Error !", JOptionPane.ERROR_MESSAGE);
+                        return;
+                    }
                     employee.setFirstname(textFieldFirstname.getText());
 
-                    if(model.getValue() != null)
+                    if(model.getValue() == null)
                     {
-                        Instant instant = model.getValue().toInstant();
-                        LocalDateTime localDateTime = LocalDateTime.ofInstant(instant, ZoneId.systemDefault());
-                        LocalDate localDate = localDateTime.toLocalDate();
-                        employee.setBirthdate(localDate);
+                        JOptionPane.showMessageDialog(getParent(), "Invalid birthdate !", "Error !", JOptionPane.ERROR_MESSAGE);
+                        return;
                     }
+                    Instant instant = model.getValue().toInstant();
+                    LocalDateTime localDateTime = LocalDateTime.ofInstant(instant, ZoneId.systemDefault());
+                    LocalDate localDate = localDateTime.toLocalDate();
+                    employee.setBirthdate(localDate);
 
-                    employee.setSalary(Double.parseDouble(textFieldSalary.getText()));
+                    double salary = Double.parseDouble(textFieldSalary.getText());
+                    if(salary < 0)
+                    {
+                        JOptionPane.showMessageDialog(getParent(), "Invalid salary (can't be negative) !", "Error !", JOptionPane.ERROR_MESSAGE);
+                        return;
+                    }
+                    employee.setSalary(salary);
+
+                    if(textFieldPassword.getText().isEmpty())
+                    {
+                        JOptionPane.showMessageDialog(getParent(), "Invalid password !", "Error !", JOptionPane.ERROR_MESSAGE);
+                        return;
+                    }
                     employee.setPassword(textFieldPassword.getText());
 
                     parent.main.getController().actionPerformed(new ActionEvent(this, 0, ControllerActions.ADD_EMPLOYEE));
