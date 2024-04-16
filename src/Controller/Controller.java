@@ -305,8 +305,15 @@ public final class Controller implements ActionListener
             }
             else
             {
-                model.deleteEmployee(employeeToDelete);
-                view.displayEmployeeEmployee(model.getListEmployee());
+                if(employeeToDelete.getRegistrationNumber().equals("admin"))
+                {
+                    view.displayError("You can't delete the admin !");
+                }
+                else
+                {
+                    model.deleteEmployee(employeeToDelete);
+                    view.displayEmployeeEmployee(model.getListEmployee());
+                }
             }
         }
 
