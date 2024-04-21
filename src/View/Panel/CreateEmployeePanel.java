@@ -3,6 +3,7 @@ package View.Panel;
 import Controller.ControllerActions;
 import Model.Entity.Client;
 import Model.Entity.Employee;
+import View.CustomDateFormat;
 import View.Employee.EmployeeWindow;
 import org.jdatepicker.impl.JDatePanelImpl;
 import org.jdatepicker.impl.JDatePickerImpl;
@@ -45,7 +46,7 @@ public class CreateEmployeePanel extends JPanel
         UtilDateModel model = new UtilDateModel();
         Properties properties = new Properties();
         JDatePanelImpl datePanel = new JDatePanelImpl(model, properties);
-        datePickerBirthdate = new JDatePickerImpl(datePanel, null);
+        datePickerBirthdate = new JDatePickerImpl(datePanel, new CustomDateFormat());
         textFieldSalary = new JTextField();
         textFieldRegistrationNumber = new JTextField();
         textFieldPassword = new JTextField();

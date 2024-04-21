@@ -5,6 +5,7 @@ import Model.Entity.Article;
 import Model.Entity.ArticleType;
 import Model.Entity.Client;
 import Model.Entity.Provider;
+import View.CustomDateFormat;
 import View.Employee.EmployeeWindow;
 import org.jdatepicker.impl.JDatePanelImpl;
 import org.jdatepicker.impl.JDatePickerImpl;
@@ -48,7 +49,7 @@ public class CreateClientPanel extends JPanel
         UtilDateModel model = new UtilDateModel();
         Properties properties = new Properties();
         JDatePanelImpl datePanel = new JDatePanelImpl(model, properties);
-        datePickerBirthdate = new JDatePickerImpl(datePanel, null);
+        datePickerBirthdate = new JDatePickerImpl(datePanel, new CustomDateFormat());
         textFieldDiscount = new JTextField();
         textFieldPassword = new JTextField();
         btnCreate = new JButton("Create");
