@@ -2,7 +2,6 @@ package Model;
 
 import Model.Entity.*;
 
-import java.io.Console;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -198,14 +197,7 @@ public class DAOProjectMarket implements DataAccessLayer
         {
             if(c.getRegistrationNumber().equals(registrationNumber))
             {
-                if(c.getPassword().equals(password))
-                {
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
+                return c.getPassword().equals(password);
             }
         }
         return false;
@@ -217,14 +209,7 @@ public class DAOProjectMarket implements DataAccessLayer
         {
             if(e.getRegistrationNumber().equals(registrationNumber))
             {
-                if(e.getPassword().equals(password))
-                {
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
+                return e.getPassword().equals(password);
             }
         }
         return false;
