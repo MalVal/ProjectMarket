@@ -144,6 +144,71 @@ public class DAOProjectMarket implements DataAccessLayer
     }
 
     @Override
+    public boolean ModifyArticle(Article oldArticle, Article newArticle) {
+        for (int i = 0; i < listArticle.size(); i++)
+        {
+            if (listArticle.get(i).equals(oldArticle))
+            {
+                listArticle.set(i, newArticle);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    @Override
+    public boolean ModifyArticleType(ArticleType oldArticleType, ArticleType newArticleType) {
+        for (int i = 0; i < listArticleType.size(); i++)
+        {
+            if (listArticleType.get(i).equals(oldArticleType))
+            {
+                listArticleType.set(i, newArticleType);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    @Override
+    public boolean ModifyClient(Client oldClient, Client newClient) {
+        for (int i = 0; i < listClient.size(); i++)
+        {
+            if (listClient.get(i).equals(oldClient))
+            {
+                listClient.set(i, newClient);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    @Override
+    public boolean ModifyEmployee(Employee oldEmployee, Employee newEmployee) {
+        for (int i = 0; i < listEmployee.size(); i++)
+        {
+            if (listEmployee.get(i).equals(oldEmployee))
+            {
+                listEmployee.set(i, newEmployee);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    @Override
+    public boolean ModifyProvider(Provider oldProvider, Provider newProvider) {
+        for (int i = 0; i < listProvider.size(); i++)
+        {
+            if (listProvider.get(i).equals(oldProvider))
+            {
+                listProvider.set(i, newProvider);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    @Override
     public boolean decreaseQuantity(Article article) {
         for(Article a : listArticle)
         {

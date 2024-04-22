@@ -331,5 +331,88 @@ public final class Controller implements ActionListener
                 view.displayClientBasket(model.getCurrentClient().getBasket().getList());
             }
         }
+
+        if (e.getActionCommand().equals(ControllerActions.MODIFY_ARTICLE))
+        {
+            Article articleToModify = view.getSelectedEmployeeArticle();
+
+            if(articleToModify == null)
+            {
+                view.displayError("You have to select an article !");
+            }
+            else
+            {
+                model.ModifyArticle(articleToModify, new Article());
+
+                view.displayClientComboBoxArticle(model.getListArticle());
+                view.displayEmployeeArticle(model.getListArticle());
+            }
+        }
+
+        if (e.getActionCommand().equals(ControllerActions.MODIFY_ARTICLE_TYPE))
+        {
+            ArticleType articleTypeToModify = view.getSelectedArticleType();
+
+            if(articleTypeToModify == null)
+            {
+                view.displayError("You have to select an article type !");
+            }
+            else
+            {
+                model.ModifyArticleType(articleTypeToModify, new ArticleType());
+
+                view.displayEmployeeArticleType(model.getListArticleType());
+                view.displayEmployeeComboBoxArticleType(model.getListArticleType());
+            }
+        }
+
+        if (e.getActionCommand().equals(ControllerActions.MODIFY_CLIENT))
+        {
+            Client clientToModify = view.getSelectedClient();
+
+            if(clientToModify == null)
+            {
+                view.displayError("You have to select a client !");
+            }
+            else
+            {
+                model.ModifyClient(clientToModify, new Client());
+
+                view.displayEmployeeClient(model.getListClient());
+            }
+        }
+
+        if (e.getActionCommand().equals(ControllerActions.MODIFY_EMPLOYEE))
+        {
+            Employee employeeToModify = view.getSelectedEmployee();
+
+            if(employeeToModify == null)
+            {
+                view.displayError("You have to select an employee !");
+            }
+            else
+            {
+                model.ModifyEmployee(employeeToModify, new Employee());
+
+                view.displayEmployeeEmployee(model.getListEmployee());
+            }
+        }
+
+        if (e.getActionCommand().equals(ControllerActions.MODIFY_PROVIDER))
+        {
+            Provider providerToModify = view.getSelectedProvider();
+
+            if(providerToModify == null)
+            {
+                view.displayError("You have to select a provider !");
+            }
+            else
+            {
+                model.ModifyProvider(providerToModify, new Provider());
+
+                view.displayEmployeeProvider(model.getListProvider());
+                view.displayEmployeeComboBoxProvider(model.getListProvider());
+            }
+        }
     }
 }

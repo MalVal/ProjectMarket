@@ -19,6 +19,12 @@ public interface DataAccessLayer
     boolean deleteEmployee(Employee employee);
     boolean deleteProvider(Provider provider);
 
+    boolean ModifyArticle(Article oldArticle, Article newArticle);
+    boolean ModifyArticleType(ArticleType oldArticleType, ArticleType newArticleType);
+    boolean ModifyClient(Client oldClient, Client newClient);
+    boolean ModifyEmployee(Employee oldEmployee, Employee newEmployee);
+    boolean ModifyProvider(Provider oldProvider, Provider newProvider);
+
     boolean decreaseQuantity(Article article);
 
     Client searchClient(String registrationNumber);

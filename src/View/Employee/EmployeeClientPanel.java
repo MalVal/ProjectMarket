@@ -1,6 +1,7 @@
 package View.Employee;
 
 import Controller.ControllerActions;
+import View.Panel.BtnDeleteModifyPanel;
 import View.Panel.CreateClientPanel;
 import View.ViewPanel.ViewClientPanel;
 
@@ -35,14 +36,14 @@ public class EmployeeClientPanel extends JPanel
         constraints.weighty = 0.6; // 50% de l'espace vertical
         this.add(viewClientPanel, constraints);
 
-        // Add JButton
+        // Add SubPanel
+        BtnDeleteModifyPanel subPanel = new BtnDeleteModifyPanel("Delete selected client", "Modify selected client");
         constraints.fill = GridBagConstraints.NONE;
         constraints.gridx = 0;
         constraints.gridy = 1;
         constraints.weightx = 0.0;
         constraints.weighty = 0.1; // 10% de l'espace vertical
-        JButton btnDelete = new JButton("Delete selected Client");
-        this.add(btnDelete, constraints);
+        this.add(subPanel, constraints);
 
         // Add CreateClientPanel
         constraints.fill = GridBagConstraints.BOTH;
@@ -52,12 +53,21 @@ public class EmployeeClientPanel extends JPanel
         constraints.weighty = 0.4; // 40% de l'espace vertical
         this.add(createClientPanel, constraints);
 
-        btnDelete.addActionListener(new ActionListener()
+        subPanel.btnDelete.addActionListener(new ActionListener()
         {
             @Override
             public void actionPerformed(ActionEvent e)
             {
                 parent.main.getController().actionPerformed(new ActionEvent(this, 0, ControllerActions.DELETE_CLIENT));
+            }
+        });
+
+        subPanel.btnModify.addActionListener(new ActionListener()
+        {
+            @Override
+            public void actionPerformed(ActionEvent e)
+            {
+                parent.main.getController().actionPerformed(new ActionEvent(this, 0, ControllerActions.MODIFY_CLIENT));
             }
         });
     }

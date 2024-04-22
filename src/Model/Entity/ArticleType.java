@@ -6,7 +6,7 @@ public class ArticleType implements Cloneable
     {
         ArticleType at1 = new ArticleType();
         ArticleType at2 = new ArticleType("Apple", "Fruit", 0.56);
-        ArticleType at3 = (ArticleType) at2.clone();
+        ArticleType at3 = at2.clone();
 
         System.out.println("at1 = " + at1);
         System.out.println("at2 = " + at2);
