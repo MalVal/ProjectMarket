@@ -359,10 +359,14 @@ public final class Controller implements ActionListener
             }
             else
             {
-                model.ModifyArticleType(articleTypeToModify, new ArticleType());
+                ArticleType newArticleType = view.displayModifyArticleType(articleTypeToModify);
+                if(newArticleType != null)
+                {
+                    model.ModifyArticleType(articleTypeToModify, newArticleType);
 
-                view.displayEmployeeArticleType(model.getListArticleType());
-                view.displayEmployeeComboBoxArticleType(model.getListArticleType());
+                    view.displayEmployeeArticleType(model.getListArticleType());
+                    view.displayEmployeeComboBoxArticleType(model.getListArticleType());
+                }
             }
         }
 

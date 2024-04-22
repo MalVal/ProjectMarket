@@ -22,6 +22,12 @@ public interface ViewProjectMarket
     void displayClientBasket(ArrayList<Article> articles);
     void displayClientPurchase(ArrayList<Purchase> purchases);
 
+    Article displayModifyArticle();
+    ArticleType displayModifyArticleType(ArticleType articleTypeToModify);
+    Provider displayModifyProvider();
+    Employee displayModifyEmployee();
+    Client displayModifyClient();
+
     String getRegistrationNumber();
     char[] getPassword();
     String getMode();

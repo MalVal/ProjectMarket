@@ -16,6 +16,7 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 
+import View.Modify.ViewModifyArticleType;
 import com.formdev.flatlaf.FlatDarculaLaf;
 import com.formdev.flatlaf.FlatDarkLaf;
 import com.formdev.flatlaf.FlatIntelliJLaf;
@@ -183,6 +184,34 @@ public class ViewProjectMarketSwing extends JFrame implements ViewProjectMarket
     public void displayClientPurchase(ArrayList<Purchase> purchases) {
         cw.viewPurchasePanel.tablePurchase.setModel(new ModelTablePurchase(purchases));
         cw.viewPurchasePanel.tablePurchase.setColumnModel(new ModelColumnTablePurchase());
+    }
+
+    @Override
+    public Article displayModifyArticle() {
+        return null;
+    }
+
+    @Override
+    public ArticleType displayModifyArticleType(ArticleType articleTypeToModify) {
+        ArticleType a;
+        ViewModifyArticleType dialog = new ViewModifyArticleType(this, articleTypeToModify);
+        a = dialog.showDialog();
+        return a;
+    }
+
+    @Override
+    public Provider displayModifyProvider() {
+        return null;
+    }
+
+    @Override
+    public Employee displayModifyEmployee() {
+        return null;
+    }
+
+    @Override
+    public Client displayModifyClient() {
+        return null;
     }
 
     @Override
