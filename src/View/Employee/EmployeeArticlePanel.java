@@ -36,14 +36,15 @@ public class EmployeeArticlePanel extends JPanel
         constraints.weighty = 0.5; // 50% de l'espace vertical
         this.add(viewArticlePanel, constraints);
 
-        // Add SubPanel
-        BtnDeleteModifyPanel subPanel = new BtnDeleteModifyPanel("Delete selected article", "Modify selected article");
+        // Add JButton delete
         constraints.fill = GridBagConstraints.NONE;
         constraints.gridx = 0;
         constraints.gridy = 1;
         constraints.weightx = 0.0;
         constraints.weighty = 0.1; // 10% de l'espace vertical
-        this.add(subPanel, constraints);
+
+        JButton btnDelete = new JButton("Delete selected article");
+        this.add(btnDelete, constraints);
 
         // Add addArticlePanel
         constraints.fill = GridBagConstraints.BOTH;
@@ -53,21 +54,12 @@ public class EmployeeArticlePanel extends JPanel
         constraints.weighty = 0.4; // 40% de l'espace vertical
         this.add(addArticlePanel, constraints);
 
-        subPanel.btnDelete.addActionListener(new ActionListener()
+        btnDelete.addActionListener(new ActionListener()
         {
             @Override
             public void actionPerformed(ActionEvent e)
             {
                 parent.main.getController().actionPerformed(new ActionEvent(this, 0, ControllerActions.DELETE_ARTICLE));
-            }
-        });
-
-        subPanel.btnModify.addActionListener(new ActionListener()
-        {
-            @Override
-            public void actionPerformed(ActionEvent e)
-            {
-                parent.main.getController().actionPerformed(new ActionEvent(this, 0, ControllerActions.MODIFY_ARTICLE));
             }
         });
     }

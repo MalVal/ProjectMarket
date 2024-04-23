@@ -332,23 +332,6 @@ public final class Controller implements ActionListener
             }
         }
 
-        if (e.getActionCommand().equals(ControllerActions.MODIFY_ARTICLE))
-        {
-            Article articleToModify = view.getSelectedEmployeeArticle();
-
-            if(articleToModify == null)
-            {
-                view.displayError("You have to select an article !");
-            }
-            else
-            {
-                model.ModifyArticle(articleToModify, new Article());
-
-                view.displayClientComboBoxArticle(model.getListArticle());
-                view.displayEmployeeArticle(model.getListArticle());
-            }
-        }
-
         if (e.getActionCommand().equals(ControllerActions.MODIFY_ARTICLE_TYPE))
         {
             ArticleType articleTypeToModify = view.getSelectedArticleType();
@@ -380,9 +363,13 @@ public final class Controller implements ActionListener
             }
             else
             {
-                model.ModifyClient(clientToModify, new Client());
+                Client newClient = view.displayModifyClient(clientToModify);
+                if(newClient != null)
+                {
+                    model.ModifyClient(clientToModify, newClient);
 
-                view.displayEmployeeClient(model.getListClient());
+                    view.displayEmployeeClient(model.getListClient());
+                }
             }
         }
 
@@ -396,9 +383,20 @@ public final class Controller implements ActionListener
             }
             else
             {
-                model.ModifyEmployee(employeeToModify, new Employee());
+                if(employeeToModify.getRegistrationNumber().equals("admin"))
+                {
+                    view.displayError("You can't modify the admin !");
+                }
+                else
+                {
+                    Employee newEmployee = view.displayModifyEmployee(employeeToModify);
+                    if(newEmployee != null)
+                    {
+                        model.ModifyEmployee(employeeToModify, newEmployee);
 
-                view.displayEmployeeEmployee(model.getListEmployee());
+                        view.displayEmployeeEmployee(model.getListEmployee());
+                    }
+                }
             }
         }
 
@@ -412,10 +410,14 @@ public final class Controller implements ActionListener
             }
             else
             {
-                model.ModifyProvider(providerToModify, new Provider());
+                Provider newProvider = view.displayModifyProvider(providerToModify);
+                if(newProvider != null)
+                {
+                    model.ModifyProvider(providerToModify, newProvider);
 
-                view.displayEmployeeProvider(model.getListProvider());
-                view.displayEmployeeComboBoxProvider(model.getListProvider());
+                    view.displayEmployeeProvider(model.getListProvider());
+                    view.displayEmployeeComboBoxProvider(model.getListProvider());
+                }
             }
         }
     }

@@ -88,7 +88,7 @@ public class ViewModifyArticleType extends JDialog
                         newArticleType.setPrice(price);
                         change = true;
                     }
-                    if(change == false)
+                    if(!change)
                     {
                         newArticleType = null;
                     }

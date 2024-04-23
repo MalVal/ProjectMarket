@@ -17,7 +17,6 @@ public abstract class ControllerActions
     public static final String DELETE_PROVIDER = "Delete provider";
     public static final String REMOVE_TO_BASKET = "Remove to basket";
 
-    public static final String MODIFY_ARTICLE = "Modify article";
     public static final String MODIFY_ARTICLE_TYPE = "Modify article type";
     public static final String MODIFY_CLIENT = "Modify client";
     public static final String MODIFY_EMPLOYEE = "Modify employee";

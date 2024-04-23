@@ -144,19 +144,6 @@ public class DAOProjectMarket implements DataAccessLayer
     }
 
     @Override
-    public boolean ModifyArticle(Article oldArticle, Article newArticle) {
-        for (int i = 0; i < listArticle.size(); i++)
-        {
-            if (listArticle.get(i).equals(oldArticle))
-            {
-                listArticle.set(i, newArticle);
-                return true;
-            }
-        }
-        return false;
-    }
-
-    @Override
     public boolean ModifyArticleType(ArticleType oldArticleType, ArticleType newArticleType) {
         for (int i = 0; i < listArticleType.size(); i++)
         {

@@ -19,7 +19,6 @@ public interface DataAccessLayer
     boolean deleteEmployee(Employee employee);
     boolean deleteProvider(Provider provider);
 
-    boolean ModifyArticle(Article oldArticle, Article newArticle);
     boolean ModifyArticleType(ArticleType oldArticleType, ArticleType newArticleType);
     boolean ModifyClient(Client oldClient, Client newClient);
     boolean ModifyEmployee(Employee oldEmployee, Employee newEmployee);

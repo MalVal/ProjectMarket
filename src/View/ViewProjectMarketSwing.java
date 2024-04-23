@@ -17,6 +17,9 @@ import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 
 import View.Modify.ViewModifyArticleType;
+import View.Modify.ViewModifyClient;
+import View.Modify.ViewModifyEmployee;
+import View.Modify.ViewModifyProvider;
 import com.formdev.flatlaf.FlatDarculaLaf;
 import com.formdev.flatlaf.FlatDarkLaf;
 import com.formdev.flatlaf.FlatIntelliJLaf;
@@ -187,11 +190,6 @@ public class ViewProjectMarketSwing extends JFrame implements ViewProjectMarket
     }
 
     @Override
-    public Article displayModifyArticle() {
-        return null;
-    }
-
-    @Override
     public ArticleType displayModifyArticleType(ArticleType articleTypeToModify) {
         ArticleType a;
         ViewModifyArticleType dialog = new ViewModifyArticleType(this, articleTypeToModify);
@@ -200,18 +198,27 @@ public class ViewProjectMarketSwing extends JFrame implements ViewProjectMarket
     }
 
     @Override
-    public Provider displayModifyProvider() {
-        return null;
+    public Provider displayModifyProvider(Provider providerToModify) {
+        Provider p;
+        ViewModifyProvider dialog = new ViewModifyProvider(this, providerToModify);
+        p = dialog.showDialog();
+        return p;
     }
 
     @Override
-    public Employee displayModifyEmployee() {
-        return null;
+    public Employee displayModifyEmployee(Employee employeeToModify) {
+        Employee e;
+        ViewModifyEmployee dialog = new ViewModifyEmployee(this, employeeToModify);
+        e = dialog.showDialog();
+        return e;
     }
 
     @Override
-    public Client displayModifyClient() {
-        return null;
+    public Client displayModifyClient(Client clientToModify) {
+        Client c;
+        ViewModifyClient dialog = new ViewModifyClient(this, clientToModify);
+        c = dialog.showDialog();
+        return c;
     }
 
     @Override
