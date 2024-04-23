@@ -63,7 +63,41 @@ public class ViewModifyArticleType extends JDialog
         btnOkMod.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                dispose();
+                try
+                {
+                    boolean change = false;
+
+                    if(!textNameModify.getText().isEmpty())
+                    {
+                        newArticleType.setName(textNameModify.getText());
+                        change = true;
+                    }
+                    if(!textCategoryModify.getText().isEmpty())
+                    {
+                        newArticleType.setCategory(textCategoryModify.getText());
+                        change = true;
+                    }
+                    if(!textPriceModify.getText().isEmpty())
+                    {
+                        double price = Double.parseDouble(textPriceModify.getText());
+                        if(price <= 0)
+                        {
+                            JOptionPane.showMessageDialog(getParent(), "Invalid price (can't be negative or null) !", "Error !", JOptionPane.ERROR_MESSAGE);
+                            return;
+                        }
+                        newArticleType.setPrice(price);
+                        change = true;
+                    }
+                    if(change == false)
+                    {
+                        newArticleType = null;
+                    }
+                    dispose();
+                }
+                catch (NumberFormatException ex)
+                {
+                    JOptionPane.showMessageDialog(getParent(), "Invalid price !", "Error !", JOptionPane.ERROR_MESSAGE);
+                }
             }
         });
 
