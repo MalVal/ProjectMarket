@@ -3,7 +3,9 @@ package Controller;
 import Model.DataAccessLayer;
 import Model.Entity.*;
 import View.ViewProjectMarket;
+import com.formdev.flatlaf.FlatDarkLaf;
 
+import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -32,6 +34,16 @@ public final class Controller implements ActionListener
         {
             char[] password = view.getPassword();
             String strPassword = new String(password);
+
+            if(view.getColor().equals("Dark"))
+            {
+                view.setDarkTheme();
+            }
+            else
+            {
+                view.setWhiteTheme();
+            }
+
             if(view.getRegistrationNumber().isEmpty() || strPassword.isEmpty())
             {
                 view.displayError("You have to fill all the properties !");
@@ -49,6 +61,7 @@ public final class Controller implements ActionListener
                             this.model.setCurrentClient(currentClient);
                             this.model.getCurrentClient().getBasket().clear();
 
+                            view.createClientWindow();
                             view.displayClientComboBoxArticle(model.getListArticle());
                             view.displayClientBasket(model.getCurrentClient().getBasket().getList());
                             view.displayClientPurchase(model.getCurrentClient().getPurchases());
@@ -72,6 +85,7 @@ public final class Controller implements ActionListener
                     {
                         if(model.checkEmployeePassword(view.getRegistrationNumber(), strPassword))
                         {
+                            view.createEmployeeWindow();
                             view.displayEmployeeArticleType(model.getListArticleType());
                             view.displayEmployeeProvider(model.getListProvider());
                             view.displayEmployeeArticle(model.getListArticle());
@@ -80,7 +94,6 @@ public final class Controller implements ActionListener
                             view.displayEmployeeEmployee(model.getListEmployee());
                             view.displayEmployeeComboBoxArticleType(model.getListArticleType());
                             view.displayEmployeeComboBoxProvider(model.getListProvider());
-
                             view.displayEmployeeWindow();
                         }
                         else

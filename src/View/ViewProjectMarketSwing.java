@@ -36,19 +36,20 @@ public class ViewProjectMarketSwing extends JFrame implements ViewProjectMarket
     public JPasswordField textPasswordConnexion;
     public JRadioButton radioClientConnection;
     public JRadioButton radioEmploysConnection;
+    public JCheckBox checkDarkColorConnection;
 
     public ViewProjectMarketSwing()
     {
         super();
 
         try {
-            UIManager.setLookAndFeel(new FlatDarkLaf());
+            UIManager.setLookAndFeel(new FlatLightLaf());
         } catch (UnsupportedLookAndFeelException e) {
             e.printStackTrace();
         }
 
-        cw = new ClientWindow(this, true);
-        ew = new EmployeeWindow(this, true);
+        cw = null;
+        ew = null;
 
         ButtonGroup buttonGroup = new ButtonGroup();
 
@@ -73,14 +74,18 @@ public class ViewProjectMarketSwing extends JFrame implements ViewProjectMarket
         radioPanel.add(radioClientConnection);
         buttonGroup.add(radioClientConnection);
 
+        this.checkDarkColorConnection = new JCheckBox("Dark theme");
+        JPanel ColorPanelColor = new JPanel(new GridLayout( 1, 1 ));
+        ColorPanelColor.add(checkDarkColorConnection);
 
         JButton btnConnection = new JButton("Connection");
 
         JPanel mainPanel = (JPanel) this.getContentPane();
-        mainPanel.setLayout(new GridLayout(4,1));
+        mainPanel.setLayout(new GridLayout(5,1));
         mainPanel.add(panelRegistrationNumberCo);
         mainPanel.add(panelPasswordCo);
         mainPanel.add(radioPanel);
+        mainPanel.add(ColorPanelColor);
         mainPanel.add(btnConnection);
 
         this.setTitle("Project Market");
@@ -109,6 +114,16 @@ public class ViewProjectMarketSwing extends JFrame implements ViewProjectMarket
     }
 
     @Override
+    public void createEmployeeWindow() {
+        ew = new EmployeeWindow(this, true);
+    }
+
+    @Override
+    public void createClientWindow() {
+        cw = new ClientWindow(this, true);
+    }
+
+    @Override
     public void displayError(String error) {
         JOptionPane.showMessageDialog(getParent(), error, "Error !", JOptionPane.ERROR_MESSAGE);
     }
@@ -117,12 +132,14 @@ public class ViewProjectMarketSwing extends JFrame implements ViewProjectMarket
     public void displayEmployeeWindow() {
         ew.setVisible(true);
         ew.dispose();
+        ew = null;
     }
 
     @Override
     public void displayClientWindow() {
         cw.setVisible(true);
         cw.dispose();
+        cw = null;
     }
 
     @Override
@@ -245,6 +262,18 @@ public class ViewProjectMarketSwing extends JFrame implements ViewProjectMarket
     }
 
     @Override
+    public String getColor() {
+        if(checkDarkColorConnection.isSelected())
+        {
+            return "Dark";
+        }
+        else
+        {
+            return "White";
+        }
+    }
+
+    @Override
     public ArticleType getArticleType() {
         return this.ew.employeeArticleTypePanel.createArticleTypePanel.articleType;
     }
@@ -326,6 +355,26 @@ public class ViewProjectMarketSwing extends JFrame implements ViewProjectMarket
         if (index == -1) return null;
 
         return (Employee)(table.getModel().getValueAt(index, -1));
+    }
+
+    @Override
+    public void setDarkTheme() {
+        try {
+            UIManager.setLookAndFeel(new FlatDarkLaf());
+            SwingUtilities.updateComponentTreeUI(this);
+        } catch (UnsupportedLookAndFeelException exp) {
+            exp.printStackTrace();
+        }
+    }
+
+    @Override
+    public void setWhiteTheme() {
+        try {
+            UIManager.setLookAndFeel(new FlatLightLaf());
+            SwingUtilities.updateComponentTreeUI(this);
+        } catch (UnsupportedLookAndFeelException exp) {
+            exp.printStackTrace();
+        }
     }
 
     @Override

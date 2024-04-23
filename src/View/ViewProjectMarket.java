@@ -7,6 +7,10 @@ import java.util.ArrayList;
 
 public interface ViewProjectMarket
 {
+
+    void createEmployeeWindow();
+    void createClientWindow();
+
     void displayError(String error);
     void displayEmployeeWindow();
     void displayClientWindow();
@@ -30,6 +34,7 @@ public interface ViewProjectMarket
     String getRegistrationNumber();
     char[] getPassword();
     String getMode();
+    String getColor();
     ArticleType getArticleType();
     Provider getProvider();
     Article getEmployeeArticle();
@@ -43,6 +48,9 @@ public interface ViewProjectMarket
     Provider getSelectedProvider();
     Client getSelectedClient();
     Employee getSelectedEmployee();
+
+    void setDarkTheme();
+    void setWhiteTheme();
 
     void setController(Controller c);
     Controller getController();
