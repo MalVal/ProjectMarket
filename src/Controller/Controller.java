@@ -146,7 +146,6 @@ public final class Controller implements ActionListener
         if (e.getActionCommand().equals(ControllerActions.ADD_ARTICLE))
         {
             model.addArticle(view.getEmployeeArticle());
-            view.displayClientComboBoxArticle(model.getListArticle());
             view.displayEmployeeArticle(model.getListArticle());
             return;
         }
@@ -238,7 +237,6 @@ public final class Controller implements ActionListener
                     model.getCurrentClient().setPurchases(purchases);
 
                     view.displayClientPurchase(model.getCurrentClient().getPurchases());
-                    view.displayEmployeePurchase(model.getListPurchase());
                     view.displayClientBasket(model.getCurrentClient().getBasket().getList());
                     view.displayClientComboBoxArticle(model.getListArticle());
                 }
