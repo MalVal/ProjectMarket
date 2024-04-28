@@ -14,7 +14,7 @@ public class ModelTablePurchase extends AbstractTableModel
     }
 
     @Override
-    public Class getColumnClass(int c)
+    public Class<?> getColumnClass(int c)
     {
         return switch (c) {
             case 0, 1 -> String.class;

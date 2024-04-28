@@ -14,7 +14,7 @@ public class ModelTableProvider extends AbstractTableModel
     }
 
     @Override
-    public Class getColumnClass(int c)
+    public Class<?> getColumnClass(int c)
     {
         return switch (c) {
             case 0, 1, 2 -> String.class;
