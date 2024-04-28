@@ -6,7 +6,7 @@ public class Provider implements Cloneable
     {
         Provider p1 = new Provider();
         Provider p2 = new Provider("Lidl", "Rue de la cité", "0499/87/75/42");
-        Provider p3 = (Provider) p2.clone();
+        Provider p3 = p2.clone();
 
         System.out.println("p1 = " + p1);
         System.out.println("p2 = " + p2);
@@ -107,7 +107,13 @@ public class Provider implements Cloneable
     @Override
     public Provider clone()
     {
-        return new Provider(this.name, this.address, this.phoneNumber);
+        try {
+            return (Provider) super.clone();
+        }
+        catch (CloneNotSupportedException e)
+        {
+            throw new InternalError(e);
+        }
     }
 
 }

@@ -7,13 +7,13 @@ import java.util.ArrayList;
 
 public class DAOProjectMarket implements DataAccessLayer
 {
-    private CurrentClient currentClient;
-    private ArrayList<ArticleType> listArticleType;
-    private ArrayList<Article> listArticle;
-    private ArrayList<Provider> listProvider;
-    private ArrayList<Purchase> listPurchase;
-    private ArrayList<Client> listClient;
-    private ArrayList<Employee> listEmployee;
+    private final CurrentClient currentClient;
+    private final ArrayList<ArticleType> listArticleType;
+    private final ArrayList<Article> listArticle;
+    private final ArrayList<Provider> listProvider;
+    private final ArrayList<Purchase> listPurchase;
+    private final ArrayList<Client> listClient;
+    private final ArrayList<Employee> listEmployee;
 
     public DAOProjectMarket()
     {
@@ -28,8 +28,8 @@ public class DAOProjectMarket implements DataAccessLayer
     }
 
     @Override
-    public boolean addArticle(Article article) {
-        if(article == null) return false;
+    public void addArticle(Article article) {
+        if(article == null) return;
 
         for(Article a : listArticle)
         {
@@ -39,12 +39,11 @@ public class DAOProjectMarket implements DataAccessLayer
                 int quantity2 = article.getQuantity();
                 int newQuantity = quantity1 + quantity2;
                 a.setQuantity(newQuantity);
-                return true;
+                return;
             }
         }
 
         listArticle.add(article);
-        return true;
     }
 
     @Override
@@ -112,107 +111,101 @@ public class DAOProjectMarket implements DataAccessLayer
     }
 
     @Override
-    public boolean addPurchase(Purchase purchase) {
-        if(purchase == null) return false;
+    public void addPurchase(Purchase purchase) {
+        if(purchase == null) return;
         listPurchase.add(purchase);
-        return true;
     }
 
     @Override
-    public boolean deleteArticle(Article article) {
-        return listArticle.remove(article);
+    public void deleteArticle(Article article) {
+        listArticle.remove(article);
     }
 
     @Override
-    public boolean deleteArticleType(ArticleType articleType) {
-        return listArticleType.remove(articleType);
+    public void deleteArticleType(ArticleType articleType) {
+        listArticleType.remove(articleType);
     }
 
     @Override
-    public boolean deleteClient(Client client) {
-        return listClient.remove(client);
+    public void deleteClient(Client client) {
+        listClient.remove(client);
     }
 
     @Override
-    public boolean deleteEmployee(Employee employee) {
-        return listEmployee.remove(employee);
+    public void deleteEmployee(Employee employee) {
+        listEmployee.remove(employee);
     }
 
     @Override
-    public boolean deleteProvider(Provider provider) {
-        return listProvider.remove(provider);
+    public void deleteProvider(Provider provider) {
+        listProvider.remove(provider);
     }
 
     @Override
-    public boolean ModifyArticleType(ArticleType oldArticleType, ArticleType newArticleType) {
+    public void ModifyArticleType(ArticleType oldArticleType, ArticleType newArticleType) {
         for (int i = 0; i < listArticleType.size(); i++)
         {
             if (listArticleType.get(i).equals(oldArticleType))
             {
                 listArticleType.set(i, newArticleType);
-                return true;
+                return;
             }
         }
-        return false;
     }
 
     @Override
-    public boolean ModifyClient(Client oldClient, Client newClient) {
+    public void ModifyClient(Client oldClient, Client newClient) {
         for (int i = 0; i < listClient.size(); i++)
         {
             if (listClient.get(i).equals(oldClient))
             {
                 listClient.set(i, newClient);
-                return true;
+                return;
             }
         }
-        return false;
     }
 
     @Override
-    public boolean ModifyEmployee(Employee oldEmployee, Employee newEmployee) {
+    public void ModifyEmployee(Employee oldEmployee, Employee newEmployee) {
         for (int i = 0; i < listEmployee.size(); i++)
         {
             if (listEmployee.get(i).equals(oldEmployee))
             {
                 listEmployee.set(i, newEmployee);
-                return true;
+                return;
             }
         }
-        return false;
     }
 
     @Override
-    public boolean ModifyProvider(Provider oldProvider, Provider newProvider) {
+    public void ModifyProvider(Provider oldProvider, Provider newProvider) {
         for (int i = 0; i < listProvider.size(); i++)
         {
             if (listProvider.get(i).equals(oldProvider))
             {
                 listProvider.set(i, newProvider);
-                return true;
+                return;
             }
         }
-        return false;
     }
 
     @Override
-    public boolean decreaseQuantity(Article article) {
+    public void decreaseQuantity(Article article) {
         for(Article a : listArticle)
         {
             if(a.equals(article))
             {
                 if(a.getQuantity() - article.getQuantity() < 0)
                 {
-                    return false;
+                    return;
                 }
                 else
                 {
                     a.setQuantity(a.getQuantity() - article.getQuantity());
-                    return true;
+                    return;
                 }
             }
         }
-        return false;
     }
 
     @Override
@@ -295,8 +288,8 @@ public class DAOProjectMarket implements DataAccessLayer
     }
 
     @Override
-    public boolean removeToBasket(Article article) {
-        return this.currentClient.getBasket().removeArticle(article);
+    public void removeToBasket(Article article) {
+        this.currentClient.getBasket().removeArticle(article);
     }
 
     @Override

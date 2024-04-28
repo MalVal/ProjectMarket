@@ -1,13 +1,9 @@
 package View.Client;
 
 import Controller.ControllerActions;
-import Model.Entity.Article;
-import Model.Entity.ArticleType;
-import Model.Entity.Provider;
 import View.Panel.AddArticleBasketPanel;
 import View.ViewPanel.ViewArticlePanel;
 import View.ViewProjectMarket;
-import View.ViewProjectMarketSwing;
 import View.ViewPanel.ViewPurchasePanel;
 
 import javax.swing.*;

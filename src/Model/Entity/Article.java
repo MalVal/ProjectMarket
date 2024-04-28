@@ -6,7 +6,7 @@ public class Article implements Cloneable
     {
         Article a1 = new Article();
         Article a2 = new Article(new ArticleType("Banana", "Fruit", 0.98), new Provider("CocoFruits", "Rue du centre 01", "0499/84/85/72"), 15);
-        Article a3 = (Article) a2.clone();
+        Article a3 = a2.clone();
 
         System.out.println("a1 = " + a1);
         System.out.println("a2 = " + a2);
@@ -107,7 +107,16 @@ public class Article implements Cloneable
     @Override
     public Article clone()
     {
-        return new Article(this.type.clone(), this.provider.clone(), this.quantity);
+        try {
+            Article clone = (Article) super.clone();
+            clone.type = this.type.clone();
+            clone.provider = this.provider.clone();
+            return clone;
+        }
+        catch (CloneNotSupportedException e)
+        {
+            throw new InternalError(e);
+        }
     }
 
 }

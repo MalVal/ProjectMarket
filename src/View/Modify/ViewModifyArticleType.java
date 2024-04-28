@@ -4,8 +4,6 @@ import Model.Entity.ArticleType;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class ViewModifyArticleType extends JDialog
 {
@@ -60,53 +58,47 @@ public class ViewModifyArticleType extends JDialog
         ImageIcon icon = new ImageIcon("src/View/img/caddieIcon.png");
         this.setIconImage(icon.getImage());
 
-        btnOkMod.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                try
-                {
-                    boolean change = false;
+        btnOkMod.addActionListener(e -> {
+            try
+            {
+                boolean change = false;
 
-                    if(!textNameModify.getText().isEmpty())
-                    {
-                        newArticleType.setName(textNameModify.getText());
-                        change = true;
-                    }
-                    if(!textCategoryModify.getText().isEmpty())
-                    {
-                        newArticleType.setCategory(textCategoryModify.getText());
-                        change = true;
-                    }
-                    if(!textPriceModify.getText().isEmpty())
-                    {
-                        double price = Double.parseDouble(textPriceModify.getText());
-                        if(price <= 0)
-                        {
-                            JOptionPane.showMessageDialog(getParent(), "Invalid price (can't be negative or null) !", "Error !", JOptionPane.ERROR_MESSAGE);
-                            return;
-                        }
-                        newArticleType.setPrice(price);
-                        change = true;
-                    }
-                    if(!change)
-                    {
-                        newArticleType = null;
-                    }
-                    dispose();
-                }
-                catch (NumberFormatException ex)
+                if(!textNameModify.getText().isEmpty())
                 {
-                    JOptionPane.showMessageDialog(getParent(), "Invalid price !", "Error !", JOptionPane.ERROR_MESSAGE);
+                    newArticleType.setName(textNameModify.getText());
+                    change = true;
                 }
+                if(!textCategoryModify.getText().isEmpty())
+                {
+                    newArticleType.setCategory(textCategoryModify.getText());
+                    change = true;
+                }
+                if(!textPriceModify.getText().isEmpty())
+                {
+                    double price = Double.parseDouble(textPriceModify.getText());
+                    if(price <= 0)
+                    {
+                        JOptionPane.showMessageDialog(getParent(), "Invalid price (can't be negative or null) !", "Error !", JOptionPane.ERROR_MESSAGE);
+                        return;
+                    }
+                    newArticleType.setPrice(price);
+                    change = true;
+                }
+                if(!change)
+                {
+                    newArticleType = null;
+                }
+                dispose();
+            }
+            catch (NumberFormatException ex)
+            {
+                JOptionPane.showMessageDialog(getParent(), "Invalid price !", "Error !", JOptionPane.ERROR_MESSAGE);
             }
         });
 
-        btnCancelMod.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                newArticleType = null;
-                dispose();
-            }
+        btnCancelMod.addActionListener(e -> {
+            newArticleType = null;
+            dispose();
         });
     }
 

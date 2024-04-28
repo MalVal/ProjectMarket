@@ -205,7 +205,6 @@ public final class Controller implements ActionListener
                 else
                 {
                     model.deleteArticle(articleToDelete);
-                    view.displayClientComboBoxArticle(model.getListArticle());
                     view.displayEmployeeArticle(model.getListArticle());
                 }
                 break;

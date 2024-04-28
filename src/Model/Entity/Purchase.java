@@ -17,7 +17,7 @@ public class Purchase implements Cloneable
      ----------------------------*/
 
     private Client buyer;
-    private ArrayList<Article> listArticle;
+    private final ArrayList<Article> listArticle;
     private double total;
 
     /*----------------------------
@@ -73,7 +73,15 @@ public class Purchase implements Cloneable
     @Override
     public Purchase clone()
     {
-        return new Purchase(this.buyer, this.listArticle);
+        try {
+            Purchase clone = (Purchase) super.clone();
+            clone.buyer = this.buyer.clone();
+            return clone;
+        }
+        catch (CloneNotSupportedException e)
+        {
+            throw new InternalError(e);
+        }
     }
 
 }

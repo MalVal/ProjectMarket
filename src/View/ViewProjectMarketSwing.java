@@ -20,9 +20,7 @@ import View.Modify.ViewModifyArticleType;
 import View.Modify.ViewModifyClient;
 import View.Modify.ViewModifyEmployee;
 import View.Modify.ViewModifyProvider;
-import com.formdev.flatlaf.FlatDarculaLaf;
 import com.formdev.flatlaf.FlatDarkLaf;
-import com.formdev.flatlaf.FlatIntelliJLaf;
 import com.formdev.flatlaf.FlatLightLaf;
 
 public class ViewProjectMarketSwing extends JFrame implements ViewProjectMarket
@@ -45,7 +43,7 @@ public class ViewProjectMarketSwing extends JFrame implements ViewProjectMarket
         try {
             UIManager.setLookAndFeel(new FlatLightLaf());
         } catch (UnsupportedLookAndFeelException e) {
-            e.printStackTrace();
+            System.out.println("Error look and field !");
         }
 
         cw = null;
@@ -363,7 +361,7 @@ public class ViewProjectMarketSwing extends JFrame implements ViewProjectMarket
             UIManager.setLookAndFeel(new FlatDarkLaf());
             SwingUtilities.updateComponentTreeUI(this);
         } catch (UnsupportedLookAndFeelException exp) {
-            exp.printStackTrace();
+            System.out.println("Error look and field !");
         }
     }
 
@@ -373,7 +371,7 @@ public class ViewProjectMarketSwing extends JFrame implements ViewProjectMarket
             UIManager.setLookAndFeel(new FlatLightLaf());
             SwingUtilities.updateComponentTreeUI(this);
         } catch (UnsupportedLookAndFeelException exp) {
-            exp.printStackTrace();
+            System.out.println("Error look and field !");
         }
     }
 

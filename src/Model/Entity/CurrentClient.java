@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class CurrentClient
 {
     private Client client;
-    private Basket basket;
+    private final Basket basket;
     private ArrayList<Purchase> purchases;
 
     public CurrentClient()

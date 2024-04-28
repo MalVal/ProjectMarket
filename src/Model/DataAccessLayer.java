@@ -6,25 +6,25 @@ import java.util.ArrayList;
 
 public interface DataAccessLayer
 {
-    boolean addArticle(Article article);
+    void addArticle(Article article);
     boolean addArticleType(ArticleType articleType);
     boolean addClient(Client client);
     boolean addEmployee(Employee employee);
     boolean addProvider(Provider provider);
-    boolean addPurchase(Purchase purchase);
+    void addPurchase(Purchase purchase);
 
-    boolean deleteArticle(Article article);
-    boolean deleteArticleType(ArticleType articleType);
-    boolean deleteClient(Client client);
-    boolean deleteEmployee(Employee employee);
-    boolean deleteProvider(Provider provider);
+    void deleteArticle(Article article);
+    void deleteArticleType(ArticleType articleType);
+    void deleteClient(Client client);
+    void deleteEmployee(Employee employee);
+    void deleteProvider(Provider provider);
 
-    boolean ModifyArticleType(ArticleType oldArticleType, ArticleType newArticleType);
-    boolean ModifyClient(Client oldClient, Client newClient);
-    boolean ModifyEmployee(Employee oldEmployee, Employee newEmployee);
-    boolean ModifyProvider(Provider oldProvider, Provider newProvider);
+    void ModifyArticleType(ArticleType oldArticleType, ArticleType newArticleType);
+    void ModifyClient(Client oldClient, Client newClient);
+    void ModifyEmployee(Employee oldEmployee, Employee newEmployee);
+    void ModifyProvider(Provider oldProvider, Provider newProvider);
 
-    boolean decreaseQuantity(Article article);
+    void decreaseQuantity(Article article);
 
     Client searchClient(String registrationNumber);
     Employee searchEmployee(String registrationNumber);
@@ -34,12 +34,12 @@ public interface DataAccessLayer
     void setCurrentClient(Client client);
     CurrentClient getCurrentClient();
     void addToBasket(Article article);
-    boolean removeToBasket(Article article);
+    void removeToBasket(Article article);
 
-    public ArrayList<Article> getListArticle();
-    public ArrayList<ArticleType> getListArticleType();
-    public ArrayList<Client> getListClient();
-    public ArrayList<Employee> getListEmployee();
-    public ArrayList<Provider> getListProvider();
-    public ArrayList<Purchase> getListPurchase();
+    ArrayList<Article> getListArticle();
+    ArrayList<ArticleType> getListArticleType();
+    ArrayList<Client> getListClient();
+    ArrayList<Employee> getListEmployee();
+    ArrayList<Provider> getListProvider();
+    ArrayList<Purchase> getListPurchase();
 }

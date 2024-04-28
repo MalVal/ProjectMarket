@@ -15,9 +15,9 @@ import java.util.ArrayList;
 
 public class AddArticlePanel extends JPanel
 {
-    private JComboBox<ArticleType> listArticle;
-    private JComboBox<Provider> listProvider;
-    private JTextField textFieldQuantity;
+    private final JComboBox<ArticleType> listArticle;
+    private final JComboBox<Provider> listProvider;
+    private final JTextField textFieldQuantity;
     public CustomComboBoxModel<ArticleType> articleTypeComboBoxModel;
     public CustomComboBoxModel<Provider> providerComboBoxModel;
     public EmployeeWindow parent;
@@ -33,9 +33,9 @@ public class AddArticlePanel extends JPanel
         this.parent = parent;
 
         articleTypeComboBoxModel = new CustomComboBoxModel<>(new ArrayList<>());
-        listArticle = new JComboBox<ArticleType>(articleTypeComboBoxModel);
+        listArticle = new JComboBox<>(articleTypeComboBoxModel);
         providerComboBoxModel = new CustomComboBoxModel<>(new ArrayList<>());
-        listProvider = new JComboBox<Provider>(providerComboBoxModel);
+        listProvider = new JComboBox<>(providerComboBoxModel);
         textFieldQuantity = new JTextField();
 
         this.setLayout(new GridLayout(3,1));

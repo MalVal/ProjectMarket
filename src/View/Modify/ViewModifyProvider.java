@@ -4,11 +4,8 @@ import Model.Entity.Provider;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class ViewModifyProvider  extends JDialog {
-
 
     public JTextField textNameModify;
 
@@ -61,36 +58,30 @@ public class ViewModifyProvider  extends JDialog {
         ImageIcon icon = new ImageIcon("src/View/img/caddieIcon.png");
         this.setIconImage(icon.getImage());
 
-        btnOkMod.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                boolean change = false;
+        btnOkMod.addActionListener(e -> {
+            boolean change = false;
 
-                if (!textNameModify.getText().isEmpty()) {
-                    newProvider.setName(textNameModify.getText());
-                    change = true;
-                }
-                if (!textAddressModify.getText().isEmpty()) {
-                    newProvider.setAddress(textAddressModify.getText());
-                    change = true;
-                }
-                if (!textPhoneNumberModify.getText().isEmpty()) {
-                    newProvider.setPhoneNumber(textPhoneNumberModify.getText());
-                    change = true;
-                }
-                if (!change) {
-                    newProvider = null;
-                }
-                dispose();
+            if (!textNameModify.getText().isEmpty()) {
+                newProvider.setName(textNameModify.getText());
+                change = true;
             }
+            if (!textAddressModify.getText().isEmpty()) {
+                newProvider.setAddress(textAddressModify.getText());
+                change = true;
+            }
+            if (!textPhoneNumberModify.getText().isEmpty()) {
+                newProvider.setPhoneNumber(textPhoneNumberModify.getText());
+                change = true;
+            }
+            if (!change) {
+                newProvider = null;
+            }
+            dispose();
         });
 
-        btnCancelMod.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                newProvider = null;
-                dispose();
-            }
+        btnCancelMod.addActionListener(e -> {
+            newProvider = null;
+            dispose();
         });
     }
 

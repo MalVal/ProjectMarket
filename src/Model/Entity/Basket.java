@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Basket
 {
-    private ArrayList<Article> basket;
+    private final ArrayList<Article> basket;
 
     public Basket()
     {
@@ -27,9 +27,9 @@ public class Basket
         basket.add(a);
     }
 
-    public boolean removeArticle(Article a)
+    public void removeArticle(Article a)
     {
-        return basket.remove((Object)a);
+        basket.remove(a);
     }
 
     public ArrayList<Article> getList()

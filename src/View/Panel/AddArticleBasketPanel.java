@@ -2,11 +2,8 @@ package View.Panel;
 
 import Controller.ControllerActions;
 import Model.Entity.Article;
-import Model.Entity.ArticleType;
-import Model.Entity.Provider;
 import Model.ModelComboBox.CustomComboBoxModel;
 import View.Client.ClientWindow;
-import View.Employee.EmployeeWindow;
 
 import javax.swing.*;
 import java.awt.*;
@@ -17,8 +14,8 @@ import java.util.ArrayList;
 public class AddArticleBasketPanel extends JPanel
 {
     public CustomComboBoxModel<Article> articleComboBoxModel;
-    private JComboBox<Article> listArticle;
-    private JTextField textFieldQuantity;
+    private final JComboBox<Article> listArticle;
+    private final JTextField textFieldQuantity;
 
     public Article article;
 

@@ -1,17 +1,12 @@
 package View.Modify;
 
 import Model.Entity.Client;
-import Model.Entity.Person;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class ViewModifyClient extends JDialog
 {
-
-
     public JTextField textNameModify;
 
     public JTextField textfirstnameModify;
@@ -71,58 +66,52 @@ public class ViewModifyClient extends JDialog
         ImageIcon icon = new ImageIcon("src/View/img/caddieIcon.png");
         this.setIconImage(icon.getImage());
 
-        btnOkMod.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                try
-                {
-                    boolean change = false;
+        btnOkMod.addActionListener(e -> {
+            try
+            {
+                boolean change = false;
 
-                    if(!textNameModify.getText().isEmpty())
-                    {
-                        newClient.setName(textNameModify.getText());
-                        change = true;
-                    }
-                    if(!textfirstnameModify.getText().isEmpty())
-                    {
-                        newClient.setFirstname(textfirstnameModify.getText());
-                        change = true;
-                    }
-                    if(!textpasswordModify.getText().isEmpty())
-                    {
-                        newClient.setPassword(textpasswordModify.getText());
-                        change = true;
-                    }
-                    if(!textdiscountModify.getText().isEmpty())
-                    {
-                        double discount = Double.parseDouble(textdiscountModify.getText());
-                        if(discount < 0)
-                        {
-                            JOptionPane.showMessageDialog(getParent(), "Invalid discount (can't be negative) !", "Error !", JOptionPane.ERROR_MESSAGE);
-                            return;
-                        }
-                        newClient.setDiscount(discount);
-                        change = true;
-                    }
-                    if(!change)
-                    {
-                        newClient = null;
-                    }
-                    dispose();
-                }
-                catch (NumberFormatException ex)
+                if(!textNameModify.getText().isEmpty())
                 {
-                    JOptionPane.showMessageDialog(getParent(), "Invalid discount !", "Error !", JOptionPane.ERROR_MESSAGE);
+                    newClient.setName(textNameModify.getText());
+                    change = true;
                 }
+                if(!textfirstnameModify.getText().isEmpty())
+                {
+                    newClient.setFirstname(textfirstnameModify.getText());
+                    change = true;
+                }
+                if(!textpasswordModify.getText().isEmpty())
+                {
+                    newClient.setPassword(textpasswordModify.getText());
+                    change = true;
+                }
+                if(!textdiscountModify.getText().isEmpty())
+                {
+                    double discount = Double.parseDouble(textdiscountModify.getText());
+                    if(discount < 0)
+                    {
+                        JOptionPane.showMessageDialog(getParent(), "Invalid discount (can't be negative) !", "Error !", JOptionPane.ERROR_MESSAGE);
+                        return;
+                    }
+                    newClient.setDiscount(discount);
+                    change = true;
+                }
+                if(!change)
+                {
+                    newClient = null;
+                }
+                dispose();
+            }
+            catch (NumberFormatException ex)
+            {
+                JOptionPane.showMessageDialog(getParent(), "Invalid discount !", "Error !", JOptionPane.ERROR_MESSAGE);
             }
         });
 
-        btnCancelMod.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                newClient = null;
-                dispose();
-            }
+        btnCancelMod.addActionListener(e -> {
+            newClient = null;
+            dispose();
         });
 
     }

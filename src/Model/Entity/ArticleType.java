@@ -107,7 +107,13 @@ public class ArticleType implements Cloneable
     @Override
     public ArticleType clone()
     {
-        return new ArticleType(this.name, this.category, this.price);
+        try {
+            return (ArticleType) super.clone();
+        }
+        catch (CloneNotSupportedException e)
+        {
+            throw new InternalError(e);
+        }
     }
 
 }

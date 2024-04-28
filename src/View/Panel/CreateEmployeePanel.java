@@ -1,7 +1,6 @@
 package View.Panel;
 
 import Controller.ControllerActions;
-import Model.Entity.Client;
 import Model.Entity.Employee;
 import View.CustomDateFormat;
 import View.Employee.EmployeeWindow;
@@ -10,7 +9,7 @@ import org.jdatepicker.impl.JDatePickerImpl;
 import org.jdatepicker.impl.UtilDateModel;
 
 import javax.swing.*;
-    import java.awt.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.time.Instant;
@@ -27,7 +26,6 @@ public class CreateEmployeePanel extends JPanel
     public JDatePickerImpl datePickerBirthdate;
     public JTextField textFieldSalary;
     public JTextField textFieldPassword;
-    private JButton btnCreate;
 
     public EmployeeWindow parent;
 
@@ -50,7 +48,7 @@ public class CreateEmployeePanel extends JPanel
         textFieldSalary = new JTextField();
         textFieldRegistrationNumber = new JTextField();
         textFieldPassword = new JTextField();
-        btnCreate = new JButton("Create");
+        JButton btnCreate = new JButton("Create");
 
         this.setLayout(new GridLayout(3,1));
 

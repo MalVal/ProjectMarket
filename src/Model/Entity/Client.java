@@ -8,7 +8,7 @@ public class Client extends Person implements Cloneable
     {
         Client c1 = new Client();
         Client c2 = new Client("saqsqsd", "Malchair", "Valentin", LocalDate.parse("2004-09-11"), "1545320", 8.9);
-        Client c3 = (Client) c2.clone();
+        Client c3 = c2.clone();
 
         System.out.println("c1 = " + c1);
         System.out.println("c2 = " + c2);
@@ -71,7 +71,13 @@ public class Client extends Person implements Cloneable
     @Override
     public Client clone()
     {
-        return new Client(this.getRegistrationNumber(), this.getName(), this.getFirstname(), this.getBirthdate(), this.getPassword(), this.discount);
+        try {
+            return (Client) super.clone();
+        }
+        catch (CloneNotSupportedException e)
+        {
+            throw new InternalError(e);
+        }
     }
 
 }

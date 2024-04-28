@@ -4,8 +4,6 @@ import Model.Entity.Employee;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class ViewModifyEmployee extends JDialog
 {
@@ -70,58 +68,52 @@ public class ViewModifyEmployee extends JDialog
         this.setIconImage(icon.getImage());
 
 
-        btnOkMod.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                try
-                {
-                    boolean change = false;
+        btnOkMod.addActionListener(e -> {
+            try
+            {
+                boolean change = false;
 
-                    if(!textNameModify.getText().isEmpty())
-                    {
-                        newEmployee.setName(textNameModify.getText());
-                        change = true;
-                    }
-                    if(!textfirstnameModify.getText().isEmpty())
-                    {
-                        newEmployee.setFirstname(textfirstnameModify.getText());
-                        change = true;
-                    }
-                    if(!textpasswordModify.getText().isEmpty())
-                    {
-                        newEmployee.setPassword(textpasswordModify.getText());
-                        change = true;
-                    }
-                    if(!textsalaryModify.getText().isEmpty())
-                    {
-                        double salary = Double.parseDouble(textsalaryModify.getText());
-                        if(salary < 0)
-                        {
-                            JOptionPane.showMessageDialog(getParent(), "Invalid salary (can't be negative) !", "Error !", JOptionPane.ERROR_MESSAGE);
-                            return;
-                        }
-                        newEmployee.setSalary(salary);
-                        change = true;
-                    }
-                    if(!change)
-                    {
-                        newEmployee = null;
-                    }
-                    dispose();
-                }
-                catch (NumberFormatException ex)
+                if(!textNameModify.getText().isEmpty())
                 {
-                    JOptionPane.showMessageDialog(getParent(), "Invalid salary !", "Error !", JOptionPane.ERROR_MESSAGE);
+                    newEmployee.setName(textNameModify.getText());
+                    change = true;
                 }
+                if(!textfirstnameModify.getText().isEmpty())
+                {
+                    newEmployee.setFirstname(textfirstnameModify.getText());
+                    change = true;
+                }
+                if(!textpasswordModify.getText().isEmpty())
+                {
+                    newEmployee.setPassword(textpasswordModify.getText());
+                    change = true;
+                }
+                if(!textsalaryModify.getText().isEmpty())
+                {
+                    double salary = Double.parseDouble(textsalaryModify.getText());
+                    if(salary < 0)
+                    {
+                        JOptionPane.showMessageDialog(getParent(), "Invalid salary (can't be negative) !", "Error !", JOptionPane.ERROR_MESSAGE);
+                        return;
+                    }
+                    newEmployee.setSalary(salary);
+                    change = true;
+                }
+                if(!change)
+                {
+                    newEmployee = null;
+                }
+                dispose();
+            }
+            catch (NumberFormatException ex)
+            {
+                JOptionPane.showMessageDialog(getParent(), "Invalid salary !", "Error !", JOptionPane.ERROR_MESSAGE);
             }
         });
 
-        btnCancelMod.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                newEmployee = null;
-                dispose();
-            }
+        btnCancelMod.addActionListener(e -> {
+            newEmployee = null;
+            dispose();
         });
     }
     public Employee showDialog()

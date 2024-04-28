@@ -1,6 +1,5 @@
 package Model.ModelTable;
 
-import Model.Entity.Client;
 import Model.Entity.Employee;
 
 import javax.swing.table.AbstractTableModel;
@@ -9,7 +8,7 @@ import java.util.ArrayList;
 
 public class ModelTableEmployee extends AbstractTableModel
 {
-    private ArrayList<Employee> employees;
+    private final ArrayList<Employee> employees;
     public ModelTableEmployee(ArrayList<Employee> employees)
     {
         this.employees = employees;
@@ -18,12 +17,12 @@ public class ModelTableEmployee extends AbstractTableModel
     @Override
     public Class getColumnClass(int c)
     {
-        if (c == 0) return String.class;
-        if (c == 1) return String.class;
-        if (c == 2) return String.class;
-        if (c == 3) return LocalDate.class;
-        if (c == 4) return Double.class;
-        return null;
+        return switch (c) {
+            case 0, 1, 2 -> String.class;
+            case 3 -> LocalDate.class;
+            case 4 -> Double.class;
+            default -> Object.class;
+        };
     }
 
     @Override
@@ -42,12 +41,15 @@ public class ModelTableEmployee extends AbstractTableModel
     public Object getValueAt(int l,int c)
     {
         Employee employee = employees.get(l);
-        if (c == -1) return employee;
-        if (c == 0) return employee.getRegistrationNumber();
-        if (c == 1) return employee.getName();
-        if (c == 2) return employee.getFirstname();
-        if (c == 3) return employee.getBirthdate();
-        if (c == 4) return employee.getSalary();
-        return null;
+
+        return switch (c) {
+            case -1 -> employee;
+            case 0 -> employee.getRegistrationNumber();
+            case 1 -> employee.getName();
+            case 2 -> employee.getFirstname();
+            case 3 -> employee.getBirthdate();
+            case 4 -> employee.getSalary();
+            default -> null;
+        };
     }
 }

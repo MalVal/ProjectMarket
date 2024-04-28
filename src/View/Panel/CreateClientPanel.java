@@ -1,10 +1,7 @@
 package View.Panel;
 
 import Controller.ControllerActions;
-import Model.Entity.Article;
-import Model.Entity.ArticleType;
 import Model.Entity.Client;
-import Model.Entity.Provider;
 import View.CustomDateFormat;
 import View.Employee.EmployeeWindow;
 import org.jdatepicker.impl.JDatePanelImpl;
@@ -29,7 +26,6 @@ public class CreateClientPanel extends JPanel
     public JDatePickerImpl datePickerBirthdate;
     public JTextField textFieldDiscount;
     public JTextField textFieldPassword;
-    private JButton btnCreate;
 
     public EmployeeWindow parent;
 
@@ -52,7 +48,7 @@ public class CreateClientPanel extends JPanel
         datePickerBirthdate = new JDatePickerImpl(datePanel, new CustomDateFormat());
         textFieldDiscount = new JTextField();
         textFieldPassword = new JTextField();
-        btnCreate = new JButton("Create");
+        JButton btnCreate = new JButton("Create");
 
         this.setLayout(new GridLayout(3,1));
 

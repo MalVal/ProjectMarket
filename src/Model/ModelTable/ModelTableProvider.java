@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 public class ModelTableProvider extends AbstractTableModel
 {
-    private ArrayList<Provider> providers;
+    private final ArrayList<Provider> providers;
     public ModelTableProvider(ArrayList<Provider> providers)
     {
         this.providers = providers;
@@ -16,10 +16,10 @@ public class ModelTableProvider extends AbstractTableModel
     @Override
     public Class getColumnClass(int c)
     {
-        if (c == 0) return String.class;
-        if (c == 1) return String.class;
-        if (c == 2) return String.class;
-        return null;
+        return switch (c) {
+            case 0, 1, 2 -> String.class;
+            default -> Object.class;
+        };
     }
 
     @Override

@@ -4,10 +4,6 @@ import java.time.LocalDate;
 
 public abstract class Person
 {
-    public static void main(String[] args)
-    {
-
-    }
 
     /*----------------------------
 
@@ -34,11 +30,6 @@ public abstract class Person
         this.firstname = firstname;
         this.birthdate = birthdate;
         this.password = password;
-    }
-
-    public Person()
-    {
-        this(null, "Unknown", "Unknown", LocalDate.parse("2000-01-01"), "default");
     }
 
     /*----------------------------

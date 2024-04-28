@@ -14,7 +14,6 @@ public class CreateArticleTypePanel extends JPanel
     public JTextField textFieldName;
     public JTextField textFieldCategory;
     public JTextField textFieldPrice;
-    private JButton btnCreate;
 
     public EmployeeWindow parent;
     public ArticleType articleType;
@@ -30,7 +29,7 @@ public class CreateArticleTypePanel extends JPanel
         textFieldName = new JTextField();
         textFieldCategory = new JTextField();
         textFieldPrice = new JTextField();
-        btnCreate = new JButton("Create");
+        JButton btnCreate = new JButton("Create");
 
         this.setLayout(new GridLayout(3,1));
 

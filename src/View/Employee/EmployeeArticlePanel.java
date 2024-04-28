@@ -2,7 +2,6 @@ package View.Employee;
 
 import Controller.ControllerActions;
 import View.Panel.AddArticlePanel;
-import View.Panel.BtnDeleteModifyPanel;
 import View.ViewPanel.ViewArticlePanel;
 
 import javax.swing.*;

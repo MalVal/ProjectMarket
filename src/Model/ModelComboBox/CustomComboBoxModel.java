@@ -23,10 +23,4 @@ public class CustomComboBoxModel<E> extends DefaultComboBoxModel<E> {
         }
         fireContentsChanged(this, 0, getSize() - 1);
     }
-
-    public void removeElementAndUpdate(int index)
-    {
-        removeElementAt(index);
-        fireContentsChanged(this, 0, getSize() - 1);
-    }
 }

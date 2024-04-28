@@ -8,7 +8,7 @@ public class Employee extends Person implements Cloneable
     {
         Employee e1 = new Employee();
         Employee e2 = new Employee("azdaz", "Malchair", "Valentin", LocalDate.parse("2004-09-11"), "123", 1025.65);
-        Employee e3 = (Employee) e2.clone();
+        Employee e3 = e2.clone();
 
         System.out.println("e1 = " + e1);
         System.out.println("e2 = " + e2);
@@ -71,7 +71,13 @@ public class Employee extends Person implements Cloneable
     @Override
     public Employee clone()
     {
-        return new Employee(this.getRegistrationNumber(), this.getName(), this.getFirstname(), this.getBirthdate(), this.getPassword(), this.salary);
+        try {
+            return (Employee) super.clone();
+        }
+        catch (CloneNotSupportedException e)
+        {
+            throw new InternalError(e);
+        }
     }
 
 }

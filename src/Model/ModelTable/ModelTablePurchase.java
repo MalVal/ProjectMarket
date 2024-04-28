@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 public class ModelTablePurchase extends AbstractTableModel
 {
-    private ArrayList<Purchase> purchases;
+    private final ArrayList<Purchase> purchases;
     public ModelTablePurchase(ArrayList<Purchase> purchases)
     {
         this.purchases = purchases;
@@ -16,10 +16,11 @@ public class ModelTablePurchase extends AbstractTableModel
     @Override
     public Class getColumnClass(int c)
     {
-        if (c == 0) return String.class;
-        if (c == 1) return String.class;
-        if (c == 2) return Double.class;
-        return null;
+        return switch (c) {
+            case 0, 1 -> String.class;
+            case 2 -> Double.class;
+            default -> Object.class;
+        };
     }
 
     @Override

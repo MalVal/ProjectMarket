@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 public class ModelTableArticle extends AbstractTableModel
 {
-    private ArrayList<Article> articles;
+    private final ArrayList<Article> articles;
     public ModelTableArticle(ArrayList<Article> articles)
     {
         this.articles = articles;
@@ -16,10 +16,11 @@ public class ModelTableArticle extends AbstractTableModel
     @Override
     public Class getColumnClass(int c)
     {
-        if (c == 0) return String.class;
-        if (c == 1) return String.class;
-        if (c == 2) return Integer.class;
-        return null;
+        return switch (c) {
+            case 0, 1 -> String.class;
+            case 2 -> Integer.class;
+            default -> Object.class;
+        };
     }
 
     @Override
