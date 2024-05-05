@@ -409,7 +409,6 @@ public class DAOProjectMarket implements DataAccessLayer, Serializable
         {
             ObjectInputStream in = new ObjectInputStream(new FileInputStream(saveFile.getAbsolutePath()));
             DAOProjectMarket loadedObject = (DAOProjectMarket) in.readObject();
-            this.currentClient = loadedObject.currentClient;
             this.listArticleType = loadedObject.listArticleType;
             this.listArticle = loadedObject.listArticle;
             this.listProvider = loadedObject.listProvider;
