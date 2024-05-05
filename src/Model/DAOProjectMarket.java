@@ -21,9 +21,9 @@ public class DAOProjectMarket implements DataAccessLayer, Serializable
     public DAOProjectMarket()
     {
         this.saveFile = new File(DEFAULT_SAVE_PATH);
+        this.currentClient = new CurrentClient();
         if(!this.load())
         {
-            currentClient = new CurrentClient();
             listArticleType = new ArrayList<>();
             listArticle = new ArrayList<>();
             listProvider = new ArrayList<>();
@@ -37,9 +37,9 @@ public class DAOProjectMarket implements DataAccessLayer, Serializable
     public DAOProjectMarket(File saveFile)
     {
         this.saveFile = saveFile;
+        this.currentClient = new CurrentClient();
         if(!this.load())
         {
-            currentClient = new CurrentClient();
             listArticleType = new ArrayList<>();
             listArticle = new ArrayList<>();
             listProvider = new ArrayList<>();
