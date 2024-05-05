@@ -10,7 +10,7 @@ public class DAOProjectMarket implements DataAccessLayer, Serializable
 {
     private static final String DEFAULT_SAVE_PATH = ".." + File.separator + "data" + File.separator + "SaveProjectMarket.pm";
     private final transient File saveFile;
-    private transient CurrentClient currentClient;
+    private transient final CurrentClient currentClient;
     private ArrayList<ArticleType> listArticleType;
     private ArrayList<Article> listArticle;
     private ArrayList<Provider> listProvider;
