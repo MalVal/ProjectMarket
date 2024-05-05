@@ -1,6 +1,8 @@
 package Model.Entity;
 
-public class Article implements Cloneable
+import java.io.Serializable;
+
+public class Article implements Cloneable, Serializable
 {
     public static void main(String[] args)
     {

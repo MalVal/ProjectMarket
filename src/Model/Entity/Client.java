@@ -1,8 +1,9 @@
 package Model.Entity;
 
 import java.time.LocalDate;
+import java.io.Serializable;
 
-public class Client extends Person implements Cloneable
+public class Client extends Person implements Cloneable, Serializable
 {
     public static void main(String[] args)
     {

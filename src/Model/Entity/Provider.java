@@ -1,6 +1,8 @@
 package Model.Entity;
 
-public class Provider implements Cloneable
+import java.io.Serializable;
+
+public class Provider implements Cloneable, Serializable
 {
     public static void main(String[] args)
     {

@@ -1,9 +1,10 @@
 package Model.Entity;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Purchase implements Cloneable
+public class Purchase implements Cloneable, Serializable
 {
     public static void main(String[] args)
     {

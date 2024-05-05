@@ -2,29 +2,52 @@ package Model;
 
 import Model.Entity.*;
 
+import java.io.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-public class DAOProjectMarket implements DataAccessLayer
+public class DAOProjectMarket implements DataAccessLayer, Serializable
 {
-    private final CurrentClient currentClient;
-    private final ArrayList<ArticleType> listArticleType;
-    private final ArrayList<Article> listArticle;
-    private final ArrayList<Provider> listProvider;
-    private final ArrayList<Purchase> listPurchase;
-    private final ArrayList<Client> listClient;
-    private final ArrayList<Employee> listEmployee;
+    private static final String DEFAULT_SAVE_PATH = ".." + File.separator + "data" + File.separator + "SaveProjectMarket.pm";
+    private final transient File saveFile;
+    private transient CurrentClient currentClient;
+    private ArrayList<ArticleType> listArticleType;
+    private ArrayList<Article> listArticle;
+    private ArrayList<Provider> listProvider;
+    private ArrayList<Purchase> listPurchase;
+    private ArrayList<Client> listClient;
+    private ArrayList<Employee> listEmployee;
 
     public DAOProjectMarket()
     {
-        currentClient = new CurrentClient();
-        listArticleType = new ArrayList<>();
-        listArticle = new ArrayList<>();
-        listProvider = new ArrayList<>();
-        listPurchase = new ArrayList<>();
-        listClient = new ArrayList<>();
-        listEmployee = new ArrayList<>();
-        this.addEmployee(new Employee("admin", "---", "---", LocalDate.parse("2004-09-11"), "admin", 0));
+        this.saveFile = new File(DEFAULT_SAVE_PATH);
+        if(!this.load())
+        {
+            currentClient = new CurrentClient();
+            listArticleType = new ArrayList<>();
+            listArticle = new ArrayList<>();
+            listProvider = new ArrayList<>();
+            listPurchase = new ArrayList<>();
+            listClient = new ArrayList<>();
+            listEmployee = new ArrayList<>();
+            this.addEmployee(new Employee("admin", "---", "---", LocalDate.parse("2004-09-11"), "admin", 0));
+        }
+    }
+
+    public DAOProjectMarket(File saveFile)
+    {
+        this.saveFile = saveFile;
+        if(!this.load())
+        {
+            currentClient = new CurrentClient();
+            listArticleType = new ArrayList<>();
+            listArticle = new ArrayList<>();
+            listProvider = new ArrayList<>();
+            listPurchase = new ArrayList<>();
+            listClient = new ArrayList<>();
+            listEmployee = new ArrayList<>();
+            this.addEmployee(new Employee("admin", "---", "---", LocalDate.parse("2004-09-11"), "admin", 0));
+        }
     }
 
     @Override
@@ -42,8 +65,8 @@ public class DAOProjectMarket implements DataAccessLayer
                 return;
             }
         }
-
         listArticle.add(article);
+        this.save();
     }
 
     @Override
@@ -59,6 +82,7 @@ public class DAOProjectMarket implements DataAccessLayer
         }
 
         listArticleType.add(articleType);
+        this.save();
         return true;
     }
 
@@ -75,6 +99,7 @@ public class DAOProjectMarket implements DataAccessLayer
         }
 
         listClient.add(client);
+        this.save();
         return true;
     }
 
@@ -91,6 +116,7 @@ public class DAOProjectMarket implements DataAccessLayer
         }
 
         listEmployee.add(employee);
+        this.save();
         return true;
     }
 
@@ -107,6 +133,7 @@ public class DAOProjectMarket implements DataAccessLayer
         }
 
         listProvider.add(provider);
+        this.save();
         return true;
     }
 
@@ -114,31 +141,37 @@ public class DAOProjectMarket implements DataAccessLayer
     public void addPurchase(Purchase purchase) {
         if(purchase == null) return;
         listPurchase.add(purchase);
+        this.save();
     }
 
     @Override
     public void deleteArticle(Article article) {
         listArticle.remove(article);
+        this.save();
     }
 
     @Override
     public void deleteArticleType(ArticleType articleType) {
         listArticleType.remove(articleType);
+        this.save();
     }
 
     @Override
     public void deleteClient(Client client) {
         listClient.remove(client);
+        this.save();
     }
 
     @Override
     public void deleteEmployee(Employee employee) {
         listEmployee.remove(employee);
+        this.save();
     }
 
     @Override
     public void deleteProvider(Provider provider) {
         listProvider.remove(provider);
+        this.save();
     }
 
     @Override
@@ -148,6 +181,7 @@ public class DAOProjectMarket implements DataAccessLayer
             if (listArticleType.get(i).equals(oldArticleType))
             {
                 listArticleType.set(i, newArticleType);
+                this.save();
                 return;
             }
         }
@@ -160,6 +194,7 @@ public class DAOProjectMarket implements DataAccessLayer
             if (listClient.get(i).equals(oldClient))
             {
                 listClient.set(i, newClient);
+                this.save();
                 return;
             }
         }
@@ -172,6 +207,7 @@ public class DAOProjectMarket implements DataAccessLayer
             if (listEmployee.get(i).equals(oldEmployee))
             {
                 listEmployee.set(i, newEmployee);
+                this.save();
                 return;
             }
         }
@@ -184,6 +220,7 @@ public class DAOProjectMarket implements DataAccessLayer
             if (listProvider.get(i).equals(oldProvider))
             {
                 listProvider.set(i, newProvider);
+                this.save();
                 return;
             }
         }
@@ -202,6 +239,7 @@ public class DAOProjectMarket implements DataAccessLayer
                 else
                 {
                     a.setQuantity(a.getQuantity() - article.getQuantity());
+                    this.save();
                     return;
                 }
             }
@@ -344,5 +382,47 @@ public class DAOProjectMarket implements DataAccessLayer
             copy.add(a.clone());
         }
         return copy;
+    }
+
+    public void save()
+    {
+        try
+        {
+            if (!saveFile.exists())
+            {
+                saveFile.getParentFile().mkdirs();
+                saveFile.createNewFile();
+            }
+            ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(saveFile.getAbsolutePath()));
+            out.writeObject(this);
+            out.close();
+        }
+        catch (IOException e)
+        {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public boolean load()
+    {
+        try
+        {
+            ObjectInputStream in = new ObjectInputStream(new FileInputStream(saveFile.getAbsolutePath()));
+            DAOProjectMarket loadedObject = (DAOProjectMarket) in.readObject();
+            this.currentClient = loadedObject.currentClient;
+            this.listArticleType = loadedObject.listArticleType;
+            this.listArticle = loadedObject.listArticle;
+            this.listProvider = loadedObject.listProvider;
+            this.listPurchase = loadedObject.listPurchase;
+            this.listClient = loadedObject.listClient;
+            this.listEmployee = loadedObject.listEmployee;
+            in.close();
+            return true;
+        }
+        catch (IOException | ClassNotFoundException e)
+        {
+            System.out.println(e.getMessage());
+            return false;
+        }
     }
 }
