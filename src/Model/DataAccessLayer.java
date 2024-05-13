@@ -2,6 +2,7 @@ package Model;
 
 import Model.Entity.*;
 
+import java.io.File;
 import java.util.ArrayList;
 
 public interface DataAccessLayer
@@ -42,4 +43,9 @@ public interface DataAccessLayer
     ArrayList<Employee> getListEmployee();
     ArrayList<Provider> getListProvider();
     ArrayList<Purchase> getListPurchase();
+
+    void exportArticleType(ArticleType articleType, File file);
+    boolean importArticleType(File file);
+    public String getDarkTheme();
+    public void setDarkTheme(String value);
 }

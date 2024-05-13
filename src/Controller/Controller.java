@@ -4,8 +4,10 @@ import Model.DataAccessLayer;
 import Model.Entity.*;
 import View.ViewProjectMarket;
 
+import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.util.ArrayList;
 
 public final class Controller implements ActionListener
@@ -22,6 +24,10 @@ public final class Controller implements ActionListener
 
     public void run()
     {
+        if(model.getDarkTheme().equals("true"))
+        {
+            view.setDarkTheme();
+        }
         view.run();
     }
 
@@ -44,11 +50,13 @@ public final class Controller implements ActionListener
                 if(view.getColor().equals("Dark"))
                 {
                     view.setDarkTheme();
+                    model.setDarkTheme("true");
                 }
                 // Else set the white theme
                 else
                 {
                     view.setWhiteTheme();
+                    model.setDarkTheme("false");
                 }
 
                 // Check if all the text boxes are filled
@@ -468,6 +476,45 @@ public final class Controller implements ActionListener
                         view.displayClientBasket(model.getCurrentClient().getBasket().getList());
                         view.displayClientComboBoxArticle(model.getListArticle());
                     }
+                }
+                break;
+
+            case ControllerActions.EXPORT_ARTICLE:
+                // Take the selected article
+                ArticleType articleTypeToExport = view.getSelectedArticleType();
+
+                // If nothing was selected
+                if(articleTypeToExport == null)
+                {
+                    view.displayError("You have to select an article type !");
+                }
+                else
+                {
+                    JFileChooser fileChooser = new JFileChooser();
+                    int returnValue = fileChooser.showSaveDialog(null);
+                    if (returnValue == JFileChooser.APPROVE_OPTION)
+                    {
+                        File selectedFile = fileChooser.getSelectedFile();
+                        model.exportArticleType(articleTypeToExport, selectedFile);
+                        view.displayError("Export successful !");
+                    }
+                }
+                break;
+
+            case ControllerActions.IMPORT_ARTICLE:
+                JFileChooser fileChooser = new JFileChooser();
+                int returnValue = fileChooser.showSaveDialog(null);
+                if (returnValue == JFileChooser.APPROVE_OPTION)
+                {
+                    File selectedFile = fileChooser.getSelectedFile();
+                    if(model.importArticleType(selectedFile))
+                    {
+                        view.displayEmployeeArticleType(model.getListArticleType());
+                        view.displayEmployeeComboBoxArticleType(model.getListArticleType());
+                        view.displayError("Import successful !");
+                    }
+                    else
+                        view.displayError("Article type already exists !");
                 }
                 break;
         }

@@ -5,9 +5,12 @@ import Model.Entity.*;
 import java.io.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Properties;
 
 public class DAOProjectMarket implements DataAccessLayer, Serializable
 {
+
+    private transient String darkTheme;
     private static final String DEFAULT_SAVE_PATH = ".." + File.separator + "data" + File.separator + "SaveProjectMarket.pm";
     private final transient File saveFile;
     private transient final CurrentClient currentClient;
@@ -20,6 +23,7 @@ public class DAOProjectMarket implements DataAccessLayer, Serializable
 
     public DAOProjectMarket()
     {
+
         this.saveFile = new File(DEFAULT_SAVE_PATH);
         this.currentClient = new CurrentClient();
         if(!this.load())
@@ -31,6 +35,37 @@ public class DAOProjectMarket implements DataAccessLayer, Serializable
             listClient = new ArrayList<>();
             listEmployee = new ArrayList<>();
             this.addEmployee(new Employee("admin", "---", "---", LocalDate.parse("2004-09-11"), "admin", 0));
+        }
+
+        Properties prop = new Properties();
+        File file = new File("config.properties");
+        try
+        {
+            if (!file.exists())
+            {
+                file.createNewFile();
+                prop.setProperty("DarkTheme", "false");
+                darkTheme = "false";
+                FileOutputStream output = new FileOutputStream(file);
+                prop.store(output, "configuration");
+                output.close();
+            }
+            else
+            {
+                try (FileInputStream input = new FileInputStream(file))
+                {
+                    prop.load(input);
+                    darkTheme = prop.getProperty("DarkTheme");
+                }
+                catch (IOException ex)
+                {
+                    ex.printStackTrace();
+                }
+            }
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
         }
     }
 
@@ -47,6 +82,37 @@ public class DAOProjectMarket implements DataAccessLayer, Serializable
             listClient = new ArrayList<>();
             listEmployee = new ArrayList<>();
             this.addEmployee(new Employee("admin", "---", "---", LocalDate.parse("2004-09-11"), "admin", 0));
+        }
+
+        Properties prop = new Properties();
+        File file = new File("config.properties");
+        try
+        {
+            if (!file.exists())
+            {
+                file.createNewFile();
+                prop.setProperty("DarkTheme", "false");
+                darkTheme = "false";
+                FileOutputStream output = new FileOutputStream(file);
+                prop.store(output, "configuration");
+                output.close();
+            }
+            else
+            {
+                try (FileInputStream input = new FileInputStream(file))
+                {
+                    prop.load(input);
+                    darkTheme = prop.getProperty("DarkTheme");
+                }
+                catch (IOException ex)
+                {
+                    ex.printStackTrace();
+                }
+            }
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
         }
     }
 
@@ -384,6 +450,52 @@ public class DAOProjectMarket implements DataAccessLayer, Serializable
         return copy;
     }
 
+    @Override
+    public void exportArticleType(ArticleType articleType, File file) {
+        FileWriter fw;
+        try
+        {
+            fw = new FileWriter(file);
+            BufferedWriter bw = new BufferedWriter(fw);
+            bw.write(articleType.getName());
+            bw.newLine(); // pour aller a la ligne
+            bw.write(articleType.getCategory());
+            bw.newLine();
+            bw.write(Double.toString(articleType.getPrice()));
+            bw.newLine();
+            bw.close();
+        }
+        catch (IOException e)
+        {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    public boolean importArticleType(File file) {
+        FileReader fr;
+        try
+        {
+            String name, category;
+            double price;
+
+            fr = new FileReader(file);
+            BufferedReader br = new BufferedReader(fr);
+
+            name = br.readLine();
+            category = br.readLine();
+            price = Double.parseDouble(br.readLine());
+
+            ArticleType articleType = new ArticleType(name, category, price);
+
+            return this.addArticleType(articleType);
+        }
+        catch (IOException e)
+        {
+            return false;
+        }
+    }
+
     public void save()
     {
         try
@@ -422,6 +534,29 @@ public class DAOProjectMarket implements DataAccessLayer, Serializable
         {
             System.out.println(e.getMessage());
             return false;
+        }
+    }
+
+    public String getDarkTheme()
+    {
+        return darkTheme;
+    }
+
+    public void setDarkTheme(String value)
+    {
+        Properties prop = new Properties();
+        darkTheme = value;
+        File file = new File("config.properties");
+        prop.setProperty("DarkTheme", value);
+        try
+        {
+            FileOutputStream output = new FileOutputStream(file);
+            prop.store(output, "configuration");
+            output.close();
+        }
+        catch(IOException e)
+        {
+            e.printStackTrace();
         }
     }
 }

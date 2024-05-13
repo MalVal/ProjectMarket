@@ -23,4 +23,7 @@ public abstract class ControllerActions
     public static final String MODIFY_PROVIDER = "Modify provider";
 
     public static final String BUY_BASKET = "Buy basket";
+
+    public static final String IMPORT_ARTICLE = "Import article";
+    public static final String EXPORT_ARTICLE = "Export article";
 }
