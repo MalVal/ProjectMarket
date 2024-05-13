@@ -11,7 +11,8 @@ public class DAOProjectMarket implements DataAccessLayer, Serializable
 {
 
     private transient String darkTheme;
-    private static final String DEFAULT_SAVE_PATH = ".." + File.separator + "data" + File.separator + "SaveProjectMarket.pm";
+    private static final String DEFAULT_SAVE_PATH = "." + File.separator + "data" + File.separator + "SaveProjectMarket.pm";
+    private static final String DEFAULT_PROPERTIES_PATH = "." + File.separator + "config" + File.separator + "config.properties";
     private final transient File saveFile;
     private transient final CurrentClient currentClient;
     private ArrayList<ArticleType> listArticleType;
@@ -38,15 +39,16 @@ public class DAOProjectMarket implements DataAccessLayer, Serializable
         }
 
         Properties prop = new Properties();
-        File file = new File("config.properties");
+        File file = new File(DEFAULT_PROPERTIES_PATH);
         try
         {
             if (!file.exists())
             {
+                file.getParentFile().mkdirs();
                 file.createNewFile();
                 prop.setProperty("DarkTheme", "false");
                 darkTheme = "false";
-                FileOutputStream output = new FileOutputStream(file);
+                FileOutputStream output = new FileOutputStream(file.getAbsolutePath());
                 prop.store(output, "configuration");
                 output.close();
             }
@@ -85,15 +87,16 @@ public class DAOProjectMarket implements DataAccessLayer, Serializable
         }
 
         Properties prop = new Properties();
-        File file = new File("config.properties");
+        File file = new File(DEFAULT_PROPERTIES_PATH);
         try
         {
             if (!file.exists())
             {
+                file.getParentFile().mkdirs();
                 file.createNewFile();
                 prop.setProperty("DarkTheme", "false");
                 darkTheme = "false";
-                FileOutputStream output = new FileOutputStream(file);
+                FileOutputStream output = new FileOutputStream(file.getAbsolutePath());
                 prop.store(output, "configuration");
                 output.close();
             }
@@ -546,11 +549,11 @@ public class DAOProjectMarket implements DataAccessLayer, Serializable
     {
         Properties prop = new Properties();
         darkTheme = value;
-        File file = new File("config.properties");
+        File file = new File(DEFAULT_PROPERTIES_PATH);
         prop.setProperty("DarkTheme", value);
         try
         {
-            FileOutputStream output = new FileOutputStream(file);
+            FileOutputStream output = new FileOutputStream(file.getAbsolutePath());
             prop.store(output, "configuration");
             output.close();
         }
