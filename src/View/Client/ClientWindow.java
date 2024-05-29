@@ -43,7 +43,7 @@ public class ClientWindow extends JDialog
         this.setSize(800, 800);
 
         // Icon
-        ImageIcon icon = new ImageIcon("src/View/img/caddieIcon.png");
+        ImageIcon icon = new ImageIcon("src/Resources/caddieIcon.png");
         this.setIconImage(icon.getImage());
 
         btnBuy.addActionListener(new ActionListener()

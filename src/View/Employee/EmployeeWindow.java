@@ -76,7 +76,7 @@ public class EmployeeWindow extends JDialog
         mainPanel.add(tabbedPane);
 
         // Icon
-        ImageIcon icon = new ImageIcon("src/View/img/caddieIcon.png");
+        ImageIcon icon = new ImageIcon("src/Resources/caddieIcon.png");
         this.setIconImage(icon.getImage());
     }
 }
