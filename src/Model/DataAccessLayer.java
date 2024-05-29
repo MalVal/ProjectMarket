@@ -46,6 +46,6 @@ public interface DataAccessLayer
 
     void exportArticleType(ArticleType articleType, File file);
     boolean importArticleType(File file);
-    public String getDarkTheme();
-    public void setDarkTheme(String value);
+    String getDarkTheme();
+    void setDarkTheme(String value);
 }
